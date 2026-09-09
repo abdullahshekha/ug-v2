@@ -1,18 +1,24 @@
 import Link from "next/link";
 
+interface ProductCtaProps {
+  showCalculator?: boolean;
+  heading?: string;
+  body?: string;
+}
+
 export default function ProductCta({
   showCalculator = false,
-}: {
-  showCalculator?: boolean;
-}) {
+  heading = "Specifying this product on a project?",
+  body = "Talk to our team about quantities, lead times and becoming a stockist.",
+}: ProductCtaProps) {
   return (
     <section className="bg-plaster-900">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <h2 className="max-w-2xl text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-          Specifying this product on a project?
+          {heading}
         </h2>
         <p className="mt-3 max-w-xl text-base leading-relaxed text-plaster-300">
-          Talk to our team about quantities, lead times and becoming a stockist.
+          {body}
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
