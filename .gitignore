@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Build output
+/.next/
+/out/
+/build
+
+# Env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code local config + project brief (never commit)
+.claude/
+.superpowers/
+CLAUDE.md
+
+# Original "Save Page As" source files — content reference only, not part of the site
+/*.html
+/*_files/
+/*.pdf
+/Blogs/
+/Project Portfolio/
