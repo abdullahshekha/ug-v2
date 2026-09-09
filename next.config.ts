@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Keep the old WordPress URL scheme (every route ends in a slash).
+  trailingSlash: true,
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "www.unitedgypsum.com" },
