@@ -54,8 +54,8 @@ export default function Footer() {
             />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-plaster-400">
               A global supplier of sustainable, gypsum-based construction materials
-              for diverse construction applications &mdash; manufacturing in
-              Pakistan since 2014.
+              for diverse construction applications, manufacturing in Pakistan
+              since 2014.
             </p>
             <div className="mt-6 space-y-2.5 text-sm">
               <a
@@ -63,7 +63,7 @@ export default function Footer() {
                 className="flex items-center gap-2 text-plaster-300 transition-colors hover:text-brand-300"
               >
                 <Phone className="h-4 w-4 text-brand-400" />
-                +92 21 34123301&ndash;2
+                +92 21 34123301-2
               </a>
               <a
                 href="tel:+923000566858"
@@ -126,7 +126,7 @@ export default function Footer() {
 
       <div className="bg-brand-900">
         <div className="mx-auto max-w-7xl px-4 py-4 text-center text-xs font-semibold tracking-[0.08em] text-brand-100 sm:px-6 lg:px-8">
-          COPYRIGHT 2014 &ndash; 2026 &copy; UNITED GYPSUM PVT. LTD. | ALL RIGHTS
+          COPYRIGHT 2014 - 2026 &copy; UNITED GYPSUM PVT. LTD. | ALL RIGHTS
           RESERVED
         </div>
       </div>

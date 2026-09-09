@@ -14,8 +14,8 @@ export default function PremiumQualityBanner() {
           </h2>
           <p className="mt-4 text-base leading-relaxed text-plaster-300">
             Every product is manufactured in accordance with the ISO 9001-2015
-            quality management standard and complies with ASTM requirements &mdash;
-            C472, C473, C474 and D3763 &mdash; using best-quality raw materials and
+            quality management standard and complies with ASTM requirements C472,
+            C473, C474 and D3763, using best-quality raw materials and
             state-of-the-art equipment under strict quality control.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">

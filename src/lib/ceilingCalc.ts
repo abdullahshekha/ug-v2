@@ -1,5 +1,5 @@
 /**
- * Ceiling material calculator — pure estimation logic.
+ * Ceiling material calculator: pure estimation logic.
  *
  * The UI component (`src/components/sections/CeilingCalculator.tsx`) handles all
  * input state and unit conversion (feet <-> meters), then calls `calculate()` with
@@ -7,7 +7,7 @@
  * and lets us swap the constants once the Application Booklet is parsed.
  *
  * TODO: reconcile every value in CALC_CONFIG against the UG Application Booklet
- * (UG_Application_Booklet_Form_2020.pdf) — coverage rates, fastener spacing, grid
+ * (UG_Application_Booklet_Form_2020.pdf): coverage rates, fastener spacing, grid
  * module, and filler / tape consumption. Current numbers are industry-standard
  * first-pass estimates, not UG-published figures.
  */
@@ -32,7 +32,7 @@ export interface BillOfMaterials {
   areaSqFt: number;
   perimeterFt: number;
   wastagePct: number;
-  /** "Gypsum boards" or "Ceiling panels" — the main covering unit. */
+  /** "Gypsum boards" or "Ceiling panels": the main covering unit. */
   primaryLabel: string;
   primaryCount: number;
   /** Nominal size text for the primary unit, e.g. `4 ft x 8 ft`. */

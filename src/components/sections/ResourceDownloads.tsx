@@ -5,7 +5,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 
 /**
  * Known documents. A card renders only when its file actually exists in
- * `public/resources/` — drop the PDFs in there and they appear automatically.
+ * `public/resources/`: drop the PDFs in there and they appear automatically.
  * Add new entries here as more documents are supplied.
  */
 const catalogue = [
@@ -67,7 +67,7 @@ export default function ResourceDownloads() {
         <SectionHeading
           eyebrow="Resources"
           title="Downloads and documentation"
-          lead="Profiles, catalogues and technical data sheets — free to download, no form."
+          lead="Profiles, catalogues and technical data sheets, free to download, no form."
         />
 
         {available.length > 0 ? (

@@ -149,7 +149,7 @@ export default function CeilingCalculator({
           <SectionHeading
             eyebrow="Plan your project"
             title="Ceiling material calculator"
-            lead="Enter your room dimensions for a quick bill of materials — boards or panels, screw boxes, filler, tape, and grid for suspended ceilings."
+            lead="Enter your room dimensions for a quick bill of materials: boards or panels, screw boxes, filler, tape, and grid for suspended ceilings."
             tone="dark"
           />
         )}
@@ -243,7 +243,7 @@ export default function CeilingCalculator({
 
             <p className="mt-6 text-xs leading-relaxed text-plaster-500">
               First-pass estimate using industry-standard coverage rates. Final
-              quantities are reconciled against the UG Application Booklet &mdash;
+              quantities are reconciled against the UG Application Booklet, so
               confirm with our team before ordering.
             </p>
           </div>

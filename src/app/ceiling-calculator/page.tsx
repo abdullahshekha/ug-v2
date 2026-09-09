@@ -48,7 +48,7 @@ export default function CeilingCalculatorPage() {
               </p>
               <p>
                 These are planning figures based on industry-standard rates. Final
-                quantities are reconciled against the UG Application Booklet &mdash;
+                quantities are reconciled against the UG Application Booklet, so
                 talk to our team before placing an order.
               </p>
             </div>

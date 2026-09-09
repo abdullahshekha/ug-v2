@@ -29,7 +29,7 @@ export default function DealerForm() {
             <div className="mt-8 space-y-1 text-sm text-plaster-600">
               <p>
                 <span className="font-bold text-plaster-800">Landline:</span> +92
-                21 34123301&ndash;2
+                21 34123301-2
               </p>
               <p>
                 <span className="font-bold text-plaster-800">Mobile:</span> +92 300
@@ -46,7 +46,7 @@ export default function DealerForm() {
             {submitted ? (
               <div className="flex h-full flex-col items-start justify-center">
                 <h3 className="text-lg font-extrabold text-plaster-800">
-                  Thanks &mdash; your details are ready to send.
+                  Thanks, your details are ready to send.
                 </h3>
                 <p className="mt-2 text-sm text-plaster-600">
                   Online submissions aren&apos;t connected yet. In the meantime,
@@ -112,7 +112,7 @@ export default function DealerForm() {
                   <textarea name="query" rows={4} className={inputClass} />
                 </label>
 
-                {/* Honeypot — real users never see or fill this. */}
+                {/* Honeypot: real users never see or fill this. */}
                 <div className="hidden" aria-hidden="true">
                   <label>
                     Website
@@ -127,13 +127,13 @@ export default function DealerForm() {
                 <div className="sm:col-span-2">
                   <button
                     type="submit"
-                    className="inline-flex items-center rounded-full bg-brand-800 px-7 py-3.5 text-sm font-bold text-white shadow-[0_12px_26px_rgba(124,29,31,0.28)] transition-transform hover:-translate-y-0.5"
+                    className="inline-flex items-center rounded-full bg-brand-800 px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-brand-900"
                   >
                     Send enquiry
                   </button>
                   <p className="mt-3 text-xs text-plaster-500">
-                    Online submissions aren&apos;t wired up yet &mdash; this form
-                    is a preview.
+                    Online submissions aren&apos;t wired up yet. This form is a
+                    preview.
                   </p>
                 </div>
               </form>

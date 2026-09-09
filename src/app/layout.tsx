@@ -11,7 +11,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.unitedgypsum.com"),
-  title: "United Gypsum — Finest gypsum products for your innovations",
+  title: "United Gypsum - Finest gypsum products for your innovations",
   description:
     "United Gypsum can meet all your construction demands with our comprehensive product line including Gypsum Boards, Ceiling Panel, Grids, and Drywall accessories.",
   keywords: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "United Gypsum — Finest gypsum products for your innovations",
+    title: "United Gypsum - Finest gypsum products for your innovations",
     description:
       "United Gypsum can meet all your construction demands with our comprehensive product line including Gypsum Boards, Ceiling Panel, Grids, and Drywall accessories.",
     url: "https://www.unitedgypsum.com/",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "United Gypsum — Finest gypsum products for your innovations",
+    title: "United Gypsum - Finest gypsum products for your innovations",
     description:
       "Comprehensive gypsum product line: Gypsum Boards, Ceiling Panels, Grids and Drywall accessories.",
   },

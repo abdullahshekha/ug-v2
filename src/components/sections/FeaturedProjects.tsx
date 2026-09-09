@@ -61,22 +61,22 @@ export default function FeaturedProjects() {
         <SectionHeading
           eyebrow="Where you'll find us"
           title="Built into landmark projects"
-          lead="United Gypsum systems are specified on more than 250 projects across Pakistan's public and private sectors — motorways, dams, high courts, hospitals, malls and residential towers — and shipped to distributors in the UAE, Oman, Nepal and Sri Lanka."
+          lead="United Gypsum systems are specified on more than 250 projects across Pakistan's public and private sectors, from motorways, dams and high courts to hospitals, malls and residential towers, and are shipped to distributors in the UAE, Oman, Nepal and Sri Lanka."
         />
 
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {projects.map((p) => (
             <li
               key={p.name}
-              className="group flex gap-4 rounded-2xl border border-warm bg-plaster-50 p-4 shadow-plaster"
+              className="flex flex-col gap-4 rounded-2xl border border-warm bg-plaster-50 p-5 shadow-plaster"
             >
-              <span className="flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-warm bg-white">
+              <span className="flex h-32 w-full items-center justify-center overflow-hidden rounded-xl border border-warm bg-white">
                 <Image
                   src={p.logo}
                   alt={`${p.name} logo`}
-                  width={64}
-                  height={64}
-                  className="h-full w-full object-contain p-1.5 grayscale transition group-hover:grayscale-0"
+                  width={256}
+                  height={128}
+                  className="max-h-full w-auto object-contain p-3"
                 />
               </span>
               <span className="min-w-0">

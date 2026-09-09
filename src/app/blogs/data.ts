@@ -12,7 +12,7 @@ export interface Blog {
 
 /**
  * Seed data from the saved blog listing (page 1 of 4). Full post bodies and
- * listing pages 2-4 are a later pass — get the remaining source files from the
+ * listing pages 2-4 are a later pass; get the remaining source files from the
  * client. `LatestBlogs` on the homepage renders the newest three.
  */
 export const blogs: Blog[] = (
@@ -33,7 +33,7 @@ export const blogs: Blog[] = (
       date: "2024-10-14",
       featuredImage: "/images/Top-10-Gypsum-Ceiling-Designs-in-Pakistan-.jpg",
       excerpt:
-        "Ten ceiling treatments — from coffered layouts to floating islands — and the systems that build them.",
+        "Ten ceiling treatments, from coffered layouts to floating islands, and the systems that build them.",
     },
     {
       slug: "transform-cinemas-and-halls-with-smart-grid-38-ceilings-in-karachi",
@@ -51,7 +51,7 @@ export const blogs: Blog[] = (
       date: "2024-08-26",
       featuredImage: "/images/How-Smart-Gypsum-Board-scaled.jpg",
       excerpt:
-        "Lightweight partitions, curved walls and quick dry-lining — what gypsum board changes on site.",
+        "Lightweight partitions, curved walls and quick dry-lining, and what gypsum board changes on site.",
     },
     {
       slug: "enhance-your-drywall-finishing-with-premium-bead-tape-in-karachi",
@@ -78,7 +78,7 @@ export const blogs: Blog[] = (
       date: "2024-08-08",
       featuredImage: "/images/Cover-1-scaled.jpg",
       excerpt:
-        "In a typical Pakistani interior, freshly painted walls stand as symbols of perfection — smooth and seamless.",
+        "In a typical Pakistani interior, freshly painted walls stand as symbols of perfection: smooth and seamless.",
     },
     {
       slug: "ceiling-grid-systems-for-warehouses-in-pakistan",
@@ -87,7 +87,7 @@ export const blogs: Blog[] = (
       date: "2024-08-07",
       featuredImage: "/images/UG-Blog-Cover-Image-scaled.jpg",
       excerpt:
-        "Warehouses are the lifeblood of Pakistan's economy — high-functioning spaces that hold the supply chain together.",
+        "Warehouses are the lifeblood of Pakistan's economy: high-functioning spaces that hold the supply chain together.",
     },
     {
       slug: "best-wall-crack-filler-in-pakistan",

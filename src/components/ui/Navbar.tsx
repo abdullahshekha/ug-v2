@@ -77,7 +77,7 @@ export default function Navbar() {
             </a>
             <span className="flex items-center gap-1.5 text-brand-200">
               <Clock className="h-3.5 w-3.5" />
-              Mon&ndash;Sat, 9:00 AM &ndash; 6:00 PM
+              Mon to Sat, 9:00 AM to 6:00 PM
             </span>
             <a
               href="tel:+922134123301"
@@ -103,9 +103,9 @@ export default function Navbar() {
             <Image
               src="/images/United_Gypsum_Logo_01-01-1024x221.png"
               alt="United Gypsum"
-              width={200}
-              height={43}
-              className="h-9 w-auto object-contain sm:h-10"
+              width={300}
+              height={65}
+              className="h-[54px] w-auto object-contain sm:h-[60px]"
               priority
             />
           </Link>
@@ -163,7 +163,7 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <Link
               href="/#dealer"
-              className="inline-flex items-center rounded-full bg-brand-800 px-5 py-2.5 text-sm font-bold text-white shadow-[0_10px_22px_rgba(124,29,31,0.28)] transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center rounded-full bg-brand-800 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-900"
             >
               Become a dealer
             </Link>

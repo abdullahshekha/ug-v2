@@ -16,7 +16,7 @@ const products = [
     href: "/smart-ceiling-panel/",
     image: "/images/st5r.jpg",
     blurb:
-      "A non-combustible gypsum core bound by tough paper on both sides, available in a wide range of vinyl laminates — plain, embossed and printed — plus a foil-backed option that reflects thermal radiation.",
+      "A non-combustible gypsum core bound by tough paper on both sides, available in a wide range of vinyl laminates (plain, embossed and printed), plus a foil-backed option that reflects thermal radiation.",
   },
   {
     name: "Smart Grid",
