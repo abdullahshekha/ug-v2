@@ -56,10 +56,7 @@ export default function AccessoryProductPage({ product }: { product: Product }) 
             </div>
 
             <div>
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-red text-white">
-                <Icon className="h-5 w-5" />
-              </span>
-              <p className="mt-5 text-lg leading-relaxed text-grey">
+              <p className="text-lg leading-relaxed text-grey">
                 {product.intro}
               </p>
 

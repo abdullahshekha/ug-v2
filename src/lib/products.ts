@@ -134,7 +134,8 @@ export const products: Record<string, Product> = {
       "Smart Ceiling Panel is built around a non-combustible gypsum core bound by tough paper on both sides. It comes in a wide range of exquisite vinyl laminates that are attractive, cost-efficient and durable. The vinyl foils are rated Class 2 in the Flame Spread Test to British Standard 476 Part 7: 1971. Panels can be supplied with front PVC laminated to a paper backing, or with a polished aluminium foil backing.",
     metaDescription:
       "Smart Ceiling Panel: non-combustible gypsum core, Class 2 flame spread (BS 476-7), vinyl-laminated or foil-backed, in 595 x 595 mm and 595 x 1195 mm.",
-    image: "/images/st5r.jpg",
+    image: "/images/flagship-ceiling-panel.png",
+    imageFit: "contain",
     highlights: [
       "Non-combustible gypsum core",
       "Class 2 flame spread (BS 476 Part 7)",
@@ -196,7 +197,8 @@ export const products: Record<string, Product> = {
       "The Smart Grid suspended ceiling system (T-bar) is manufactured from galvanized steel coated with zinc to prevent corrosion through rusting. The underside carries a thick polyester coating that keeps it durable and able to withstand climatic changes. It is available as two systems.",
     metaDescription:
       "Smart Grid suspended ceiling T-bar in galvanized, zinc-coated steel with a polyester top coat. Grid 38 Premium for large spans, Grid 32 Standard for shops and small offices.",
-    image: "/images/smart-grid-01-e1590745474521.jpg",
+    image: "/images/flagship-grid.png",
+    imageFit: "contain",
     highlights: [
       "Galvanized, zinc-coated steel",
       "Thick polyester top coat",

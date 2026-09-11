@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Clock } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import BlogArticle from "@/components/blog/BlogArticle";
@@ -93,9 +94,15 @@ export default async function BlogPostPage({
               <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
                 {post.title}
               </h1>
-              <p className="mt-4 text-sm text-white">
-                {formatDate(post.date)} &middot; {post.author} &middot;{" "}
-                {post.readTime}
+              <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-white">
+                <span>{formatDate(post.date)}</span>
+                <span>&middot;</span>
+                <span>{post.author}</span>
+                <span>&middot;</span>
+                <span className="flex items-center gap-1">
+                  <Clock className="h-3.5 w-3.5" />
+                  {post.readTime}
+                </span>
               </p>
             </div>
           </header>
