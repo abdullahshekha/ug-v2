@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -31,12 +32,14 @@ export const metadata: Metadata = {
     siteName: "United Gypsum",
     locale: "en_US",
     type: "website",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "United Gypsum - Finest gypsum products for your innovations",
     description:
       "Comprehensive gypsum product line: Gypsum Boards, Ceiling Panels, Grids and Drywall accessories.",
+    images: ["/images/og-image.png"],
   },
   robots: "index, follow",
 };
@@ -80,6 +83,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

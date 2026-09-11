@@ -30,19 +30,13 @@ export default function RelatedProducts({
               className="group flex flex-col overflow-hidden rounded-2xl border border-warm bg-white shadow-plaster transition-transform hover:-translate-y-1"
             >
               {p.image && (
-                <div
-                  className={`flex h-40 items-center justify-center overflow-hidden ${
-                    p.imageFit === "contain" ? "bg-white p-4" : ""
-                  }`}
-                >
+                <div className="flex h-44 items-center justify-center bg-white p-5">
                   <Image
                     src={p.image}
                     alt={p.name}
                     width={400}
                     height={260}
-                    className={`h-full w-full ${
-                      p.imageFit === "contain" ? "object-contain" : "object-cover"
-                    }`}
+                    className="h-full w-full object-contain"
                   />
                 </div>
               )}

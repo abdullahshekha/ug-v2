@@ -10,7 +10,7 @@ interface ShadeCardFlipbookProps {
 }
 
 // react-pageflip's ref exposes `.pageFlip()` returning the underlying
-// StPageFlip instance (flipNext / flipPrev / getCurrentPageIndex, etc).
+// StPageFlip instance (flipNext / flipPrev, etc).
 interface PageFlipHandle {
   pageFlip: () => {
     flipNext: () => void;
@@ -30,33 +30,33 @@ export default function ShadeCardFlipbook({ pageCount }: ShadeCardFlipbookProps)
   const goNext = () => bookRef.current?.pageFlip().flipNext();
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex w-full items-center justify-center">
+    <div className="flex h-full w-full flex-col items-center justify-center">
+      <div className="flex w-full flex-1 items-center justify-center gap-2 overflow-hidden sm:gap-6">
         <button
           type="button"
           onClick={goPrev}
           aria-label="Previous page"
-          className="hidden h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-warm bg-white text-grey shadow-plaster transition-colors hover:text-red sm:flex"
+          className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-colors hover:bg-white/20"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
 
-        <div className="mx-2 sm:mx-6">
+        <div className="h-full max-h-full w-full max-w-5xl py-4">
           {/* @ts-expect-error -- react-pageflip's types don't model the generic ref/children shape precisely */}
           <HTMLFlipBook
             ref={bookRef}
-            width={380}
-            height={538}
-            minWidth={240}
-            maxWidth={480}
-            minHeight={340}
-            maxHeight={680}
+            width={480}
+            height={680}
+            minWidth={260}
+            maxWidth={700}
+            minHeight={370}
+            maxHeight={990}
             size="stretch"
             showCover
             usePortrait
             drawShadow
             flippingTime={700}
-            maxShadowOpacity={0.4}
+            maxShadowOpacity={0.5}
             mobileScrollSupport={false}
             className="shade-card-book"
             style={{}}
@@ -73,7 +73,7 @@ export default function ShadeCardFlipbook({ pageCount }: ShadeCardFlipbookProps)
                   width={1100}
                   height={1559}
                   className="h-full w-full object-contain"
-                  priority={i < 2}
+                  priority={i < 4}
                 />
               </div>
             ))}
@@ -84,35 +84,13 @@ export default function ShadeCardFlipbook({ pageCount }: ShadeCardFlipbookProps)
           type="button"
           onClick={goNext}
           aria-label="Next page"
-          className="hidden h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-warm bg-white text-grey shadow-plaster transition-colors hover:text-red sm:flex"
+          className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-colors hover:bg-white/20"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
       </div>
 
-      <div className="mt-6 flex items-center gap-4 sm:hidden">
-        <button
-          type="button"
-          onClick={goPrev}
-          aria-label="Previous page"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-warm bg-white text-grey shadow-plaster"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <span className="text-sm font-bold text-grey">
-          Page {page + 1} / {pageCount}
-        </span>
-        <button
-          type="button"
-          onClick={goNext}
-          aria-label="Next page"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-warm bg-white text-grey shadow-plaster"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-      </div>
-
-      <p className="mt-4 hidden text-sm font-bold text-grey sm:block">
+      <p className="mt-2 flex-shrink-0 text-sm font-bold text-white">
         Page {page + 1} of {pageCount}
       </p>
     </div>

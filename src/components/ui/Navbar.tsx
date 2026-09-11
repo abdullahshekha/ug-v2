@@ -107,10 +107,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-4 py-3 sm:px-8 lg:px-12">
           <Link href="/" className="flex-shrink-0" aria-label="United Gypsum home">
             <Image
-              src="/images/United_Gypsum_Logo_01-01-1024x221.png"
+              src="/images/united-gypsum-logo.png"
               alt="United Gypsum"
-              width={300}
-              height={65}
+              width={899}
+              height={201}
               className="h-[54px] w-auto object-contain sm:h-[60px]"
               priority
             />

@@ -2,11 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, Download, BookOpen, Package, Info } from "lucide-react";
+import { Check, Download, Package, Info } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import SpecTable from "@/components/ui/SpecTable";
 import RelatedProducts from "@/components/products/RelatedProducts";
 import ProductCta from "@/components/products/ProductCta";
+import ShadeCardViewer from "@/components/shade-card/ShadeCardViewer";
 import type { Product } from "@/lib/products";
 
 function dataSheetHref(file?: string) {
@@ -19,12 +20,23 @@ function dataSheetHref(file?: string) {
   }
 }
 
+function shadeCardPageCount() {
+  try {
+    const dir = path.join(process.cwd(), "public", "images", "shade-card");
+    return fs.readdirSync(dir).filter((f) => f.endsWith(".jpg")).length;
+  } catch {
+    return 0;
+  }
+}
+
 export default function FlagshipProductPage({ product }: { product: Product }) {
   const sheet = dataSheetHref(product.dataSheet);
   const showCalculator =
     product.slug === "smart-gypsum-board" ||
     product.slug === "smart-ceiling-panel" ||
     product.slug === "smart-grid";
+  const shadeCardPages =
+    product.slug === "smart-ceiling-panel" ? shadeCardPageCount() : 0;
 
   return (
     <>
@@ -164,15 +176,9 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
                 </span>
               ))}
             </div>
-            <div className="mt-6 flex flex-wrap gap-5">
-              {product.slug === "smart-ceiling-panel" && (
-                <Link
-                  href="/smart-ceiling-panel/shade-card/"
-                  className="inline-flex items-center gap-2 text-sm font-bold text-red transition-colors hover:text-grey"
-                >
-                  <BookOpen className="h-4 w-4" />
-                  Browse the shade card
-                </Link>
+            <div className="mt-6 flex flex-wrap items-center gap-5">
+              {shadeCardPages > 0 && (
+                <ShadeCardViewer pageCount={shadeCardPages} />
               )}
               {sheet && (
                 <a

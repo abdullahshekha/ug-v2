@@ -46,11 +46,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 py-16 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Image
-              src="/images/United_Gypsum_Logo_01-01-1024x221.png"
+              src="/images/united-gypsum-logo-white.png"
               alt="United Gypsum"
-              width={380}
-              height={82}
-              className="h-[72px] w-auto object-contain brightness-0 invert"
+              width={899}
+              height={201}
+              className="h-[72px] w-auto object-contain"
             />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white">
               A global supplier of sustainable, gypsum-based construction materials
