@@ -36,7 +36,7 @@ export default function ClientLogoMarquee() {
           {track.map((logo, i) => (
             <div
               key={`${logo.logo}-${i}`}
-              className="flex h-28 w-52 flex-shrink-0 items-center justify-center rounded-xl border border-warm bg-mist px-6"
+              className="flex h-28 w-52 flex-shrink-0 items-center justify-center rounded-xl border border-warm bg-white px-6"
             >
               <Image
                 src={logo.logo}

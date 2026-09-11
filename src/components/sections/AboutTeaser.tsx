@@ -17,7 +17,7 @@ export default function AboutTeaser() {
             <video
               controls
               preload="none"
-              poster="/images/hw12-1024x683-1.jpg"
+              poster="/images/ug-factory-poster.jpg"
               className="h-full w-full object-cover"
             >
               <source src="/videos/ug-factory-tour.mp4" type="video/mp4" />

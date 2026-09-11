@@ -30,14 +30,14 @@ export default function ProductCta({
           {showCalculator && (
             <Link
               href="/ceiling-calculator/"
-              className="inline-flex items-center rounded-full border border-white px-6 py-3 text-sm font-bold text-white transition-colors hover:text-red"
+              className="inline-flex items-center rounded-full border border-white px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white hover:text-grey"
             >
               Ceiling calculator
             </Link>
           )}
           <Link
             href="/contact-us/"
-            className="inline-flex items-center rounded-full border border-white px-6 py-3 text-sm font-bold text-white transition-colors hover:text-red"
+            className="inline-flex items-center rounded-full border border-white px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white hover:text-grey"
           >
             Contact us
           </Link>

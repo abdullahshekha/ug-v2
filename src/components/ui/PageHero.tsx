@@ -21,11 +21,11 @@ export default function PageHero({ breadcrumb, title, subtitle }: PageHeroProps)
       />
       <div className="relative px-4 sm:px-8 lg:px-12">
         <nav className="flex items-center gap-2 text-sm text-white">
-          <Link href="/" className="transition-colors hover:text-red">
+          <Link href="/" className="transition-colors hover:text-mist">
             Home
           </Link>
           <ChevronRight className="h-3.5 w-3.5" />
-          <span className="text-red">{breadcrumb}</span>
+          <span className="font-bold">{breadcrumb}</span>
         </nav>
         <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
           {title}

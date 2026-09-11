@@ -39,6 +39,16 @@ const catalogue = [
     title: "Accessories Data Sheets",
     subtitle: "Filler, tape, screws and bead",
   },
+  {
+    file: "dealership-application-form.pdf",
+    title: "Dealership Application Form",
+    subtitle: "Terms and application for prospective dealers",
+  },
+  {
+    file: "projects-portfolio.pdf",
+    title: "Projects Portfolio",
+    subtitle: "223+ landmark projects across Pakistan",
+  },
 ];
 
 function fmtSize(bytes: number) {

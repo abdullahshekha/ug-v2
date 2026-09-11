@@ -26,9 +26,12 @@ export default function SectionHeading({
         <span
           className={`flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-eyebrow ${
             centered ? "justify-center" : ""
-          } text-red`}
+          } ${tone === "dark" ? "text-white" : "text-red"}`}
         >
-          <span className="h-px w-6 bg-red" aria-hidden="true" />
+          <span
+            className={`h-px w-6 ${tone === "dark" ? "bg-white" : "bg-red"}`}
+            aria-hidden="true"
+          />
           {eyebrow}
         </span>
       )}

@@ -76,7 +76,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-8">
             {Object.entries(columns).map(([heading, links]) => (
               <div key={heading}>
-                <h3 className="text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
+                <h3 className="text-[11px] font-extrabold uppercase tracking-eyebrow text-white">
                   {heading}
                 </h3>
                 <ul className="mt-4 space-y-2.5">
@@ -84,7 +84,7 @@ export default function Footer() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="text-sm text-white transition-colors hover:text-red"
+                        className="text-sm text-white transition-colors hover:text-mist"
                       >
                         {link.label}
                       </Link>

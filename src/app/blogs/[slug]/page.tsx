@@ -79,15 +79,15 @@ export default async function BlogPostPage({
           <header className="bg-grey pb-14 pt-32 sm:pb-16 sm:pt-40">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
               <nav className="flex items-center gap-2 text-sm text-white">
-                <Link href="/" className="hover:text-red">
+                <Link href="/" className="hover:text-mist">
                   Home
                 </Link>
                 <span>/</span>
-                <Link href="/blogs/" className="hover:text-red">
+                <Link href="/blogs/" className="hover:text-mist">
                   Blog
                 </Link>
               </nav>
-              <p className="mt-6 text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
+              <p className="mt-6 text-[11px] font-extrabold uppercase tracking-eyebrow text-white">
                 {post.category}
               </p>
               <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">

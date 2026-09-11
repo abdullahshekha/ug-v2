@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const heroGraphics = [
-  { src: "/images/icons-03.png", alt: "Fire-resistant gypsum systems" },
-  { src: "/images/icons-04.png", alt: "Moisture-resistant gypsum systems" },
-  { src: "/images/icons-05.png", alt: "Acoustic and thermal performance" },
-  { src: "/images/icons-06.png", alt: "Impact-resistant partitions" },
+const awardLogos = [
+  { src: "/images/icons-03.png", alt: "Export Brand of the Year Award 2021" },
+  { src: "/images/icons-04.png", alt: "StarBrands Award" },
+  { src: "/images/icons-05.png", alt: "Go Green, do it for a healthy living" },
+  { src: "/images/icons-06.png", alt: "Certified ISO 9001 and ISO 14001" },
 ];
 
 export default function Hero() {
@@ -32,8 +32,7 @@ export default function Hero() {
               The smarter way to build
             </span>
             <h1 className="mt-5 text-4xl font-extrabold leading-[1.08] tracking-tight text-grey sm:text-5xl lg:text-6xl">
-              Making groundbreaking products with quality, loyalty &amp;
-              innovation
+              Largest Manufacturer of Gypsum-based Products in Pakistan
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-grey">
               We employ a well-trained, committed and skilled workforce to keep
@@ -41,6 +40,20 @@ export default function Hero() {
               Gypsum products are environment-friendly by design: recyclable, and
               resistant to fire, impact, thermal radiation and humidity.
             </p>
+
+            <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
+              {awardLogos.map((g) => (
+                <Image
+                  key={g.src}
+                  src={g.src}
+                  alt={g.alt}
+                  width={140}
+                  height={70}
+                  className="h-10 w-auto object-contain"
+                />
+              ))}
+            </div>
+
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
                 href="/smart-gypsum-board/"
@@ -67,23 +80,6 @@ export default function Hero() {
               priority
             />
           </div>
-        </div>
-
-        <div className="mt-14 grid grid-cols-2 gap-4 border-t border-warm pt-10 sm:grid-cols-4">
-          {heroGraphics.map((g) => (
-            <div
-              key={g.src}
-              className="flex items-center justify-center rounded-2xl bg-white p-5 shadow-plaster"
-            >
-              <Image
-                src={g.src}
-                alt={g.alt}
-                width={140}
-                height={140}
-                className="h-16 w-auto object-contain"
-              />
-            </div>
-          ))}
         </div>
       </div>
     </section>

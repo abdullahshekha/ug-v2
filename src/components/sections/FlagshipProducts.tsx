@@ -7,21 +7,27 @@ const products = [
   {
     name: "Smart Gypsum Board",
     href: "/smart-gypsum-board/",
-    image: "/images/image-26-800x430-1.jpg",
+    image: "/images/flagship-gypsum-board.png",
+    imageWidth: 900,
+    imageHeight: 1673,
     blurb:
       "An incombustible gypsum core covered with extra-tough paper on both sides for strength and durability, made in coherence with ASTM C472, C473, C474 and D3763. Standard, Fire, Moisture and Foil-backed variants.",
   },
   {
     name: "Smart Ceiling Panel",
     href: "/smart-ceiling-panel/",
-    image: "/images/st5r.jpg",
+    image: "/images/flagship-ceiling-panel.png",
+    imageWidth: 900,
+    imageHeight: 900,
     blurb:
       "A non-combustible gypsum core bound by tough paper on both sides, available in a wide range of vinyl laminates (plain, embossed and printed), plus a foil-backed option that reflects thermal radiation.",
   },
   {
     name: "Smart Grid",
     href: "/smart-grid/",
-    image: "/images/smart-grid-01-e1590745474521.jpg",
+    image: "/images/flagship-grid.png",
+    imageWidth: 1400,
+    imageHeight: 406,
     blurb:
       "A suspended ceiling T-bar system in galvanized, zinc-coated steel with a thick polyester top coat. Smart Grid 38 for cinemas, auditoriums and warehouses; Smart Grid 32 for shops and small offices.",
   },
@@ -37,36 +43,44 @@ export default function FlagshipProducts() {
           lead="Three core systems, backed by decades of gypsum know-how and international standards."
         />
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {products.map((p) => (
-            <article
-              key={p.name}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-warm bg-mist shadow-plaster transition-transform hover:-translate-y-1"
-            >
-              <div className="aspect-[16/10] overflow-hidden">
-                <Image
-                  src={p.image}
-                  alt={p.name}
-                  width={800}
-                  height={430}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                />
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-lg font-extrabold text-red">{p.name}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-grey">
-                  {p.blurb}
-                </p>
-                <Link
-                  href={p.href}
-                  className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-grey transition-colors hover:text-red"
-                >
-                  View product
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </article>
-          ))}
+        <div className="mt-14 space-y-16">
+          {products.map((p, i) => {
+            const reversed = i % 2 === 1;
+            return (
+              <article
+                key={p.name}
+                className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-16 ${
+                  i > 0 ? "border-t border-warm pt-16" : ""
+                }`}
+              >
+                <div className={reversed ? "lg:order-2" : ""}>
+                  <h3 className="text-2xl font-extrabold tracking-tight text-red sm:text-3xl">
+                    {p.name}
+                  </h3>
+                  <p className="mt-4 max-w-xl text-base leading-relaxed text-grey">
+                    {p.blurb}
+                  </p>
+                  <Link
+                    href={p.href}
+                    className="mt-6 inline-flex items-center gap-1 text-sm font-bold text-grey transition-colors hover:text-red"
+                  >
+                    View product
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                </div>
+
+                <div className={`flex justify-center ${reversed ? "lg:order-1" : ""}`}>
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    width={p.imageWidth}
+                    height={p.imageHeight}
+                    className="h-auto max-h-80 w-auto object-contain"
+                  />
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

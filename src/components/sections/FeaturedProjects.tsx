@@ -54,36 +54,36 @@ const projects = [
   },
 ];
 
-const videos = {
-  landscape: [
-    {
-      title: "Ramada Hotel x United Gypsum",
-      brief:
-        "Executive Director Sheheryar Mustafa on choosing United Gypsum's fire-safe, seamless ceiling systems over traditional wood.",
-      src: "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1306459131374747%2F&show_text=false&width=560&t=0",
-    },
-    {
-      title: "Zahid Javed Raja, former Chief Architect of Punjab",
-      brief:
-        "On the importance of supporting Pakistan's local manufacturers and homegrown craftsmanship.",
-      src: "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Funitedgypsum%2Fvideos%2F689530743076716%2F&show_text=false&width=560&t=0",
-    },
-  ],
-  portrait: [
-    {
-      title: "Emaar Karachi",
-      brief:
-        "Trusted partner on one of Pakistan's most prestigious developments, building the future of the Karachi skyline.",
-      src: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2023289808601789%2F&show_text=false&width=267&t=0",
-    },
-    {
-      title: "Architect Zulfiqar Ali, President IAP",
-      brief:
-        "Endorsing United Gypsum and the case for prioritizing locally manufactured construction materials.",
-      src: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Funitedgypsum%2Fvideos%2F425656706605706%2F&show_text=false&width=267&t=0",
-    },
-  ],
-};
+const videos = [
+  {
+    title: "Ramada Hotel x United Gypsum",
+    brief:
+      "Executive Director Sheheryar Mustafa on choosing United Gypsum's fire-safe, seamless ceiling systems over traditional wood.",
+    src: "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1306459131374747%2F&show_text=false&width=560&t=0",
+    ratio: 560 / 314,
+  },
+  {
+    title: "Emaar Karachi",
+    brief:
+      "Trusted partner on one of Pakistan's most prestigious developments, building the future of the Karachi skyline.",
+    src: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2023289808601789%2F&show_text=false&width=267&t=0",
+    ratio: 267 / 476,
+  },
+  {
+    title: "Zahid Javed Raja, former Chief Architect of Punjab",
+    brief:
+      "On the importance of supporting Pakistan's local manufacturers and homegrown craftsmanship.",
+    src: "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Funitedgypsum%2Fvideos%2F689530743076716%2F&show_text=false&width=560&t=0",
+    ratio: 560 / 314,
+  },
+  {
+    title: "Architect Zulfiqar Ali, President IAP",
+    brief:
+      "Endorsing United Gypsum and the case for prioritizing locally manufactured construction materials.",
+    src: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Funitedgypsum%2Fvideos%2F425656706605706%2F&show_text=false&width=267&t=0",
+    ratio: 267 / 476,
+  },
+];
 
 export default function FeaturedProjects() {
   return (
@@ -133,31 +133,14 @@ export default function FeaturedProjects() {
             Clients and industry leaders on working with United Gypsum
           </h3>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            {videos.landscape.map((v) => (
-              <div key={v.title} className="rounded-2xl border border-warm bg-mist p-4 shadow-plaster">
-                <div className="relative aspect-[560/314] w-full overflow-hidden rounded-xl bg-white">
-                  <iframe
-                    src={v.src}
-                    className="absolute inset-0 h-full w-full border-0"
-                    scrolling="no"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                    allowFullScreen
-                    title={v.title}
-                  />
-                </div>
-                <p className="mt-4 text-sm font-extrabold leading-snug text-grey">
-                  {v.title}
-                </p>
-                <p className="mt-1 text-xs leading-relaxed text-grey">{v.brief}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:w-2/3">
-            {videos.portrait.map((v) => (
-              <div key={v.title} className="rounded-2xl border border-warm bg-mist p-4 shadow-plaster">
-                <div className="relative mx-auto aspect-[267/476] max-w-[220px] overflow-hidden rounded-xl bg-white">
+          <div className="mt-8 flex flex-wrap items-start justify-center gap-8 lg:flex-nowrap lg:justify-start">
+            {videos.map((v) => (
+              <div
+                key={v.title}
+                className="flex-shrink-0"
+                style={{ width: `calc(20rem * ${v.ratio})` }}
+              >
+                <div className="relative h-80 overflow-hidden rounded-xl">
                   <iframe
                     src={v.src}
                     className="absolute inset-0 h-full w-full border-0"

@@ -5,8 +5,8 @@ export default function PremiumQualityBanner() {
     <section className="bg-grey">
       <div className="px-4 py-20 sm:px-8 sm:py-24 lg:px-12">
         <div className="max-w-3xl">
-          <span className="flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
-            <span className="h-px w-6 bg-red" aria-hidden="true" />
+          <span className="flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-eyebrow text-white">
+            <span className="h-px w-6 bg-white" aria-hidden="true" />
             Decisive, economical and dynamic benefits every day
           </span>
           <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
