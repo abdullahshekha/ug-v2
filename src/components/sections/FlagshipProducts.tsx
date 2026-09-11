@@ -64,7 +64,7 @@ export default function FlagshipProducts() {
                 </div>
 
                 <div
-                  className={`relative mx-auto h-80 w-full max-w-sm sm:h-96 ${
+                  className={`relative mx-auto h-96 w-full max-w-xl sm:h-[28rem] ${
                     reversed ? "lg:order-1" : ""
                   }`}
                 >
@@ -72,7 +72,7 @@ export default function FlagshipProducts() {
                     src={p.image}
                     alt={p.name}
                     fill
-                    sizes="(min-width: 1024px) 24rem, 80vw"
+                    sizes="(min-width: 1024px) 36rem, 90vw"
                     className="object-contain"
                   />
                 </div>

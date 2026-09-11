@@ -130,24 +130,40 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
               {product.variants.map((v) => (
                 <article
                   key={v.name}
-                  className="rounded-3xl border border-warm bg-mist p-6 shadow-plaster"
+                  className="overflow-hidden rounded-3xl border border-warm bg-mist shadow-plaster"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red text-white">
-                    <Package className="h-5 w-5" />
-                  </span>
-                  <div className="mt-4 flex items-center gap-2">
-                    <h3 className="text-lg font-extrabold text-red">
-                      {v.name}
-                    </h3>
-                    {v.badge && (
-                      <span className="rounded-full bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-red">
-                        {v.badge}
+                  {v.image ? (
+                    <div className="flex h-48 items-center justify-center bg-white p-6">
+                      <Image
+                        src={v.image}
+                        alt={v.name}
+                        width={700}
+                        height={523}
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <div className="p-6 pb-0">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red text-white">
+                        <Package className="h-5 w-5" />
                       </span>
-                    )}
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-lg font-extrabold text-red">
+                        {v.name}
+                      </h3>
+                      {v.badge && (
+                        <span className="rounded-full bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-red">
+                          {v.badge}
+                        </span>
+                      )}
+                    </div>
+                    <p className="mt-3 text-sm leading-relaxed text-grey">
+                      {v.body}
+                    </p>
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-grey">
-                    {v.body}
-                  </p>
                 </article>
               ))}
             </div>

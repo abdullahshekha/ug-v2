@@ -22,6 +22,7 @@ export interface ProductVariant {
   name: string;
   badge?: string;
   body: string;
+  image?: string;
 }
 
 export interface ProductNote {
@@ -77,22 +78,27 @@ export const products: Record<string, Product> = {
       {
         name: "Standard",
         body: "Smart Standard Gypsum Board is ideal for interior walls, partitions and ceilings that require no special protection from fire or moisture.",
+        image: "/images/board-standard.png",
       },
       {
         name: "Fire Resistance",
         body: "An exceptional choice for walls, partitions and ceilings that need extra fire protection. An incombustible fibre is added to the gypsum and enclosed within tough pink compressed paper, tailored and tested to global fire-rating requirements. Recommended for fire escape stairs, computer rooms, elevators and interior building walls.",
+        image: "/images/board-fire.png",
       },
       {
         name: "Moisture Resistance",
         body: "A superlative choice where walls, partitions and ceilings need extra protection from moisture. A blend of wax and silicone compound is enclosed by tough green paper so the board can endure damp surroundings.",
+        image: "/images/board-moisture.png",
       },
       {
         name: "Foil Backed",
         body: "Great for interior insulation of exterior walls. In cold climates it acts as an effective vapour retarder, preventing interior moisture from penetrating wall and ceiling spaces. The back liner carries an aluminium foil sheet that reflects 95% of thermal radiation.",
+        image: "/images/board-heat.png",
       },
       {
         name: "Perforated (Smart Echo Shield)",
         body: "A perforated gypsum board that absorbs and diffuses sound, cutting reverberation in auditoriums, cinemas, conference rooms and open-plan offices while keeping the fire and durability performance of a standard board.",
+        image: "/images/board-perforated.png",
       },
     ],
     spec: {
