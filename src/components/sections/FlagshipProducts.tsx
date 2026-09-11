@@ -8,8 +8,6 @@ const products = [
     name: "Smart Gypsum Board",
     href: "/smart-gypsum-board/",
     image: "/images/flagship-gypsum-board.png",
-    imageWidth: 900,
-    imageHeight: 1673,
     blurb:
       "An incombustible gypsum core covered with extra-tough paper on both sides for strength and durability, made in coherence with ASTM C472, C473, C474 and D3763. Standard, Fire, Moisture and Foil-backed variants.",
   },
@@ -17,8 +15,6 @@ const products = [
     name: "Smart Ceiling Panel",
     href: "/smart-ceiling-panel/",
     image: "/images/flagship-ceiling-panel.png",
-    imageWidth: 900,
-    imageHeight: 900,
     blurb:
       "A non-combustible gypsum core bound by tough paper on both sides, available in a wide range of vinyl laminates (plain, embossed and printed), plus a foil-backed option that reflects thermal radiation.",
   },
@@ -26,8 +22,6 @@ const products = [
     name: "Smart Grid",
     href: "/smart-grid/",
     image: "/images/flagship-grid.png",
-    imageWidth: 1400,
-    imageHeight: 406,
     blurb:
       "A suspended ceiling T-bar system in galvanized, zinc-coated steel with a thick polyester top coat. Smart Grid 38 for cinemas, auditoriums and warehouses; Smart Grid 32 for shops and small offices.",
   },
@@ -69,13 +63,17 @@ export default function FlagshipProducts() {
                   </Link>
                 </div>
 
-                <div className={`flex justify-center ${reversed ? "lg:order-1" : ""}`}>
+                <div
+                  className={`relative mx-auto h-80 w-full max-w-sm sm:h-96 ${
+                    reversed ? "lg:order-1" : ""
+                  }`}
+                >
                   <Image
                     src={p.image}
                     alt={p.name}
-                    width={p.imageWidth}
-                    height={p.imageHeight}
-                    className="h-auto max-h-80 w-auto object-contain"
+                    fill
+                    sizes="(min-width: 1024px) 24rem, 80vw"
+                    className="object-contain"
                   />
                 </div>
               </article>

@@ -41,15 +41,15 @@ export default function Hero() {
               resistant to fire, impact, thermal radiation and humidity.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
+            <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-4">
               {awardLogos.map((g) => (
                 <Image
                   key={g.src}
                   src={g.src}
                   alt={g.alt}
-                  width={140}
-                  height={70}
-                  className="h-10 w-auto object-contain"
+                  width={280}
+                  height={140}
+                  className="h-20 w-auto object-contain"
                 />
               ))}
             </div>

@@ -146,7 +146,20 @@ export const products: Record<string, Product> = {
         body: "Back liners are joined to a sheet of aluminium foil that impedes heat flow, acts as a vapour retarder and reflects thermal radiation. Ideal for top floors of commercial and residential buildings directly exposed to heat and sunlight during Pakistan's hot summers.",
       },
     ],
-    finishes: ["Embossed", "Plain", "Printed"],
+    finishes: [
+      "Super White",
+      "Frost",
+      "Teak",
+      "Walnut",
+      "Sea Sand",
+      "Fissured",
+      "Pinhole",
+      "Granular",
+      "Almas",
+      "Axis",
+      "Diamond",
+      "Knit",
+    ],
     spec: {
       columns: [
         "Thickness (mm)",

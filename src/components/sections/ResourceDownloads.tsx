@@ -51,25 +51,9 @@ const catalogue = [
   },
 ];
 
-function fmtSize(bytes: number) {
-  const mb = bytes / (1024 * 1024);
-  if (mb >= 1) return `${mb.toFixed(1)} MB`;
-  return `${Math.max(1, Math.round(bytes / 1024))} KB`;
-}
-
 export default function ResourceDownloads() {
   const dir = path.join(process.cwd(), "public", "resources");
-  const available = catalogue
-    .map((doc) => {
-      const full = path.join(dir, doc.file);
-      try {
-        const stat = fs.statSync(full);
-        return { ...doc, size: fmtSize(stat.size) };
-      } catch {
-        return null;
-      }
-    })
-    .filter((d): d is (typeof catalogue)[number] & { size: string } => d !== null);
+  const available = catalogue.filter((doc) => fs.existsSync(path.join(dir, doc.file)));
 
   return (
     <section className="bg-white">
@@ -98,7 +82,7 @@ export default function ResourceDownloads() {
                     {doc.title}
                   </span>
                   <span className="block truncate text-xs text-grey">
-                    PDF &middot; {doc.size} &middot; {doc.subtitle}
+                    PDF &middot; {doc.subtitle}
                   </span>
                 </span>
                 <Download className="h-4 w-4 flex-shrink-0 text-grey transition-colors group-hover:text-red" />

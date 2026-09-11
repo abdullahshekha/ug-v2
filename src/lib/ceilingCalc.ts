@@ -15,16 +15,63 @@
 export type CeilingSystem = "board" | "panel";
 export type LengthUnit = "feet" | "meters";
 
+/**
+ * Smart Gypsum Board variant, chosen indirectly through the room-type picker
+ * (board system only, per the Gypsum Board Fabrication Guide): Standard for
+ * general interior rooms, Moisture Resistant for bathrooms/laundry areas,
+ * Fire Resistant for kitchens/server or plant rooms, and Heat Resistant
+ * (a foil-backed option layered on any of the three) for attics/top floors
+ * exposed to direct heat and sunlight.
+ */
+export type BoardType = "standard" | "moisture" | "fire" | "heat";
+
+export const BOARD_TYPES: Record<
+  BoardType,
+  { label: string; image: string }
+> = {
+  standard: { label: "Standard Board", image: "/images/board-standard.png" },
+  moisture: { label: "Moisture Resistant Board", image: "/images/board-moisture.png" },
+  fire: { label: "Fire Resistant Board", image: "/images/board-fire.png" },
+  heat: { label: "Heat Resistant Board", image: "/images/board-heat.png" },
+};
+
+export const ROOM_TYPES: {
+  value: string;
+  label: string;
+  boardType: BoardType;
+}[] = [
+  { value: "living", label: "Bedroom / Living Room", boardType: "standard" },
+  { value: "wet", label: "Bathroom / Laundry Area", boardType: "moisture" },
+  { value: "hot-zone", label: "Kitchen / Server Room", boardType: "fire" },
+  { value: "attic", label: "Attic / Top Floor (Heat Exposed)", boardType: "heat" },
+];
+
+const PANEL_IMAGE = "/images/flagship-ceiling-panel.png";
+const SCREW_IMAGE = "/images/accessory-screws.png";
+const FILLER_IMAGE = "/images/accessory-filler.png";
+const TAPE_IMAGE = "/images/accessory-tape.png";
+const GRID_IMAGE = "/images/flagship-grid.png";
+const ACCESS_IMAGE = "/images/accessory-access.png";
+
 export interface CalcInput {
   system: CeilingSystem;
   /** Room length in feet. */
   lengthFt: number;
   /** Room width in feet. */
   widthFt: number;
+  /** Board variant (board system only); ignored for the panel system. */
+  boardType?: BoardType;
   /** Access panels wanted (panel system only). */
   accessPanels?: number;
   /** Wastage allowance as a percentage, e.g. 10 for 10%. */
   wastagePct?: number;
+}
+
+export interface BomLine {
+  label: string;
+  image: string;
+  quantity: number;
+  unit: string;
 }
 
 export interface BillOfMaterials {
@@ -37,6 +84,7 @@ export interface BillOfMaterials {
   primaryCount: number;
   /** Nominal size text for the primary unit, e.g. `4 ft x 8 ft`. */
   primarySize: string;
+  primaryImage: string;
   screwBoxes: number;
   fillerBags: number;
   jointTapeRolls: number;
@@ -47,6 +95,8 @@ export interface BillOfMaterials {
     wallAngleFt: number;
     accessPanels: number;
   };
+  /** Every line of the bill, image-led, for display. */
+  lines: BomLine[];
 }
 
 export const CALC_CONFIG = {
@@ -94,6 +144,7 @@ export function calculate(input: CalcInput): BillOfMaterials {
   const withWastage = (n: number) => Math.ceil(n * factor);
 
   const isPanel = input.system === "panel";
+  const boardType = input.boardType ?? "standard";
   const coverage = isPanel ? c.panelCoverageSqFt : c.boardCoverageSqFt;
   const primaryCount = withWastage(areaSqFt / coverage);
   const screwsPerUnit = isPanel ? c.screwsPerPanel : c.screwsPerBoard;
@@ -104,25 +155,58 @@ export function calculate(input: CalcInput): BillOfMaterials {
   const fillerBags = withWastage(jointFt / c.jointFtPerFillerBag);
   const jointTapeRolls = withWastage(jointFt / c.jointFtPerTapeRoll);
 
+  const primaryLabel = isPanel ? "Smart Ceiling Panel" : BOARD_TYPES[boardType].label;
+  const primaryImage = isPanel ? PANEL_IMAGE : BOARD_TYPES[boardType].image;
+  const primarySize = isPanel ? c.panelSizeLabel : c.boardSizeLabel;
+
+  const lines: BomLine[] = [
+    {
+      label: `${primaryLabel} (${primarySize})`,
+      image: primaryImage,
+      quantity: primaryCount,
+      unit: isPanel ? "panels" : "boards",
+    },
+    { label: "Drywall screws", image: SCREW_IMAGE, quantity: screwBoxes, unit: "boxes" },
+    { label: "Smart Filler", image: FILLER_IMAGE, quantity: fillerBags, unit: "bags" },
+    { label: "Smart Tape", image: TAPE_IMAGE, quantity: jointTapeRolls, unit: "rolls" },
+  ];
+
   const bom: BillOfMaterials = {
     areaSqFt: round(areaSqFt),
     perimeterFt: round(perimeterFt),
     wastagePct,
-    primaryLabel: isPanel ? "Ceiling panels" : "Gypsum boards",
+    primaryLabel,
     primaryCount,
-    primarySize: isPanel ? c.panelSizeLabel : c.boardSizeLabel,
+    primarySize,
+    primaryImage,
     screwBoxes,
     fillerBags,
     jointTapeRolls,
+    lines,
   };
 
   if (isPanel) {
+    const accessPanels = Math.max(0, Math.floor(input.accessPanels ?? 0));
     bom.grid = {
       mainRunnerFt: withWastage(areaSqFt / c.gridMainRunnerSpacingFt),
       crossTeeFt: withWastage(areaSqFt / c.gridCrossTeeSpacingFt),
       wallAngleFt: withWastage(perimeterFt),
-      accessPanels: Math.max(0, Math.floor(input.accessPanels ?? 0)),
+      accessPanels,
     };
+    bom.lines.push({
+      label: "Smart Grid (main runner + cross tee + wall angle)",
+      image: GRID_IMAGE,
+      quantity: bom.grid.mainRunnerFt + bom.grid.crossTeeFt + bom.grid.wallAngleFt,
+      unit: "ft",
+    });
+    if (accessPanels > 0) {
+      bom.lines.push({
+        label: "Smart Access panels",
+        image: ACCESS_IMAGE,
+        quantity: accessPanels,
+        unit: "panels",
+      });
+    }
   }
 
   return bom;

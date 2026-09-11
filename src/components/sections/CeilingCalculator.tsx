@@ -1,10 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { Calculator as CalcIcon } from "lucide-react";
 import {
   calculate,
   toFeet,
+  ROOM_TYPES,
   type CeilingSystem,
   type LengthUnit,
 } from "@/lib/ceilingCalc";
@@ -91,10 +93,13 @@ export default function CeilingCalculator({
   const [unit, setUnit] = useState<LengthUnit>("feet");
   const [length, setLength] = useState("");
   const [width, setWidth] = useState("");
+  const [roomType, setRoomType] = useState(ROOM_TYPES[0].value);
   const [accessPanels, setAccessPanels] = useState("");
   const [wastage, setWastage] = useState("10");
 
   const unitSuffix = unit === "feet" ? "ft" : "m";
+  const boardType =
+    ROOM_TYPES.find((r) => r.value === roomType)?.boardType ?? "standard";
 
   const result = useMemo(() => {
     const l = parseFloat(length);
@@ -104,36 +109,11 @@ export default function CeilingCalculator({
       system,
       lengthFt: toFeet(l, unit),
       widthFt: toFeet(w, unit),
+      boardType,
       accessPanels: parseInt(accessPanels, 10) || 0,
       wastagePct: parseFloat(wastage) || 0,
     });
-  }, [system, unit, length, width, accessPanels, wastage]);
-
-  const rows = result
-    ? [
-        {
-          label: `${result.primaryLabel} (${result.primarySize})`,
-          value: result.primaryCount,
-        },
-        { label: "Screw boxes (1000 pcs)", value: result.screwBoxes },
-        { label: "Filler bags", value: result.fillerBags },
-        { label: "Joint tape rolls", value: result.jointTapeRolls },
-        ...(result.grid
-          ? [
-              {
-                label: "Grid main runners",
-                value: `${result.grid.mainRunnerFt} ft`,
-              },
-              { label: "Grid cross tees", value: `${result.grid.crossTeeFt} ft` },
-              {
-                label: "Perimeter wall angle",
-                value: `${result.grid.wallAngleFt} ft`,
-              },
-              { label: "Access panels", value: result.grid.accessPanels },
-            ]
-          : []),
-      ]
-    : [];
+  }, [system, unit, length, width, boardType, accessPanels, wastage]);
 
   return (
     <section
@@ -180,6 +160,32 @@ export default function CeilingCalculator({
                   { value: "meters", label: "Meters" },
                 ]}
               />
+
+              {system === "board" && (
+                <label className="block sm:col-span-2">
+                  <span className="mb-2 block text-xs font-bold text-grey">
+                    Room type
+                  </span>
+                  <select
+                    value={roomType}
+                    onChange={(e) => setRoomType(e.target.value)}
+                    className="w-full rounded-xl border border-warm bg-white px-4 py-3 text-sm font-bold text-grey focus:border-red focus:outline-none"
+                  >
+                    {ROOM_TYPES.map((r) => (
+                      <option key={r.value} value={r.value}>
+                        {r.label}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="mt-1.5 block text-xs leading-relaxed text-grey">
+                    Picks the right Smart Gypsum Board variant for the space:
+                    Standard for general rooms, Moisture Resistant for
+                    bathrooms and laundry areas, Fire Resistant for kitchens
+                    and server rooms, Heat Resistant for attics and top floors.
+                  </span>
+                </label>
+              )}
+
               <NumberField
                 label="Room length"
                 value={length}
@@ -222,19 +228,33 @@ export default function CeilingCalculator({
             </p>
 
             {result ? (
-              <dl className="mt-5">
-                {rows.map((r) => (
-                  <div
-                    key={r.label}
-                    className="flex items-center justify-between gap-4 border-t border-warm py-3 first:border-t-0"
+              <ul className="mt-5 space-y-3">
+                {result.lines.map((line) => (
+                  <li
+                    key={line.label}
+                    className="flex items-center gap-4 border-t border-warm pt-3 first:border-t-0 first:pt-0"
                   >
-                    <dt className="text-sm text-grey">{r.label}</dt>
-                    <dd className="text-lg font-extrabold text-grey">
-                      {r.value}
-                    </dd>
-                  </div>
+                    <span className="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-xl border border-warm bg-mist">
+                      <Image
+                        src={line.image}
+                        alt={line.label}
+                        fill
+                        sizes="56px"
+                        className="object-contain p-1.5"
+                      />
+                    </span>
+                    <span className="min-w-0 flex-1 text-sm font-semibold text-grey">
+                      {line.label}
+                    </span>
+                    <span className="flex-shrink-0 text-right text-lg font-extrabold text-grey">
+                      {line.quantity}
+                      <span className="ml-1 text-xs font-medium text-grey">
+                        {line.unit}
+                      </span>
+                    </span>
+                  </li>
                 ))}
-              </dl>
+              </ul>
             ) : (
               <p className="mt-5 text-sm text-grey">
                 Enter a room length and width to see quantities.
