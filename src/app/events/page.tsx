@@ -28,7 +28,7 @@ export default function EventsPage() {
         />
 
         <section className="bg-mist">
-          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <SectionHeading eyebrow="Where we have been" title="Past events" />
 
             <div className="mt-10 space-y-16">
@@ -97,7 +97,7 @@ export default function EventsPage() {
         </section>
 
         <section className="border-t border-warm bg-white">
-          <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <SectionHeading eyebrow="Coming up" title="Upcoming events" />
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-grey">
               No upcoming events are listed right now. Follow United Gypsum on

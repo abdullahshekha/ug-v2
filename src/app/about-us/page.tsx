@@ -42,7 +42,7 @@ export default function AboutUsPage() {
 
         {/* Our story */}
         <section className="bg-mist">
-          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div className="overflow-hidden rounded-3xl border border-warm shadow-plaster">
                 <Image
@@ -93,7 +93,7 @@ export default function AboutUsPage() {
 
         {/* Leadership message */}
         <section className="border-t border-warm bg-white">
-          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <SectionHeading
               eyebrow="From the leadership"
               title="A message from our leadership"
@@ -113,7 +113,7 @@ export default function AboutUsPage() {
 
         {/* Mission & Vision */}
         <section className="border-t border-warm bg-mist">
-          <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <div className="grid gap-5 md:grid-cols-2">
               <article className="rounded-3xl border border-warm bg-white p-7 shadow-plaster">
                 <h2 className="text-[11px] font-extrabold uppercase tracking-eyebrow text-red">

@@ -34,7 +34,7 @@ export default function AccessoryProductPage({ product }: { product: Product }) 
       />
 
       <section className="bg-mist">
-        <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
+        <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
           <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
             <div className="flex justify-center">
               {product.image ? (

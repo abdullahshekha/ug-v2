@@ -19,7 +19,7 @@ const track = [...logos, ...logos];
 export default function ClientLogoMarquee() {
   return (
     <section className="border-b border-warm bg-white py-12 sm:py-16">
-      <div className="px-4 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-4 sm:px-8 lg:px-12">
         <p className="text-center text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
           Trusted by Pakistan&apos;s leading names
         </p>

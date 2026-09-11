@@ -30,7 +30,7 @@ const products = [
 export default function FlagshipProducts() {
   return (
     <section className="bg-white">
-      <div className="px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
         <SectionHeading
           eyebrow="Flagship products"
           title="Engineered gypsum systems"

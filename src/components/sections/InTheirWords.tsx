@@ -32,7 +32,7 @@ const videos = [
 export default function InTheirWords() {
   return (
     <section className="bg-mist">
-      <div className="px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
         <p className="text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
           In their words
         </p>

@@ -24,7 +24,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-mist via-transparent to-transparent" />
       </div>
 
-      <div className="relative px-4 pb-16 pt-36 sm:px-8 sm:pt-44 lg:px-12 lg:pb-24">
+      <div className="relative mx-auto max-w-[1600px] px-4 pb-16 pt-36 sm:px-8 sm:pt-44 lg:px-12 lg:pb-24">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <span className="flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-eyebrow text-red">

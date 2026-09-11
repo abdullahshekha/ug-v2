@@ -29,7 +29,7 @@ export default function CeilingCalculatorPage() {
         <CeilingCalculator variant="full" />
 
         <section className="bg-mist">
-          <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <SectionHeading
               eyebrow="How it works"
               title="Two systems, two sets of quantities"

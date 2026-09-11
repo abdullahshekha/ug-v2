@@ -42,7 +42,7 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="bg-grey text-white">
-      <div className="px-4 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 gap-10 py-16 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Image
@@ -98,7 +98,7 @@ export default function Footer() {
       </div>
 
       <div className="bg-red">
-        <div className="px-4 py-4 text-center text-xs font-semibold tracking-[0.08em] text-white sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-[1600px] px-4 py-4 text-center text-xs font-semibold tracking-[0.08em] text-white sm:px-8 lg:px-12">
           COPYRIGHT 2014 - 2026 &copy; UNITED GYPSUM PVT. LTD. | ALL RIGHTS
           RESERVED
         </div>

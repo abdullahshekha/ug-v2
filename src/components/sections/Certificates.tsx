@@ -54,7 +54,7 @@ export default function Certificates() {
   if (available.length === 0) {
     return (
       <section className="bg-mist">
-        <div className="px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
+        <div className="mx-auto max-w-[1600px] px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
           <SectionHeading
             eyebrow="Compliance"
             title="Certifications and standards"
@@ -67,7 +67,7 @@ export default function Certificates() {
 
   return (
     <section className="bg-mist">
-      <div className="px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
         <SectionHeading
           eyebrow="Compliance"
           title="Certifications and standards"

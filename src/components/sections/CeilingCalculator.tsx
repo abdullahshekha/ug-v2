@@ -121,7 +121,7 @@ export default function CeilingCalculator({
       className={variant === "compact" ? "bg-grey" : "bg-grey"}
     >
       <div
-        className={`px-4 sm:px-8 lg:px-12 ${
+        className={`mx-auto max-w-[1600px] px-4 sm:px-8 lg:px-12 ${
           variant === "compact" ? "py-20 sm:py-28" : "py-14 sm:py-16"
         }`}
       >

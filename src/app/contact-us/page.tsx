@@ -29,7 +29,7 @@ export default function ContactPage() {
         />
 
         <section className="bg-mist">
-          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
               {/* Details */}
               <div className="rounded-3xl border border-warm bg-white p-7 shadow-plaster sm:p-8">

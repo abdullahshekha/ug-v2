@@ -10,7 +10,7 @@ const stats = [
 export default function AboutTeaser() {
   return (
     <section className="bg-mist">
-      <div className="px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="overflow-hidden rounded-3xl border border-warm shadow-plaster">
             {/* eslint-disable-next-line jsx-a11y/media-has-caption */}

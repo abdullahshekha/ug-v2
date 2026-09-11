@@ -48,7 +48,7 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
 
       {/* Intro */}
       <section className="bg-mist">
-        <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
+        <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             {product.image && (
               <div
@@ -122,7 +122,7 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
       {/* Variants */}
       {product.variants && (
         <section className="border-t border-warm bg-white">
-          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <h2 className="text-2xl font-extrabold tracking-tight text-grey sm:text-3xl">
               {product.slug === "smart-grid" ? "Two systems" : "The range"}
             </h2>
@@ -174,7 +174,7 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
       {/* Finishes (Ceiling Panel) */}
       {product.finishes && (
         <section className="border-t border-warm bg-mist">
-          <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <h2 className="text-2xl font-extrabold tracking-tight text-grey">
               Available finishes
             </h2>
@@ -200,7 +200,7 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
       {/* Shade card flipbook (Ceiling Panel) */}
       {shadeCardPages > 0 && (
         <section className="border-t border-warm bg-mist">
-          <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <h2 className="text-2xl font-extrabold tracking-tight text-grey">
               Browse the shade card
             </h2>
@@ -217,7 +217,7 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
       {/* Spec table */}
       {product.spec && (
         <section className="border-t border-warm bg-white">
-          <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <h2 className="text-2xl font-extrabold tracking-tight text-grey">
               Specifications
             </h2>
@@ -231,7 +231,7 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
       {/* Notes */}
       {product.notes && (
         <section className="border-t border-warm bg-mist">
-          <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <dl className="grid gap-8 sm:grid-cols-3">
               {product.notes.map((n) => (
                 <div key={n.title}>

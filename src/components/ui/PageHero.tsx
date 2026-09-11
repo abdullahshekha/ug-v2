@@ -19,7 +19,7 @@ export default function PageHero({ breadcrumb, title, subtitle }: PageHeroProps)
           backgroundSize: "34px 34px",
         }}
       />
-      <div className="relative px-4 sm:px-8 lg:px-12">
+      <div className="relative mx-auto max-w-[1600px] px-4 sm:px-8 lg:px-12">
         <nav className="flex items-center gap-2 text-sm text-white">
           <Link href="/" className="transition-colors hover:text-mist">
             Home

@@ -55,7 +55,7 @@ export default function ProjectsPage() {
 
         {/* Stats */}
         <section className="border-b border-warm bg-mist">
-          <div className="px-4 py-12 sm:px-8 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-12 sm:px-8 lg:px-12">
             <dl className="grid gap-6 sm:grid-cols-3">
               {stats.map((s) => (
                 <div key={s.label} className="flex items-center gap-4">
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
 
         {/* Sector nav */}
         <section className="bg-mist">
-          <div className="px-4 pt-14 sm:px-8 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 pt-14 sm:px-8 lg:px-12">
             <ul className="flex flex-wrap gap-2">
               {sectors.map((s) => (
                 <li key={s.slug}>
@@ -99,7 +99,7 @@ export default function ProjectsPage() {
             id={sector.slug}
             className={`scroll-mt-24 ${i % 2 === 0 ? "bg-mist" : "bg-white"}`}
           >
-            <div className="px-4 py-14 sm:px-8 sm:py-16 lg:px-12">
+            <div className="mx-auto max-w-[1600px] px-4 py-14 sm:px-8 sm:py-16 lg:px-12">
               <h2 className="text-xl font-extrabold tracking-tight text-grey sm:text-2xl">
                 {sector.name}
               </h2>
@@ -132,7 +132,7 @@ export default function ProjectsPage() {
 
         {/* Full list by region */}
         <section className="border-t border-warm bg-white">
-          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <SectionHeading
               eyebrow="The full list"
               title="Every project, by region"

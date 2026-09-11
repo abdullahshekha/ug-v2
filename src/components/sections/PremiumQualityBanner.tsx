@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function PremiumQualityBanner() {
   return (
     <section className="bg-grey">
-      <div className="px-4 py-20 sm:px-8 sm:py-24 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-4 py-20 sm:px-8 sm:py-24 lg:px-12">
         <div className="max-w-3xl">
           <span className="flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-eyebrow text-white">
             <span className="h-px w-6 bg-white" aria-hidden="true" />

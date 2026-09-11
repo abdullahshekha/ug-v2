@@ -48,7 +48,7 @@ const accessories = [
 export default function Accessories() {
   return (
     <section className="bg-mist">
-      <div className="px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
             eyebrow="Drywall accessories"

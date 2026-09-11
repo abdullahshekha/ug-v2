@@ -128,7 +128,7 @@ export default async function BlogPostPage({
 
         {relatedPosts.length > 0 && (
           <section className="border-t border-warm bg-white">
-            <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+            <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
               <h2 className="text-2xl font-extrabold tracking-tight text-grey">
                 More from the journal
               </h2>

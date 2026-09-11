@@ -73,7 +73,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50">
       {/* Utility bar */}
       <div className="hidden bg-red text-white lg:block">
-        <div className="flex items-center justify-between px-4 py-1.5 text-[11px] font-bold tracking-[0.14em] sm:px-8 lg:px-12">
+        <div className="flex items-center justify-between mx-auto max-w-[1600px] px-4 py-1.5 text-[11px] font-bold tracking-[0.14em] sm:px-8 lg:px-12">
           <span>THE SMARTER WAY TO BUILD</span>
           <div className="flex items-center gap-6 tracking-normal">
             <a
@@ -104,7 +104,7 @@ export default function Navbar() {
           solid ? "bg-mist shadow-plaster backdrop-blur" : "bg-transparent"
         }`}
       >
-        <div className="flex items-center justify-between px-4 py-3 sm:px-8 lg:px-12">
+        <div className="flex items-center justify-between mx-auto max-w-[1600px] px-4 py-3 sm:px-8 lg:px-12">
           <Link href="/" className="flex-shrink-0" aria-label="United Gypsum home">
             <Image
               src="/images/united-gypsum-logo.png"

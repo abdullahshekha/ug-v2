@@ -18,7 +18,7 @@ export default function RelatedProducts({
 
   return (
     <section className="border-t border-warm bg-mist">
-      <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
         <h2 className="text-2xl font-extrabold tracking-tight text-grey">
           {heading}
         </h2>

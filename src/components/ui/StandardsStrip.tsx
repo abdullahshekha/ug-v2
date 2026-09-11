@@ -12,7 +12,7 @@ const standards = [
 export default function StandardsStrip() {
   return (
     <section className="border-y border-warm bg-mist">
-      <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
         <SectionHeading
           eyebrow="Standards and compliance"
           title="Manufactured to international standards"

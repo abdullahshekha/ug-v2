@@ -21,7 +21,7 @@ const pillars = [
 export default function Pillars() {
   return (
     <section className="border-y border-warm bg-white">
-      <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
         <p className="text-center text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
           At United Gypsum, we continuously strive for
         </p>

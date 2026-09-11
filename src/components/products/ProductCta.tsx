@@ -13,7 +13,7 @@ export default function ProductCta({
 }: ProductCtaProps) {
   return (
     <section className="bg-grey">
-      <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
         <h2 className="max-w-2xl text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
           {heading}
         </h2>

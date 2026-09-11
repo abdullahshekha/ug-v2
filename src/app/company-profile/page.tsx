@@ -51,7 +51,7 @@ export default function CompanyProfilePage() {
 
         {/* Business model */}
         <section className="bg-mist">
-          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div className="order-2 lg:order-1">
                 <SectionHeading
@@ -112,7 +112,7 @@ export default function CompanyProfilePage() {
 
         {/* Quality policy */}
         <section className="border-t border-warm bg-white">
-          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <SectionHeading
               eyebrow="Quality policy"
               title="Continual improvement, everyday reliability"
@@ -152,7 +152,7 @@ export default function CompanyProfilePage() {
 
         {/* Sustainability */}
         <section className="border-t border-warm bg-mist">
-          <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <SectionHeading
               eyebrow="Sustainability"
               title="Products built to last and to be reused"
@@ -163,7 +163,7 @@ export default function CompanyProfilePage() {
 
         {/* Company profile PDF */}
         <section className="border-t border-warm bg-white">
-          <div className="px-4 py-14 sm:px-8 sm:py-16 lg:px-12">
+          <div className="mx-auto max-w-[1600px] px-4 py-14 sm:px-8 sm:py-16 lg:px-12">
             {pdf ? (
               <a
                 href={pdf}
