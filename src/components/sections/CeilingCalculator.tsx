@@ -181,7 +181,9 @@ export default function CeilingCalculator({
                     Picks the right Smart Gypsum Board variant for the space:
                     Standard for general rooms, Moisture Resistant for
                     bathrooms and laundry areas, Fire Resistant for kitchens
-                    and server rooms, Heat Resistant for attics and top floors.
+                    and server rooms, Perforated for auditoriums and
+                    conference rooms needing acoustic control, Heat Resistant
+                    for attics and top floors.
                   </span>
                 </label>
               )}

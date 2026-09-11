@@ -23,7 +23,7 @@ export type LengthUnit = "feet" | "meters";
  * (a foil-backed option layered on any of the three) for attics/top floors
  * exposed to direct heat and sunlight.
  */
-export type BoardType = "standard" | "moisture" | "fire" | "heat";
+export type BoardType = "standard" | "moisture" | "fire" | "heat" | "perforated";
 
 export const BOARD_TYPES: Record<
   BoardType,
@@ -33,6 +33,10 @@ export const BOARD_TYPES: Record<
   moisture: { label: "Moisture Resistant Board", image: "/images/board-moisture.png" },
   fire: { label: "Fire Resistant Board", image: "/images/board-fire.png" },
   heat: { label: "Heat Resistant Board", image: "/images/board-heat.png" },
+  perforated: {
+    label: "Perforated Board (Smart Echo Shield)",
+    image: "/images/board-perforated.png",
+  },
 };
 
 export const ROOM_TYPES: {
@@ -43,6 +47,11 @@ export const ROOM_TYPES: {
   { value: "living", label: "Bedroom / Living Room", boardType: "standard" },
   { value: "wet", label: "Bathroom / Laundry Area", boardType: "moisture" },
   { value: "hot-zone", label: "Kitchen / Server Room", boardType: "fire" },
+  {
+    value: "acoustic",
+    label: "Auditorium / Conference Room (Acoustic)",
+    boardType: "perforated",
+  },
   { value: "attic", label: "Attic / Top Floor (Heat Exposed)", boardType: "heat" },
 ];
 

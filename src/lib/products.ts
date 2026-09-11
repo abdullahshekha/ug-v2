@@ -90,6 +90,10 @@ export const products: Record<string, Product> = {
         name: "Foil Backed",
         body: "Great for interior insulation of exterior walls. In cold climates it acts as an effective vapour retarder, preventing interior moisture from penetrating wall and ceiling spaces. The back liner carries an aluminium foil sheet that reflects 95% of thermal radiation.",
       },
+      {
+        name: "Perforated (Smart Echo Shield)",
+        body: "A perforated gypsum board that absorbs and diffuses sound, cutting reverberation in auditoriums, cinemas, conference rooms and open-plan offices while keeping the fire and durability performance of a standard board.",
+      },
     ],
     spec: {
       columns: [
