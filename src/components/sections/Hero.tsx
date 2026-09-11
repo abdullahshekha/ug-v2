@@ -59,10 +59,10 @@ export default function Hero() {
 
           <div className="relative">
             <Image
-              src="/images/Smart-Products-02-1024x336.png"
+              src="/images/hero-mix-products.png"
               alt="The United Gypsum product family: boards, ceiling panels, grid and accessories"
-              width={1280}
-              height={420}
+              width={2400}
+              height={800}
               className="h-auto w-full max-w-none scale-110 object-contain sm:scale-125 lg:scale-[1.35]"
               priority
             />
