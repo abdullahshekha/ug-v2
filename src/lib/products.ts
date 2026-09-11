@@ -38,6 +38,10 @@ export interface Product {
   metaDescription: string;
   highlights?: string[];
   image?: string;
+  /** How the intro image should fit its frame. Defaults to "cover" (a full-bleed
+   * photo); use "contain" for a transparent product render that needs to sit on
+   * its own background rather than crop to fill. */
+  imageFit?: "cover" | "contain";
   iconName?: AccessoryIconName;
   variants?: ProductVariant[];
   finishes?: string[];
@@ -61,7 +65,8 @@ export const products: Record<string, Product> = {
       "Smart Gypsum Board, our flagship product, contains gypsum and an incombustible core covered with extra-tough paper on both sides that gives it strength and durability. It is manufactured in coherence with ASTM standards including ASTM C472, C473, C474 and D3763, and developed with superior raw materials and precision engineering for a comprehensive range of uses.",
     metaDescription:
       "Smart Gypsum Board: incombustible core, extra-tough paper facing, made to ASTM C472/C473/C474/D3763. Standard, Fire, Moisture and Foil-backed boards in 9, 12 and 15 mm.",
-    image: "/images/image-26-800x430-1.jpg",
+    image: "/images/flagship-gypsum-board.png",
+    imageFit: "contain",
     highlights: [
       "ASTM C472 / C473 / C474 / D3763",
       "Incombustible gypsum core",

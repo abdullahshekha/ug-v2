@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, Download, BookOpen } from "lucide-react";
+import { Check, Download, BookOpen, Package, Info } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import SpecTable from "@/components/ui/SpecTable";
 import RelatedProducts from "@/components/products/RelatedProducts";
@@ -39,13 +39,19 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
         <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             {product.image && (
-              <div className="overflow-hidden rounded-3xl border border-warm shadow-plaster">
+              <div
+                className={`overflow-hidden rounded-3xl border border-warm shadow-plaster ${
+                  product.imageFit === "contain" ? "bg-white p-8" : ""
+                }`}
+              >
                 <Image
                   src={product.image}
                   alt={product.name}
                   width={800}
                   height={520}
-                  className="h-full w-full object-cover"
+                  className={`h-full w-full ${
+                    product.imageFit === "contain" ? "object-contain" : "object-cover"
+                  }`}
                   priority
                 />
               </div>
@@ -114,7 +120,10 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
                   key={v.name}
                   className="rounded-3xl border border-warm bg-mist p-6 shadow-plaster"
                 >
-                  <div className="flex items-center gap-2">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red text-white">
+                    <Package className="h-5 w-5" />
+                  </span>
+                  <div className="mt-4 flex items-center gap-2">
                     <h3 className="text-lg font-extrabold text-red">
                       {v.name}
                     </h3>
@@ -202,7 +211,8 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
             <dl className="grid gap-8 sm:grid-cols-3">
               {product.notes.map((n) => (
                 <div key={n.title}>
-                  <dt className="text-sm font-extrabold uppercase tracking-wide text-red">
+                  <dt className="flex items-center gap-2 text-sm font-extrabold uppercase tracking-wide text-red">
+                    <Info className="h-4 w-4 flex-shrink-0" />
                     {n.title}
                   </dt>
                   <dd className="mt-2 text-sm leading-relaxed text-grey">
