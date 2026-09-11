@@ -76,11 +76,32 @@ export interface CalcInput {
   wastagePct?: number;
 }
 
+export interface Unit {
+  singular: string;
+  plural: string;
+}
+
+export const UNITS = {
+  board: { singular: "board", plural: "boards" },
+  panel: { singular: "panel", plural: "panels" },
+  box: { singular: "box", plural: "boxes" },
+  bucket: { singular: "bucket", plural: "buckets" },
+  roll: { singular: "roll", plural: "rolls" },
+  carton: { singular: "carton", plural: "cartons" },
+} as const satisfies Record<string, Unit>;
+
 export interface BomLine {
   label: string;
   image: string;
   quantity: number;
-  unit: string;
+  unit: Unit;
+  /** Optional secondary detail shown below the quantity, e.g. total running feet. */
+  note?: string;
+}
+
+/** Pick the singular or plural form of a unit for a given quantity. */
+export function unitLabel(quantity: number, unit: Unit): string {
+  return quantity === 1 ? unit.singular : unit.plural;
 }
 
 export interface BillOfMaterials {
@@ -95,7 +116,7 @@ export interface BillOfMaterials {
   primarySize: string;
   primaryImage: string;
   screwBoxes: number;
-  fillerBags: number;
+  fillerBuckets: number;
   jointTapeRolls: number;
   /** Present only for the suspended Ceiling Panel (grid) system. */
   grid?: {
@@ -128,15 +149,20 @@ export const CALC_CONFIG = {
    */
   jointFtPerSqFtBoard: 0.9,
   jointFtPerSqFtPanel: 0.35,
-  /** Running feet of joint a single filler bag covers. */
-  jointFtPerFillerBag: 50,
+  /** Running feet of joint a single filler bucket covers. */
+  jointFtPerFillerBucket: 50,
   /** Running feet of tape on one roll (~90 m). */
   jointFtPerTapeRoll: 295,
 
   /** Suspended grid built on a 2 ft x 2 ft module. */
   gridMainRunnerSpacingFt: 4,
   gridCrossTeeSpacingFt: 2,
+  /** Smart Grid members: 1220 x 26 x 24 mm, 50 pcs per carton. */
+  gridPieceLengthMm: 1220,
+  gridPiecesPerCarton: 50,
 } as const;
+
+const MM_PER_FT = 304.8;
 
 const round = (n: number) => Math.round(n * 100) / 100;
 
@@ -161,7 +187,7 @@ export function calculate(input: CalcInput): BillOfMaterials {
 
   const jointFt =
     areaSqFt * (isPanel ? c.jointFtPerSqFtPanel : c.jointFtPerSqFtBoard);
-  const fillerBags = withWastage(jointFt / c.jointFtPerFillerBag);
+  const fillerBuckets = withWastage(jointFt / c.jointFtPerFillerBucket);
   const jointTapeRolls = withWastage(jointFt / c.jointFtPerTapeRoll);
 
   const primaryLabel = isPanel ? "Smart Ceiling Panel" : BOARD_TYPES[boardType].label;
@@ -173,11 +199,11 @@ export function calculate(input: CalcInput): BillOfMaterials {
       label: `${primaryLabel} (${primarySize})`,
       image: primaryImage,
       quantity: primaryCount,
-      unit: isPanel ? "panels" : "boards",
+      unit: isPanel ? UNITS.panel : UNITS.board,
     },
-    { label: "Drywall screws", image: SCREW_IMAGE, quantity: screwBoxes, unit: "boxes" },
-    { label: "Smart Filler", image: FILLER_IMAGE, quantity: fillerBags, unit: "bags" },
-    { label: "Smart Tape", image: TAPE_IMAGE, quantity: jointTapeRolls, unit: "rolls" },
+    { label: "Drywall screws", image: SCREW_IMAGE, quantity: screwBoxes, unit: UNITS.box },
+    { label: "Smart Filler", image: FILLER_IMAGE, quantity: fillerBuckets, unit: UNITS.bucket },
+    { label: "Smart Tape", image: TAPE_IMAGE, quantity: jointTapeRolls, unit: UNITS.roll },
   ];
 
   const bom: BillOfMaterials = {
@@ -189,31 +215,36 @@ export function calculate(input: CalcInput): BillOfMaterials {
     primarySize,
     primaryImage,
     screwBoxes,
-    fillerBags,
+    fillerBuckets,
     jointTapeRolls,
     lines,
   };
 
   if (isPanel) {
     const accessPanels = Math.max(0, Math.floor(input.accessPanels ?? 0));
-    bom.grid = {
-      mainRunnerFt: withWastage(areaSqFt / c.gridMainRunnerSpacingFt),
-      crossTeeFt: withWastage(areaSqFt / c.gridCrossTeeSpacingFt),
-      wallAngleFt: withWastage(perimeterFt),
-      accessPanels,
-    };
+    const mainRunnerFt = withWastage(areaSqFt / c.gridMainRunnerSpacingFt);
+    const crossTeeFt = withWastage(areaSqFt / c.gridCrossTeeSpacingFt);
+    const wallAngleFt = withWastage(perimeterFt);
+    bom.grid = { mainRunnerFt, crossTeeFt, wallAngleFt, accessPanels };
+
+    const totalGridFt = mainRunnerFt + crossTeeFt + wallAngleFt;
+    const pieceLengthFt = c.gridPieceLengthMm / MM_PER_FT;
+    const gridPieces = Math.ceil(totalGridFt / pieceLengthFt);
+    const gridCartons = Math.ceil(gridPieces / c.gridPiecesPerCarton);
+
     bom.lines.push({
       label: "Smart Grid (main runner + cross tee + wall angle)",
       image: GRID_IMAGE,
-      quantity: bom.grid.mainRunnerFt + bom.grid.crossTeeFt + bom.grid.wallAngleFt,
-      unit: "ft",
+      quantity: gridCartons,
+      unit: UNITS.carton,
+      note: `${round(totalGridFt)} ft total`,
     });
     if (accessPanels > 0) {
       bom.lines.push({
         label: "Smart Access panels",
         image: ACCESS_IMAGE,
         quantity: accessPanels,
-        unit: "panels",
+        unit: UNITS.panel,
       });
     }
   }

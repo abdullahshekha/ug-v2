@@ -6,6 +6,7 @@ import { Calculator as CalcIcon } from "lucide-react";
 import {
   calculate,
   toFeet,
+  unitLabel,
   ROOM_TYPES,
   type CeilingSystem,
   type LengthUnit,
@@ -248,11 +249,18 @@ export default function CeilingCalculator({
                     <span className="min-w-0 flex-1 text-sm font-semibold text-grey">
                       {line.label}
                     </span>
-                    <span className="flex-shrink-0 text-right text-lg font-extrabold text-grey">
-                      {line.quantity}
-                      <span className="ml-1 text-xs font-medium text-grey">
-                        {line.unit}
+                    <span className="flex-shrink-0 text-right">
+                      <span className="text-lg font-extrabold text-grey">
+                        {line.quantity}
+                        <span className="ml-1 text-xs font-medium text-grey">
+                          {unitLabel(line.quantity, line.unit)}
+                        </span>
                       </span>
+                      {line.note && (
+                        <span className="block text-xs text-grey">
+                          {line.note}
+                        </span>
+                      )}
                     </span>
                   </li>
                 ))}
