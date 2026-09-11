@@ -11,6 +11,7 @@ import ResourceDownloads from "@/components/sections/ResourceDownloads";
 import Certificates from "@/components/sections/Certificates";
 import LatestBlogs from "@/components/sections/LatestBlogs";
 import FeaturedProjects from "@/components/sections/FeaturedProjects";
+import Events from "@/components/sections/Events";
 import PremiumQualityBanner from "@/components/sections/PremiumQualityBanner";
 import DealerForm from "@/components/sections/DealerForm";
 
@@ -30,6 +31,7 @@ export default function Home() {
         <Certificates />
         <LatestBlogs />
         <FeaturedProjects />
+        <Events />
         <PremiumQualityBanner />
         <DealerForm />
       </main>
