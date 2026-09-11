@@ -32,13 +32,15 @@ export default function ContactPage() {
           <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
               {/* Details */}
-              <div>
+              <div className="rounded-3xl border border-warm bg-white p-7 shadow-plaster sm:p-8">
                 <h2 className="text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
                   Contact details
                 </h2>
                 <dl className="mt-6 space-y-5 text-sm">
-                  <div className="flex items-start gap-3">
-                    <Phone className="mt-0.5 h-4 w-4 flex-shrink-0 text-red" />
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-mist text-red">
+                      <Phone className="h-4 w-4" />
+                    </span>
                     <div>
                       <dt className="font-bold text-grey">Landline</dt>
                       <dd className="mt-0.5 text-grey">
@@ -52,8 +54,10 @@ export default function ContactPage() {
                       </dd>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Smartphone className="mt-0.5 h-4 w-4 flex-shrink-0 text-red" />
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-mist text-red">
+                      <Smartphone className="h-4 w-4" />
+                    </span>
                     <div>
                       <dt className="font-bold text-grey">Mobile</dt>
                       <dd className="mt-0.5 text-grey">
@@ -63,8 +67,10 @@ export default function ContactPage() {
                       </dd>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Mail className="mt-0.5 h-4 w-4 flex-shrink-0 text-red" />
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-mist text-red">
+                      <Mail className="h-4 w-4" />
+                    </span>
                     <div>
                       <dt className="font-bold text-grey">Email</dt>
                       <dd className="mt-0.5 space-y-0.5 text-grey">
@@ -83,8 +89,10 @@ export default function ContactPage() {
                       </dd>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Clock className="mt-0.5 h-4 w-4 flex-shrink-0 text-red" />
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-mist text-red">
+                      <Clock className="h-4 w-4" />
+                    </span>
                     <div>
                       <dt className="font-bold text-grey">Hours</dt>
                       <dd className="mt-0.5 text-grey">
@@ -92,8 +100,10 @@ export default function ContactPage() {
                       </dd>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-red" />
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-mist text-red">
+                      <MapPin className="h-4 w-4" />
+                    </span>
                     <div>
                       <dt className="font-bold text-grey">Location</dt>
                       <dd className="mt-0.5 text-grey">
@@ -104,7 +114,7 @@ export default function ContactPage() {
                   </div>
                 </dl>
 
-                <p className="mt-8 text-sm text-grey">
+                <p className="mt-8 border-t border-warm pt-6 text-sm text-grey">
                   Looking to stock our products?{" "}
                   <Link href="/#dealer" className="font-bold text-red">
                     Become a dealer
@@ -118,14 +128,19 @@ export default function ContactPage() {
             </div>
 
             {/* Map */}
-            <div className="mt-14 overflow-hidden rounded-3xl border border-warm shadow-plaster">
-              <iframe
-                title="United Gypsum location, Port Qasim, Karachi"
-                src={MAP_SRC}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-[360px] w-full border-0"
-              />
+            <div className="mt-14">
+              <h2 className="text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
+                Find us
+              </h2>
+              <div className="mt-4 overflow-hidden rounded-3xl border border-warm shadow-plaster">
+                <iframe
+                  title="United Gypsum location, Port Qasim, Karachi"
+                  src={MAP_SRC}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-[360px] w-full border-0"
+                />
+              </div>
             </div>
           </div>
         </section>

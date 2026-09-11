@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LayoutPanelTop, Grid3x3 } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
+import SectionHeading from "@/components/ui/SectionHeading";
 import CeilingCalculator from "@/components/sections/CeilingCalculator";
 import DealerForm from "@/components/sections/DealerForm";
 
@@ -27,32 +29,51 @@ export default function CeilingCalculatorPage() {
         <CeilingCalculator variant="full" />
 
         <section className="bg-mist">
-          <div className="px-4 py-16 sm:px-8 lg:px-12">
-            <h2 className="text-2xl font-extrabold tracking-tight text-grey">
-              How the estimate works
-            </h2>
-            <div className="mt-4 space-y-4 text-sm leading-relaxed text-grey">
-              <p>
-                The calculator derives ceiling area and perimeter from your room
-                length and width, then applies standard coverage rates: a{" "}
-                <strong>4 ft &times; 8 ft</strong> gypsum board covers 32 sq ft, and
-                a <strong>595 &times; 595 mm</strong> ceiling panel covers about 4 sq
-                ft. Screws, filler bags and tape rolls are estimated from the number
-                of units and the taped joint length, and your wastage allowance is
-                added before every quantity is rounded up.
-              </p>
-              <p>
-                For the suspended <strong>Ceiling Panel</strong> system it also
-                estimates main runners, cross tees and perimeter wall angle on a
-                2&nbsp;ft &times; 2&nbsp;ft module, plus any access panels you ask
-                for.
-              </p>
-              <p>
-                These are planning figures based on industry-standard rates. Final
-                quantities are reconciled against the UG Application Booklet, so
-                talk to our team before placing an order.
-              </p>
+          <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+            <SectionHeading
+              eyebrow="How it works"
+              title="Two systems, two sets of quantities"
+              lead="The calculator derives ceiling area and perimeter from your room length and width, applies standard coverage rates, and adds your wastage allowance before every quantity is rounded up."
+            />
+
+            <div className="mt-10 grid gap-5 md:grid-cols-2">
+              <article className="rounded-3xl border border-warm bg-white p-7 shadow-plaster">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-red text-white">
+                  <LayoutPanelTop className="h-5 w-5" />
+                </span>
+                <h3 className="mt-5 text-lg font-extrabold text-red">
+                  Gypsum Board
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-grey">
+                  A <strong>4 ft &times; 8 ft</strong> board covers 32 sq ft.
+                  Screws, filler bags and tape rolls are estimated from the
+                  board count and the taped joint length. Pick a room type in
+                  the calculator to get the right board variant: Standard,
+                  Moisture, Fire or Heat Resistant.
+                </p>
+              </article>
+              <article className="rounded-3xl border border-warm bg-white p-7 shadow-plaster">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-red text-white">
+                  <Grid3x3 className="h-5 w-5" />
+                </span>
+                <h3 className="mt-5 text-lg font-extrabold text-red">
+                  Ceiling Panel
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-grey">
+                  A <strong>595 &times; 595 mm</strong> panel covers about 4
+                  sq ft. The suspended grid is estimated separately: main
+                  runners and cross tees on a 2 ft &times; 2 ft module, plus
+                  perimeter wall angle and any access panels you ask for.
+                </p>
+              </article>
             </div>
+
+            <p className="mt-8 max-w-2xl text-sm leading-relaxed text-grey">
+              These are planning figures based on industry-standard rates.
+              Final quantities are reconciled against the United Gypsum
+              Application Booklet, so confirm with your applicator before
+              placing order with our registered Distributors.
+            </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link

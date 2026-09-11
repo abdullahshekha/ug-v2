@@ -2,13 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ChevronDown, Download } from "lucide-react";
+import { ChevronDown, Download, Building2, LayoutGrid, Globe2 } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ProductCta from "@/components/products/ProductCta";
 import DealerForm from "@/components/sections/DealerForm";
+import InTheirWords from "@/components/sections/InTheirWords";
 import {
   sectors,
   regions,
@@ -34,9 +35,9 @@ function listPdfHref() {
 }
 
 const stats = [
-  { value: `${projectCount}+`, label: "named projects" },
-  { value: `${sectors.length}`, label: "sectors served" },
-  { value: "Nationwide", label: "plus export markets" },
+  { value: `${projectCount}+`, label: "named projects", icon: Building2 },
+  { value: `${sectors.length}`, label: "sectors served", icon: LayoutGrid },
+  { value: "Nationwide", label: "plus export markets", icon: Globe2 },
 ];
 
 export default function ProjectsPage() {
@@ -57,11 +58,16 @@ export default function ProjectsPage() {
           <div className="px-4 py-12 sm:px-8 lg:px-12">
             <dl className="grid gap-6 sm:grid-cols-3">
               {stats.map((s) => (
-                <div key={s.label}>
-                  <dt className="text-3xl font-extrabold text-red">
-                    {s.value}
-                  </dt>
-                  <dd className="mt-1 text-sm text-grey">{s.label}</dd>
+                <div key={s.label} className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-red text-white">
+                    <s.icon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <dt className="text-3xl font-extrabold text-red">
+                      {s.value}
+                    </dt>
+                    <dd className="mt-1 text-sm text-grey">{s.label}</dd>
+                  </div>
                 </div>
               ))}
             </dl>
@@ -121,6 +127,8 @@ export default function ProjectsPage() {
             </div>
           </section>
         ))}
+
+        <InTheirWords />
 
         {/* Full list by region */}
         <section className="border-t border-warm bg-white">
