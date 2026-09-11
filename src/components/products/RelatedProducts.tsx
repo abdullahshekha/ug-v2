@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { getProduct } from "@/lib/products";
@@ -26,18 +27,37 @@ export default function RelatedProducts({
             <Link
               key={p.slug}
               href={`/${p.slug}/`}
-              className="group flex flex-col rounded-2xl border border-warm bg-white p-5 shadow-plaster transition-transform hover:-translate-y-1"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-warm bg-white shadow-plaster transition-transform hover:-translate-y-1"
             >
-              <span className="text-sm font-extrabold text-red">
-                {p.name}
-              </span>
-              <span className="mt-2 flex-1 text-sm leading-relaxed text-grey">
-                {p.tagline}
-              </span>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-grey group-hover:text-red">
-                View product
-                <ArrowUpRight className="h-4 w-4" />
-              </span>
+              {p.image && (
+                <div
+                  className={`flex h-40 items-center justify-center overflow-hidden ${
+                    p.imageFit === "contain" ? "bg-white p-4" : ""
+                  }`}
+                >
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    width={400}
+                    height={260}
+                    className={`h-full w-full ${
+                      p.imageFit === "contain" ? "object-contain" : "object-cover"
+                    }`}
+                  />
+                </div>
+              )}
+              <div className="flex flex-1 flex-col p-5">
+                <span className="text-sm font-extrabold text-red">
+                  {p.name}
+                </span>
+                <span className="mt-2 flex-1 text-sm leading-relaxed text-grey">
+                  {p.tagline}
+                </span>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-grey group-hover:text-red">
+                  View product
+                  <ArrowUpRight className="h-4 w-4" />
+                </span>
+              </div>
             </Link>
           ))}
         </div>
