@@ -163,34 +163,36 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
               Available finishes
             </h2>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-grey">
-              Vinyl laminates come in three pattern families. Ask for the full
-              shade card to choose an exact colour and texture.
+              Vinyl laminates come in a wide range of patterns and colours.
+              Browse the full shade card to choose an exact finish.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {product.finishes.map((f) => (
-                <span
-                  key={f}
-                  className="rounded-full border border-warm bg-white px-4 py-2 text-sm font-semibold text-grey"
-                >
-                  {f}
-                </span>
-              ))}
-            </div>
-            <div className="mt-6 flex flex-wrap items-center gap-5">
-              {shadeCardPages > 0 && (
-                <ShadeCardViewer pageCount={shadeCardPages} />
-              )}
-              {sheet && (
-                <a
-                  href={sheet}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-bold text-grey transition-colors hover:text-red"
-                >
-                  <Download className="h-4 w-4" />
-                  Download the shade card (PDF)
-                </a>
-              )}
+            {sheet && (
+              <a
+                href={sheet}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-grey transition-colors hover:text-red"
+              >
+                <Download className="h-4 w-4" />
+                Download the shade card (PDF)
+              </a>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Shade card flipbook (Ceiling Panel) */}
+      {shadeCardPages > 0 && (
+        <section className="border-t border-warm bg-mist">
+          <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+            <h2 className="text-2xl font-extrabold tracking-tight text-grey">
+              Browse the shade card
+            </h2>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-grey">
+              Turn the page to see every finish, or use the arrows.
+            </p>
+            <div className="mt-8">
+              <ShadeCardViewer pageCount={shadeCardPages} />
             </div>
           </div>
         </section>
