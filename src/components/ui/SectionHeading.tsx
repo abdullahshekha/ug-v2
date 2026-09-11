@@ -26,18 +26,15 @@ export default function SectionHeading({
         <span
           className={`flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-eyebrow ${
             centered ? "justify-center" : ""
-          } ${tone === "dark" ? "text-brand-300" : "text-brand-800"}`}
+          } text-red`}
         >
-          <span
-            className={`h-px w-6 ${tone === "dark" ? "bg-brand-300/60" : "bg-brand-800/50"}`}
-            aria-hidden="true"
-          />
+          <span className="h-px w-6 bg-red" aria-hidden="true" />
           {eyebrow}
         </span>
       )}
       <h2
         className={`mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl ${
-          tone === "dark" ? "text-white" : "text-plaster-800"
+          tone === "dark" ? "text-white" : "text-grey"
         }`}
       >
         {title}
@@ -45,7 +42,7 @@ export default function SectionHeading({
       {lead && (
         <p
           className={`mt-4 text-base leading-relaxed ${
-            tone === "dark" ? "text-plaster-200" : "text-plaster-600"
+            tone === "dark" ? "text-white" : "text-grey"
           }`}
         >
           {lead}

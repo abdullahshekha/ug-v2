@@ -63,7 +63,7 @@ export default function ResourceDownloads() {
 
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+      <div className="px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
         <SectionHeading
           eyebrow="Resources"
           title="Downloads and documentation"
@@ -78,25 +78,25 @@ export default function ResourceDownloads() {
                 href={`/resources/${doc.file}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-2xl border border-warm bg-plaster-50 p-5 shadow-plaster transition-transform hover:-translate-y-1"
+                className="group flex items-center gap-4 rounded-2xl border border-warm bg-white p-5 shadow-plaster transition-transform hover:-translate-y-1"
               >
-                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-800">
+                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-red text-white">
                   <FileText className="h-5 w-5" />
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-extrabold text-plaster-800">
+                  <span className="block truncate text-sm font-extrabold text-grey">
                     {doc.title}
                   </span>
-                  <span className="block truncate text-xs text-plaster-500">
+                  <span className="block truncate text-xs text-grey">
                     PDF &middot; {doc.size} &middot; {doc.subtitle}
                   </span>
                 </span>
-                <Download className="h-4 w-4 flex-shrink-0 text-plaster-400 transition-colors group-hover:text-brand-800" />
+                <Download className="h-4 w-4 flex-shrink-0 text-grey transition-colors group-hover:text-red" />
               </a>
             ))}
           </div>
         ) : (
-          <p className="mt-10 rounded-2xl border border-dashed border-warm bg-plaster-50 p-6 text-sm text-plaster-500">
+          <p className="mt-10 rounded-2xl border border-dashed border-warm bg-mist p-6 text-sm text-grey">
             Document downloads are being prepared and will appear here shortly.
           </p>
         )}

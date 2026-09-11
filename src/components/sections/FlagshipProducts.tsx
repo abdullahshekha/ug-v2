@@ -30,7 +30,7 @@ const products = [
 export default function FlagshipProducts() {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+      <div className="px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
         <SectionHeading
           eyebrow="Flagship products"
           title="Engineered gypsum systems"
@@ -41,7 +41,7 @@ export default function FlagshipProducts() {
           {products.map((p) => (
             <article
               key={p.name}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-warm bg-plaster-50 shadow-plaster transition-transform hover:-translate-y-1"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-warm bg-mist shadow-plaster transition-transform hover:-translate-y-1"
             >
               <div className="aspect-[16/10] overflow-hidden">
                 <Image
@@ -53,13 +53,13 @@ export default function FlagshipProducts() {
                 />
               </div>
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-lg font-extrabold text-brand-800">{p.name}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-plaster-600">
+                <h3 className="text-lg font-extrabold text-red">{p.name}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-grey">
                   {p.blurb}
                 </p>
                 <Link
                   href={p.href}
-                  className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-plaster-800 transition-colors hover:text-brand-800"
+                  className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-grey transition-colors hover:text-red"
                 >
                   View product
                   <ArrowUpRight className="h-4 w-4" />

@@ -14,12 +14,12 @@ function formatDate(iso: string) {
 export default function LatestBlogs() {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+      <div className="px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading eyebrow="From the journal" title="Read the latest blogs" />
           <Link
             href="/blogs/"
-            className="text-sm font-bold text-brand-800 transition-colors hover:text-brand-900"
+            className="text-sm font-bold text-red transition-colors hover:text-grey"
           >
             View all articles
           </Link>
@@ -29,7 +29,7 @@ export default function LatestBlogs() {
           {latestBlogs.map((post) => (
             <article
               key={post.slug}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-warm bg-plaster-50 shadow-plaster transition-transform hover:-translate-y-1"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-warm bg-mist shadow-plaster transition-transform hover:-translate-y-1"
             >
               <div className="aspect-[2/1] overflow-hidden">
                 <Image
@@ -41,15 +41,15 @@ export default function LatestBlogs() {
                 />
               </div>
               <div className="flex flex-1 flex-col p-6">
-                <p className="text-xs font-bold text-plaster-500">
+                <p className="text-xs font-bold text-grey">
                   {post.category} &middot; {formatDate(post.date)}
                 </p>
-                <h3 className="mt-2 flex-1 text-base font-extrabold leading-snug text-plaster-800 group-hover:text-brand-800">
+                <h3 className="mt-2 flex-1 text-base font-extrabold leading-snug text-grey group-hover:text-red">
                   {post.title}
                 </h3>
                 <Link
                   href={`/blogs/${post.slug}/`}
-                  className="mt-4 text-sm font-bold text-brand-800"
+                  className="mt-4 text-sm font-bold text-red"
                 >
                   Read more
                 </Link>

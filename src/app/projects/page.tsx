@@ -8,6 +8,7 @@ import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ProductCta from "@/components/products/ProductCta";
+import DealerForm from "@/components/sections/DealerForm";
 import {
   sectors,
   regions,
@@ -52,15 +53,15 @@ export default function ProjectsPage() {
         />
 
         {/* Stats */}
-        <section className="border-b border-warm bg-plaster-50">
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <section className="border-b border-warm bg-mist">
+          <div className="px-4 py-12 sm:px-8 lg:px-12">
             <dl className="grid gap-6 sm:grid-cols-3">
               {stats.map((s) => (
                 <div key={s.label}>
-                  <dt className="text-3xl font-extrabold text-brand-800">
+                  <dt className="text-3xl font-extrabold text-red">
                     {s.value}
                   </dt>
-                  <dd className="mt-1 text-sm text-plaster-500">{s.label}</dd>
+                  <dd className="mt-1 text-sm text-grey">{s.label}</dd>
                 </div>
               ))}
             </dl>
@@ -68,14 +69,14 @@ export default function ProjectsPage() {
         </section>
 
         {/* Sector nav */}
-        <section className="bg-plaster-50">
-          <div className="mx-auto max-w-7xl px-4 pt-14 sm:px-6 lg:px-8">
+        <section className="bg-mist">
+          <div className="px-4 pt-14 sm:px-8 lg:px-12">
             <ul className="flex flex-wrap gap-2">
               {sectors.map((s) => (
                 <li key={s.slug}>
                   <a
                     href={`#${s.slug}`}
-                    className="inline-block rounded-full border border-warm bg-white px-4 py-1.5 text-xs font-bold text-plaster-700 transition-colors hover:border-brand-300 hover:text-brand-800"
+                    className="inline-block rounded-full border border-warm bg-white px-4 py-1.5 text-xs font-bold text-grey transition-colors hover:border-red hover:text-red"
                   >
                     {s.name}
                   </a>
@@ -90,10 +91,10 @@ export default function ProjectsPage() {
           <section
             key={sector.slug}
             id={sector.slug}
-            className={`scroll-mt-24 ${i % 2 === 0 ? "bg-plaster-50" : "bg-white"}`}
+            className={`scroll-mt-24 ${i % 2 === 0 ? "bg-mist" : "bg-white"}`}
           >
-            <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
-              <h2 className="text-xl font-extrabold tracking-tight text-plaster-800 sm:text-2xl">
+            <div className="px-4 py-14 sm:px-8 sm:py-16 lg:px-12">
+              <h2 className="text-xl font-extrabold tracking-tight text-grey sm:text-2xl">
                 {sector.name}
               </h2>
               <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
@@ -111,7 +112,7 @@ export default function ProjectsPage() {
                         className="max-h-full w-auto object-contain grayscale transition hover:grayscale-0"
                       />
                     </span>
-                    <span className="text-xs font-semibold leading-snug text-plaster-600">
+                    <span className="text-xs font-semibold leading-snug text-grey">
                       {l.name}
                     </span>
                   </li>
@@ -123,7 +124,7 @@ export default function ProjectsPage() {
 
         {/* Full list by region */}
         <section className="border-t border-warm bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <SectionHeading
               eyebrow="The full list"
               title="Every project, by region"
@@ -132,16 +133,16 @@ export default function ProjectsPage() {
             <div className="mt-8 divide-y divide-warm rounded-3xl border border-warm">
               {regions.map((region) => (
                 <details key={region.name} className="group px-5 py-4 sm:px-7">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-extrabold text-plaster-800">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-extrabold text-grey">
                     <span>
                       {region.name}{" "}
-                      <span className="text-plaster-400">
+                      <span className="text-grey">
                         ({region.projects.length})
                       </span>
                     </span>
-                    <ChevronDown className="h-5 w-5 flex-shrink-0 text-plaster-400 transition-transform group-open:rotate-180" />
+                    <ChevronDown className="h-5 w-5 flex-shrink-0 text-grey transition-transform group-open:rotate-180" />
                   </summary>
-                  <ul className="mt-4 columns-1 gap-x-8 text-sm text-plaster-600 sm:columns-2 lg:columns-3">
+                  <ul className="mt-4 columns-1 gap-x-8 text-sm text-grey sm:columns-2 lg:columns-3">
                     {region.projects.map((p) => (
                       <li key={p} className="mb-2 break-inside-avoid">
                         {p}
@@ -152,7 +153,7 @@ export default function ProjectsPage() {
               ))}
             </div>
 
-            <p className="mt-8 text-sm text-plaster-600">
+            <p className="mt-8 text-sm text-grey">
               Exported to {exportMarkets.slice(0, -1).join(", ")} and{" "}
               {exportMarkets[exportMarkets.length - 1]} by authorised
               distributors.
@@ -163,16 +164,16 @@ export default function ProjectsPage() {
                 href={pdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-warm bg-plaster-50 p-5 shadow-plaster transition-transform hover:-translate-y-1"
+                className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-warm bg-mist p-5 shadow-plaster transition-transform hover:-translate-y-1"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-800">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-red text-white">
                   <Download className="h-5 w-5" />
                 </span>
                 <span>
-                  <span className="block text-sm font-extrabold text-plaster-800">
+                  <span className="block text-sm font-extrabold text-grey">
                     Full project list (PDF)
                   </span>
-                  <span className="block text-xs text-plaster-500">
+                  <span className="block text-xs text-grey">
                     All regions, one document
                   </span>
                 </span>
@@ -185,6 +186,8 @@ export default function ProjectsPage() {
           heading="Building something we should be part of?"
           body="Talk to our team about specifying United Gypsum systems on your project."
         />
+
+        <DealerForm />
       </main>
       <Footer />
     </>

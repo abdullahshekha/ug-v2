@@ -7,6 +7,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import StandardsStrip from "@/components/ui/StandardsStrip";
 import Pillars from "@/components/sections/Pillars";
 import ProductCta from "@/components/products/ProductCta";
+import DealerForm from "@/components/sections/DealerForm";
 
 export const metadata: Metadata = {
   title: "About Us | United Gypsum",
@@ -40,8 +41,8 @@ export default function AboutUsPage() {
         />
 
         {/* Our story */}
-        <section className="bg-plaster-50">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+        <section className="bg-mist">
+          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div className="overflow-hidden rounded-3xl border border-warm shadow-plaster">
                 <Image
@@ -58,7 +59,7 @@ export default function AboutUsPage() {
                   eyebrow="Our story"
                   title="This is United Gypsum in a nutshell"
                 />
-                <div className="mt-5 space-y-4 text-base leading-relaxed text-plaster-700">
+                <div className="mt-5 space-y-4 text-base leading-relaxed text-grey">
                   <p>
                     Our team is quick to address technical issues caused by
                     environmental factors, and our top management stays closely
@@ -76,10 +77,10 @@ export default function AboutUsPage() {
                 <dl className="mt-8 grid gap-5 border-t border-warm pt-8 sm:grid-cols-3">
                   {stats.map((s) => (
                     <div key={s.label}>
-                      <dt className="text-lg font-extrabold text-brand-800">
+                      <dt className="text-lg font-extrabold text-red">
                         {s.value}
                       </dt>
-                      <dd className="mt-1 text-xs leading-snug text-plaster-500">
+                      <dd className="mt-1 text-xs leading-snug text-grey">
                         {s.label}
                       </dd>
                     </div>
@@ -92,18 +93,18 @@ export default function AboutUsPage() {
 
         {/* Leadership message */}
         <section className="border-t border-warm bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <SectionHeading
               eyebrow="From the leadership"
               title="A message from our leadership"
             />
-            <div className="mt-8 border-l-2 border-brand-700 pl-6 sm:pl-8">
-              <div className="max-w-prose space-y-4 text-base leading-relaxed text-plaster-700">
+            <div className="mt-8 border-l-2 border-red pl-6 sm:pl-8">
+              <div className="max-w-prose space-y-4 text-base leading-relaxed text-grey">
                 {leadership.map((para) => (
                   <p key={para.slice(0, 32)}>{para}</p>
                 ))}
               </div>
-              <p className="mt-6 text-sm font-bold text-plaster-800">
+              <p className="mt-6 text-sm font-bold text-grey">
                 United Gypsum leadership
               </p>
             </div>
@@ -111,23 +112,23 @@ export default function AboutUsPage() {
         </section>
 
         {/* Mission & Vision */}
-        <section className="border-t border-warm bg-plaster-50">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <section className="border-t border-warm bg-mist">
+          <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <div className="grid gap-5 md:grid-cols-2">
               <article className="rounded-3xl border border-warm bg-white p-7 shadow-plaster">
-                <h2 className="text-[11px] font-extrabold uppercase tracking-eyebrow text-brand-800">
+                <h2 className="text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
                   Mission
                 </h2>
-                <p className="mt-3 text-lg font-semibold leading-snug text-plaster-800">
+                <p className="mt-3 text-lg font-semibold leading-snug text-grey">
                   To solve construction-related challenges with an enduring
                   technological acumen.
                 </p>
               </article>
               <article className="rounded-3xl border border-warm bg-white p-7 shadow-plaster">
-                <h2 className="text-[11px] font-extrabold uppercase tracking-eyebrow text-brand-800">
+                <h2 className="text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
                   Vision
                 </h2>
-                <p className="mt-3 text-lg font-semibold leading-snug text-plaster-800">
+                <p className="mt-3 text-lg font-semibold leading-snug text-grey">
                   To become the largest manufacturer of gypsum products and
                   related accessories in the South Asia region, leveraging our
                   position as a cost-effective producer and a provider of
@@ -145,6 +146,8 @@ export default function AboutUsPage() {
           heading="Work with United Gypsum"
           body="Become a stockist, specify our systems on a project, or ask our team a question."
         />
+
+        <DealerForm />
       </main>
       <Footer />
     </>

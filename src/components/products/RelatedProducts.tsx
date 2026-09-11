@@ -16,9 +16,9 @@ export default function RelatedProducts({
   if (items.length === 0) return null;
 
   return (
-    <section className="border-t border-warm bg-plaster-50">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <h2 className="text-2xl font-extrabold tracking-tight text-plaster-800">
+    <section className="border-t border-warm bg-mist">
+      <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+        <h2 className="text-2xl font-extrabold tracking-tight text-grey">
           {heading}
         </h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -28,13 +28,13 @@ export default function RelatedProducts({
               href={`/${p.slug}/`}
               className="group flex flex-col rounded-2xl border border-warm bg-white p-5 shadow-plaster transition-transform hover:-translate-y-1"
             >
-              <span className="text-sm font-extrabold text-brand-800">
+              <span className="text-sm font-extrabold text-red">
                 {p.name}
               </span>
-              <span className="mt-2 flex-1 text-sm leading-relaxed text-plaster-600">
+              <span className="mt-2 flex-1 text-sm leading-relaxed text-grey">
                 {p.tagline}
               </span>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-plaster-800 group-hover:text-brand-800">
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-grey group-hover:text-red">
                 View product
                 <ArrowUpRight className="h-4 w-4" />
               </span>

@@ -2,17 +2,17 @@ import Link from "next/link";
 
 export default function PremiumQualityBanner() {
   return (
-    <section className="bg-plaster-900">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+    <section className="bg-grey">
+      <div className="px-4 py-20 sm:px-8 sm:py-24 lg:px-12">
         <div className="max-w-3xl">
-          <span className="flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-eyebrow text-brand-300">
-            <span className="h-px w-6 bg-brand-300/60" aria-hidden="true" />
+          <span className="flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
+            <span className="h-px w-6 bg-red" aria-hidden="true" />
             Decisive, economical and dynamic benefits every day
           </span>
           <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             Premium quality gypsum manufacturing
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-plaster-300">
+          <p className="mt-4 text-base leading-relaxed text-white">
             Every product is manufactured in accordance with the ISO 9001-2015
             quality management standard and complies with ASTM requirements C472,
             C473, C474 and D3763, using best-quality raw materials and
@@ -21,13 +21,13 @@ export default function PremiumQualityBanner() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/company-profile/"
-              className="inline-flex items-center rounded-full bg-brand-700 px-6 py-3 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center rounded-full bg-red px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white hover:text-grey"
             >
               View company profile
             </Link>
             <Link
               href="#dealer"
-              className="inline-flex items-center rounded-full border border-white/30 px-6 py-3 text-sm font-bold text-white transition-colors hover:border-white/70"
+              className="inline-flex items-center rounded-full border border-white px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white hover:text-grey"
             >
               Become a dealer
             </Link>

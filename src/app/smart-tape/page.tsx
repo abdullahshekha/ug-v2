@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
+import DealerForm from "@/components/sections/DealerForm";
 import AccessoryProductPage from "@/components/products/AccessoryProductPage";
 import { getProduct } from "@/lib/products";
 
@@ -18,6 +19,7 @@ export default function Page() {
       <Navbar />
       <main>
         <AccessoryProductPage product={product} />
+        <DealerForm />
       </main>
       <Footer />
     </>

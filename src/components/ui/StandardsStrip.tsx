@@ -11,8 +11,8 @@ const standards = [
 
 export default function StandardsStrip() {
   return (
-    <section className="border-y border-warm bg-plaster-100">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <section className="border-y border-warm bg-mist">
+      <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
         <SectionHeading
           eyebrow="Standards and compliance"
           title="Manufactured to international standards"
@@ -22,7 +22,7 @@ export default function StandardsStrip() {
           {standards.map((s) => (
             <li
               key={s}
-              className="rounded-full border border-warm bg-white px-4 py-2 text-sm font-bold text-plaster-700"
+              className="rounded-full border border-warm bg-white px-4 py-2 text-sm font-bold text-grey"
             >
               {s}
             </li>

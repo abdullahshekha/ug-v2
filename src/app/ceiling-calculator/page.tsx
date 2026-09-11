@@ -4,6 +4,7 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
 import CeilingCalculator from "@/components/sections/CeilingCalculator";
+import DealerForm from "@/components/sections/DealerForm";
 
 export const metadata: Metadata = {
   title: "Ceiling Material Calculator | United Gypsum",
@@ -25,12 +26,12 @@ export default function CeilingCalculatorPage() {
 
         <CeilingCalculator variant="full" />
 
-        <section className="bg-plaster-50">
-          <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-extrabold tracking-tight text-plaster-800">
+        <section className="bg-mist">
+          <div className="px-4 py-16 sm:px-8 lg:px-12">
+            <h2 className="text-2xl font-extrabold tracking-tight text-grey">
               How the estimate works
             </h2>
-            <div className="mt-4 space-y-4 text-sm leading-relaxed text-plaster-600">
+            <div className="mt-4 space-y-4 text-sm leading-relaxed text-grey">
               <p>
                 The calculator derives ceiling area and perimeter from your room
                 length and width, then applies standard coverage rates: a{" "}
@@ -56,19 +57,21 @@ export default function CeilingCalculatorPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/smart-gypsum-board/"
-                className="inline-flex items-center rounded-full bg-brand-800 px-6 py-3 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center rounded-full bg-red px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-grey"
               >
                 Explore the products
               </Link>
               <Link
                 href="/#dealer"
-                className="inline-flex items-center rounded-full border border-warm bg-white px-6 py-3 text-sm font-bold text-plaster-800 transition-colors hover:border-brand-300 hover:text-brand-800"
+                className="inline-flex items-center rounded-full border border-warm bg-white px-6 py-3 text-sm font-bold text-grey transition-colors hover:border-red hover:text-red"
               >
                 Become a dealer
               </Link>
             </div>
           </div>
         </section>
+
+        <DealerForm />
       </main>
       <Footer />
     </>

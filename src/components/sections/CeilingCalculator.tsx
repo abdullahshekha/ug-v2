@@ -27,8 +27,8 @@ function Toggle<T extends string>({
 }) {
   return (
     <div>
-      <span className="mb-2 block text-xs font-bold text-plaster-300">{label}</span>
-      <div className="flex gap-1 rounded-xl bg-plaster-800 p-1">
+      <span className="mb-2 block text-xs font-bold text-grey">{label}</span>
+      <div className="flex gap-1 rounded-xl bg-mist p-1">
         {options.map((o) => (
           <button
             key={o.value}
@@ -36,8 +36,8 @@ function Toggle<T extends string>({
             onClick={() => onChange(o.value)}
             className={`flex-1 rounded-lg px-3 py-2 text-xs font-bold transition-colors ${
               value === o.value
-                ? "bg-brand-800 text-white"
-                : "text-plaster-300 hover:text-white"
+                ? "bg-red text-white"
+                : "text-grey hover:text-red"
             }`}
           >
             {o.label}
@@ -63,7 +63,7 @@ function NumberField({
 }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-xs font-bold text-plaster-300">{label}</span>
+      <span className="mb-2 block text-xs font-bold text-grey">{label}</span>
       <div className="relative">
         <input
           type="number"
@@ -72,10 +72,10 @@ function NumberField({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="0"
-          className="w-full rounded-xl border border-white/10 bg-plaster-800 px-4 py-3 text-base font-bold text-white placeholder:text-plaster-500 focus:border-brand-400 focus:outline-none"
+          className="w-full rounded-xl border border-warm bg-white px-4 py-3 text-base font-bold text-grey placeholder:text-grey focus:border-red focus:outline-none"
         />
         {suffix && (
-          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-plaster-400">
+          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-grey">
             {suffix}
           </span>
         )}
@@ -138,10 +138,10 @@ export default function CeilingCalculator({
   return (
     <section
       id="calculator"
-      className={variant === "compact" ? "bg-plaster-900" : "bg-plaster-900"}
+      className={variant === "compact" ? "bg-grey" : "bg-grey"}
     >
       <div
-        className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${
+        className={`px-4 sm:px-8 lg:px-12 ${
           variant === "compact" ? "py-20 sm:py-28" : "py-14 sm:py-16"
         }`}
       >
@@ -160,7 +160,7 @@ export default function CeilingCalculator({
           } lg:grid-cols-2`}
         >
           {/* Inputs */}
-          <div className="rounded-3xl border border-white/10 bg-plaster-950/60 p-6 sm:p-8">
+          <div className="rounded-3xl border border-warm bg-white p-6 sm:p-8">
             <div className="grid gap-5 sm:grid-cols-2">
               <Toggle
                 label="Ceiling system"
@@ -207,7 +207,7 @@ export default function CeilingCalculator({
               )}
             </div>
             {result && (
-              <p className="mt-5 text-xs text-plaster-400">
+              <p className="mt-5 text-xs text-grey">
                 Ceiling area {result.areaSqFt} sq ft &middot; perimeter{" "}
                 {result.perimeterFt} ft
               </p>
@@ -215,33 +215,33 @@ export default function CeilingCalculator({
           </div>
 
           {/* Output */}
-          <div className="rounded-3xl border border-white/10 bg-plaster-950/60 p-6 sm:p-8">
-            <p className="flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-eyebrow text-brand-300">
+          <div className="rounded-3xl border border-warm bg-white p-6 sm:p-8">
+            <p className="flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
               <CalcIcon className="h-4 w-4" />
               Estimated bill of materials
             </p>
 
             {result ? (
-              <dl className="mt-5 divide-y divide-white/10">
+              <dl className="mt-5">
                 {rows.map((r) => (
                   <div
                     key={r.label}
-                    className="flex items-center justify-between gap-4 py-3"
+                    className="flex items-center justify-between gap-4 border-t border-warm py-3 first:border-t-0"
                   >
-                    <dt className="text-sm text-plaster-300">{r.label}</dt>
-                    <dd className="text-lg font-extrabold text-white">
+                    <dt className="text-sm text-grey">{r.label}</dt>
+                    <dd className="text-lg font-extrabold text-grey">
                       {r.value}
                     </dd>
                   </div>
                 ))}
               </dl>
             ) : (
-              <p className="mt-5 text-sm text-plaster-400">
+              <p className="mt-5 text-sm text-grey">
                 Enter a room length and width to see quantities.
               </p>
             )}
 
-            <p className="mt-6 text-xs leading-relaxed text-plaster-500">
+            <p className="mt-6 text-xs leading-relaxed text-grey">
               First-pass estimate using industry-standard coverage rates. Final
               quantities are reconciled against the UG Application Booklet, so
               confirm with our team before ordering.

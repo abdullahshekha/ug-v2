@@ -6,6 +6,7 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import BlogArticle from "@/components/blog/BlogArticle";
 import ProductCta from "@/components/products/ProductCta";
+import DealerForm from "@/components/sections/DealerForm";
 import { blogs, getBlogBySlug } from "../data";
 
 export function generateStaticParams() {
@@ -75,31 +76,31 @@ export default async function BlogPostPage({
       <Navbar />
       <main>
         <article>
-          <header className="bg-plaster-900 pb-14 pt-32 sm:pb-16 sm:pt-40">
+          <header className="bg-grey pb-14 pt-32 sm:pb-16 sm:pt-40">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-              <nav className="flex items-center gap-2 text-sm text-plaster-400">
-                <Link href="/" className="hover:text-brand-300">
+              <nav className="flex items-center gap-2 text-sm text-white">
+                <Link href="/" className="hover:text-red">
                   Home
                 </Link>
                 <span>/</span>
-                <Link href="/blogs/" className="hover:text-brand-300">
+                <Link href="/blogs/" className="hover:text-red">
                   Blog
                 </Link>
               </nav>
-              <p className="mt-6 text-[11px] font-extrabold uppercase tracking-eyebrow text-brand-300">
+              <p className="mt-6 text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
                 {post.category}
               </p>
               <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
                 {post.title}
               </h1>
-              <p className="mt-4 text-sm text-plaster-300">
+              <p className="mt-4 text-sm text-white">
                 {formatDate(post.date)} &middot; {post.author} &middot;{" "}
                 {post.readTime}
               </p>
             </div>
           </header>
 
-          <div className="bg-plaster-50">
+          <div className="bg-mist">
             <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
               <div className="overflow-hidden rounded-3xl border border-warm shadow-plaster">
                 <Image
@@ -120,8 +121,8 @@ export default async function BlogPostPage({
 
         {relatedPosts.length > 0 && (
           <section className="border-t border-warm bg-white">
-            <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-              <h2 className="text-2xl font-extrabold tracking-tight text-plaster-800">
+            <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+              <h2 className="text-2xl font-extrabold tracking-tight text-grey">
                 More from the journal
               </h2>
               <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -129,9 +130,9 @@ export default async function BlogPostPage({
                   <Link
                     key={r.slug}
                     href={`/blogs/${r.slug}/`}
-                    className="group flex flex-col overflow-hidden rounded-3xl border border-warm bg-plaster-50 shadow-plaster transition-transform hover:-translate-y-1"
+                    className="group flex flex-col overflow-hidden rounded-3xl border border-warm bg-mist shadow-plaster transition-transform hover:-translate-y-1"
                   >
-                    <div className="aspect-[2/1] overflow-hidden bg-plaster-100">
+                    <div className="aspect-[2/1] overflow-hidden bg-mist">
                       <Image
                         src={r.featuredImage}
                         alt={r.title}
@@ -141,10 +142,10 @@ export default async function BlogPostPage({
                       />
                     </div>
                     <div className="flex flex-1 flex-col p-5">
-                      <p className="text-xs font-bold text-plaster-500">
+                      <p className="text-xs font-bold text-grey">
                         {r.category}
                       </p>
-                      <h3 className="mt-1.5 flex-1 text-sm font-extrabold leading-snug text-plaster-800 group-hover:text-brand-800">
+                      <h3 className="mt-1.5 flex-1 text-sm font-extrabold leading-snug text-grey group-hover:text-red">
                         {r.title}
                       </h3>
                     </div>
@@ -159,6 +160,8 @@ export default async function BlogPostPage({
           heading="Building with gypsum systems?"
           body="Talk to United Gypsum about products, specifications and becoming a stockist."
         />
+
+        <DealerForm />
       </main>
       <Footer />
       <script

@@ -53,8 +53,8 @@ export default function Certificates() {
 
   if (available.length === 0) {
     return (
-      <section className="bg-plaster-100">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+      <section className="bg-mist">
+        <div className="px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
           <SectionHeading
             eyebrow="Compliance"
             title="Certifications and standards"
@@ -66,8 +66,8 @@ export default function Certificates() {
   }
 
   return (
-    <section className="bg-plaster-100">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <section className="bg-mist">
+      <div className="px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
         <SectionHeading
           eyebrow="Compliance"
           title="Certifications and standards"
@@ -83,7 +83,7 @@ export default function Certificates() {
               rel="noopener noreferrer"
               className="group overflow-hidden rounded-3xl border border-warm bg-white shadow-plaster transition-transform hover:-translate-y-1"
             >
-              <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-plaster-50">
+              <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-mist">
                 {c.resolvedThumb ? (
                   <Image
                     src={`/certificates/${c.resolvedThumb}`}
@@ -93,14 +93,14 @@ export default function Certificates() {
                     className="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                   />
                 ) : (
-                  <ShieldCheck className="h-14 w-14 text-brand-300" />
+                  <ShieldCheck className="h-14 w-14 text-red" />
                 )}
               </div>
               <div className="border-t border-warm p-5">
-                <h3 className="text-sm font-extrabold text-plaster-800">
+                <h3 className="text-sm font-extrabold text-grey">
                   {c.title}
                 </h3>
-                <p className="mt-1 text-xs text-plaster-500">{c.caption}</p>
+                <p className="mt-1 text-xs text-grey">{c.caption}</p>
               </div>
             </a>
           ))}

@@ -5,6 +5,7 @@ import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ProductCta from "@/components/products/ProductCta";
+import DealerForm from "@/components/sections/DealerForm";
 
 export const metadata: Metadata = {
   title: "Events & Exhibitions | United Gypsum",
@@ -32,8 +33,8 @@ export default function EventsPage() {
           subtitle="We regularly take part in construction exhibitions and trade events to show how gypsum systems build faster, lighter and cleaner."
         />
 
-        <section className="bg-plaster-50">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+        <section className="bg-mist">
+          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <SectionHeading eyebrow="Where we have been" title="Past events" />
             <div className="mt-8 grid gap-5 md:grid-cols-2">
               {pastEvents.map((e) => (
@@ -41,14 +42,14 @@ export default function EventsPage() {
                   key={e.name}
                   className="rounded-3xl border border-warm bg-white p-6 shadow-plaster"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-800">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red text-white">
                     <CalendarDays className="h-5 w-5" />
                   </span>
-                  <h3 className="mt-4 text-lg font-extrabold text-brand-800">
+                  <h3 className="mt-4 text-lg font-extrabold text-red">
                     {e.name}
                   </h3>
-                  <p className="text-xs font-bold text-plaster-500">{e.place}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-plaster-600">
+                  <p className="text-xs font-bold text-grey">{e.place}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-grey">
                     {e.body}
                   </p>
                 </article>
@@ -58,9 +59,9 @@ export default function EventsPage() {
         </section>
 
         <section className="border-t border-warm bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+          <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <SectionHeading eyebrow="Coming up" title="Upcoming events" />
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-plaster-600">
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-grey">
               No upcoming events are listed right now. Follow United Gypsum on
               social media, or contact our team to find out where we will be next.
             </p>
@@ -71,6 +72,8 @@ export default function EventsPage() {
           heading="Want to meet the team?"
           body="Contact us to arrange a visit, a product demonstration or a specification session."
         />
+
+        <DealerForm />
       </main>
       <Footer />
     </>

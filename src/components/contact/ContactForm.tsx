@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 
 const inputClass =
-  "w-full rounded-xl border border-warm bg-white px-4 py-3 text-sm text-plaster-800 placeholder:text-plaster-400 focus:border-brand-400 focus:outline-none";
+  "w-full rounded-xl border border-warm bg-white px-4 py-3 text-sm text-grey placeholder:text-grey focus:border-red focus:outline-none";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -17,15 +17,15 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-3xl border border-warm bg-plaster-50 p-6 shadow-plaster sm:p-8">
-        <h2 className="text-lg font-extrabold text-plaster-800">
+      <div className="rounded-3xl border border-warm bg-mist p-6 shadow-plaster sm:p-8">
+        <h2 className="text-lg font-extrabold text-grey">
           Thanks, your query is ready to send.
         </h2>
-        <p className="mt-2 text-sm text-plaster-600">
+        <p className="mt-2 text-sm text-grey">
           Online submissions aren&apos;t connected yet. In the meantime, email{" "}
           <a
             href="mailto:info@unitedgypsum.com"
-            className="font-bold text-brand-800 underline"
+            className="font-bold text-red underline"
           >
             info@unitedgypsum.com
           </a>{" "}
@@ -34,7 +34,7 @@ export default function ContactForm() {
         <button
           type="button"
           onClick={() => setSubmitted(false)}
-          className="mt-6 text-sm font-bold text-brand-800"
+          className="mt-6 text-sm font-bold text-red"
         >
           Edit the form
         </button>
@@ -45,23 +45,23 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-3xl border border-warm bg-plaster-50 p-6 shadow-plaster sm:p-8"
+      className="rounded-3xl border border-warm bg-mist p-6 shadow-plaster sm:p-8"
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block sm:col-span-2">
-          <span className="mb-1.5 block text-xs font-bold text-plaster-700">
-            Full name<span className="text-brand-700">*</span>
+          <span className="mb-1.5 block text-xs font-bold text-grey">
+            Full name<span className="text-red">*</span>
           </span>
           <input required name="fullName" className={inputClass} />
         </label>
         <label className="block">
-          <span className="mb-1.5 block text-xs font-bold text-plaster-700">
+          <span className="mb-1.5 block text-xs font-bold text-grey">
             Email
           </span>
           <input type="email" name="email" className={inputClass} />
         </label>
         <label className="block">
-          <span className="mb-1.5 block text-xs font-bold text-plaster-700">
+          <span className="mb-1.5 block text-xs font-bold text-grey">
             Contact number
           </span>
           <input
@@ -72,13 +72,13 @@ export default function ContactForm() {
           />
         </label>
         <label className="block sm:col-span-2">
-          <span className="mb-1.5 block text-xs font-bold text-plaster-700">
+          <span className="mb-1.5 block text-xs font-bold text-grey">
             Subject
           </span>
           <input name="subject" className={inputClass} />
         </label>
         <label className="block sm:col-span-2">
-          <span className="mb-1.5 block text-xs font-bold text-plaster-700">
+          <span className="mb-1.5 block text-xs font-bold text-grey">
             Message
           </span>
           <textarea name="message" rows={5} className={inputClass} />
@@ -95,11 +95,11 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="mt-5 inline-flex items-center rounded-full bg-brand-800 px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-brand-900"
+        className="mt-5 inline-flex items-center rounded-full bg-red px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-grey"
       >
         Send message
       </button>
-      <p className="mt-3 text-xs text-plaster-500">
+      <p className="mt-3 text-xs text-grey">
         Online submissions aren&apos;t wired up yet. This form is a preview.
       </p>
     </form>

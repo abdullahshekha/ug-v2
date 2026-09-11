@@ -9,9 +9,9 @@ function Table({ content }: { content: string }) {
     <div className="my-6 overflow-x-auto rounded-2xl border border-warm">
       <table className="w-full min-w-[32rem] border-collapse text-left text-sm">
         <thead>
-          <tr className="bg-plaster-100">
+          <tr className="bg-mist">
             {head.map((c, i) => (
-              <th key={i} className="px-4 py-3 font-extrabold text-plaster-800">
+              <th key={i} className="px-4 py-3 font-extrabold text-grey">
                 {c}
               </th>
             ))}
@@ -21,10 +21,10 @@ function Table({ content }: { content: string }) {
           {body.map((r, ri) => (
             <tr
               key={ri}
-              className="border-t border-warm bg-white even:bg-plaster-50"
+              className="border-t border-warm bg-white even:bg-mist"
             >
               {r.map((c, ci) => (
-                <td key={ci} className="px-4 py-3 align-top text-plaster-600">
+                <td key={ci} className="px-4 py-3 align-top text-grey">
                   {c}
                 </td>
               ))}
@@ -45,7 +45,7 @@ export default function BlogArticle({ sections }: { sections: BlogSection[] }) {
             return (
               <h2
                 key={i}
-                className="mt-10 text-2xl font-extrabold tracking-tight text-brand-800"
+                className="mt-10 text-2xl font-extrabold tracking-tight text-red"
               >
                 {s.content}
               </h2>
@@ -54,7 +54,7 @@ export default function BlogArticle({ sections }: { sections: BlogSection[] }) {
             return (
               <h3
                 key={i}
-                className="mt-8 text-lg font-extrabold text-plaster-800"
+                className="mt-8 text-lg font-extrabold text-grey"
               >
                 {s.content}
               </h3>
@@ -63,7 +63,7 @@ export default function BlogArticle({ sections }: { sections: BlogSection[] }) {
             return (
               <h4
                 key={i}
-                className="mt-6 text-base font-extrabold text-plaster-800"
+                className="mt-6 text-base font-extrabold text-grey"
               >
                 {s.content}
               </h4>
@@ -72,7 +72,7 @@ export default function BlogArticle({ sections }: { sections: BlogSection[] }) {
             return (
               <p
                 key={i}
-                className="mt-4 text-base leading-relaxed text-plaster-700"
+                className="mt-4 text-base leading-relaxed text-grey"
               >
                 {s.content}
               </p>
@@ -84,7 +84,7 @@ export default function BlogArticle({ sections }: { sections: BlogSection[] }) {
             return (
               <List
                 key={i}
-                className={`mt-4 space-y-2 pl-5 text-base leading-relaxed text-plaster-700 ${
+                className={`mt-4 space-y-2 pl-5 text-base leading-relaxed text-grey ${
                   s.type === "ol" ? "list-decimal" : "list-disc"
                 }`}
               >

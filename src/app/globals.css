@@ -17,17 +17,17 @@ html {
 
 body {
   font-family: var(--font-montserrat), "Montserrat", sans-serif;
-  @apply bg-plaster-50 text-plaster-800;
+  @apply bg-mist text-grey;
 }
 
 /* ===== Focus ring ===== */
 :focus-visible {
-  @apply outline-none ring-2 ring-brand-700 ring-offset-2 ring-offset-plaster-50;
+  @apply outline-none ring-2 ring-red ring-offset-2 ring-offset-mist;
 }
 
 /* ===== Selection ===== */
 ::selection {
-  @apply bg-brand-100 text-brand-900;
+  @apply bg-red text-white;
 }
 
 /* ===== Scrollbar ===== */
@@ -35,13 +35,13 @@ body {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  @apply bg-plaster-100;
+  @apply bg-mist;
 }
 ::-webkit-scrollbar-thumb {
-  @apply rounded-full bg-plaster-300;
+  @apply rounded-full bg-grey/30;
 }
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-plaster-400;
+  @apply bg-grey/50;
 }
 
 /* ===== Marquee (logo rows) ===== */

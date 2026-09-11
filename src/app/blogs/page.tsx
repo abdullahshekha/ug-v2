@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
+import DealerForm from "@/components/sections/DealerForm";
 import BlogsList from "./BlogsList";
 import { blogs, blogCategories } from "./data";
 
@@ -22,11 +23,13 @@ export default function BlogsPage() {
           title="From the journal"
           subtitle="Practical guides on gypsum board, ceiling systems, drywall accessories and finishing."
         />
-        <section className="bg-plaster-50">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+        <section className="bg-mist">
+          <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <BlogsList blogs={blogs} categories={blogCategories} />
           </div>
         </section>
+
+        <DealerForm />
       </main>
       <Footer />
     </>

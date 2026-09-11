@@ -64,24 +64,24 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       {/* Utility bar */}
-      <div className="hidden bg-brand-800 text-white lg:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-1.5 text-[11px] font-bold tracking-[0.14em] sm:px-6 lg:px-8">
+      <div className="hidden bg-red text-white lg:block">
+        <div className="flex items-center justify-between px-4 py-1.5 text-[11px] font-bold tracking-[0.14em] sm:px-8 lg:px-12">
           <span>THE SMARTER WAY TO BUILD</span>
           <div className="flex items-center gap-6 tracking-normal">
             <a
               href="mailto:info@unitedgypsum.com"
-              className="flex items-center gap-1.5 transition-colors hover:text-brand-200"
+              className="flex items-center gap-1.5 transition-colors hover:text-grey"
             >
               <Mail className="h-3.5 w-3.5" />
               info@unitedgypsum.com
             </a>
-            <span className="flex items-center gap-1.5 text-brand-200">
+            <span className="flex items-center gap-1.5 text-white">
               <Clock className="h-3.5 w-3.5" />
               Mon to Sat, 9:00 AM to 6:00 PM
             </span>
             <a
               href="tel:+922134123301"
-              className="flex items-center gap-1.5 transition-colors hover:text-brand-200"
+              className="flex items-center gap-1.5 transition-colors hover:text-grey"
             >
               <Phone className="h-3.5 w-3.5" />
               +92 21 34123301
@@ -94,11 +94,11 @@ export default function Navbar() {
       <div
         className={`transition-all duration-300 ${
           scrolled || mobileOpen
-            ? "bg-plaster-50/95 shadow-plaster backdrop-blur"
+            ? "bg-mist shadow-plaster backdrop-blur"
             : "bg-transparent"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between px-4 py-3 sm:px-8 lg:px-12">
           <Link href="/" className="flex-shrink-0" aria-label="United Gypsum home">
             <Image
               src="/images/United_Gypsum_Logo_01-01-1024x221.png"
@@ -118,7 +118,7 @@ export default function Navbar() {
               onMouseEnter={() => setOpenMenu("products")}
               onMouseLeave={() => setOpenMenu(null)}
             >
-              <button className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold text-plaster-700 transition-colors hover:text-brand-800">
+              <button className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold text-grey transition-colors hover:text-red">
                 Products
                 <ChevronDown className="h-4 w-4" />
               </button>
@@ -137,7 +137,7 @@ export default function Navbar() {
               onMouseEnter={() => setOpenMenu("resources")}
               onMouseLeave={() => setOpenMenu(null)}
             >
-              <button className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold text-plaster-700 transition-colors hover:text-brand-800">
+              <button className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold text-grey transition-colors hover:text-red">
                 Resources
                 <ChevronDown className="h-4 w-4" />
               </button>
@@ -147,7 +147,7 @@ export default function Navbar() {
                     <Link
                       key={r.href}
                       href={r.href}
-                      className="block rounded-lg px-3 py-2 text-sm text-plaster-700 transition-colors hover:bg-plaster-100 hover:text-brand-800"
+                      className="block rounded-lg px-3 py-2 text-sm text-grey transition-colors hover:bg-mist hover:text-red"
                     >
                       {r.label}
                     </Link>
@@ -163,7 +163,7 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <Link
               href="/#dealer"
-              className="inline-flex items-center rounded-full bg-brand-800 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-900"
+              className="inline-flex items-center rounded-full bg-red px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-grey"
             >
               Become a dealer
             </Link>
@@ -171,7 +171,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileOpen((v) => !v)}
-            className="rounded-lg p-2 text-plaster-800 lg:hidden"
+            className="rounded-lg p-2 text-grey lg:hidden"
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
           >
@@ -182,7 +182,7 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       <div
-        className={`overflow-hidden bg-plaster-50 transition-[max-height] duration-300 lg:hidden ${
+        className={`overflow-hidden bg-mist transition-[max-height] duration-300 lg:hidden ${
           mobileOpen ? "max-h-[80vh] overflow-y-auto border-t border-warm" : "max-h-0"
         }`}
       >
@@ -203,7 +203,7 @@ export default function Navbar() {
           <Link
             href="/#dealer"
             onClick={() => setMobileOpen(false)}
-            className="mt-3 block rounded-full bg-brand-800 px-5 py-3 text-center text-sm font-bold text-white"
+            className="mt-3 block rounded-full bg-red px-5 py-3 text-center text-sm font-bold text-white"
           >
             Become a dealer
           </Link>
@@ -216,7 +216,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-plaster-700 shadow-plaster transition-colors hover:text-brand-800"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-grey shadow-plaster transition-colors hover:text-red"
               >
                 <Icon className="h-4 w-4" />
               </a>
@@ -232,7 +232,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className="rounded-lg px-3 py-2 text-sm font-semibold text-plaster-700 transition-colors hover:text-brand-800"
+      className="rounded-lg px-3 py-2 text-sm font-semibold text-grey transition-colors hover:text-red"
     >
       {children}
     </Link>
@@ -248,7 +248,7 @@ function MenuGroup({
 }) {
   return (
     <div>
-      <p className="mb-2 text-[11px] font-extrabold uppercase tracking-eyebrow text-plaster-500">
+      <p className="mb-2 text-[11px] font-extrabold uppercase tracking-eyebrow text-grey">
         {title}
       </p>
       <div className="space-y-0.5">
@@ -256,7 +256,7 @@ function MenuGroup({
           <Link
             key={i.href}
             href={i.href}
-            className="block rounded-lg px-3 py-1.5 text-sm text-plaster-700 transition-colors hover:bg-plaster-100 hover:text-brand-800"
+            className="block rounded-lg px-3 py-1.5 text-sm text-grey transition-colors hover:bg-mist hover:text-red"
           >
             {i.label}
           </Link>
@@ -279,7 +279,7 @@ function MobileLink({
     <Link
       href={href}
       onClick={onClick}
-      className="block rounded-lg px-3 py-3 text-sm font-semibold text-plaster-800 hover:bg-plaster-100"
+      className="block rounded-lg px-3 py-3 text-sm font-semibold text-grey hover:bg-mist"
     >
       {children}
     </Link>
@@ -297,7 +297,7 @@ function MobileSection({
 }) {
   return (
     <div className="px-3 py-2">
-      <p className="mb-1 text-[11px] font-extrabold uppercase tracking-eyebrow text-plaster-500">
+      <p className="mb-1 text-[11px] font-extrabold uppercase tracking-eyebrow text-grey">
         {title}
       </p>
       <div className="space-y-0.5">
@@ -306,7 +306,7 @@ function MobileSection({
             key={i.href}
             href={i.href}
             onClick={onNavigate}
-            className="block rounded-lg px-2 py-2 text-sm text-plaster-700 hover:bg-plaster-100 hover:text-brand-800"
+            className="block rounded-lg px-2 py-2 text-sm text-grey hover:bg-mist hover:text-red"
           >
             {i.label}
           </Link>
