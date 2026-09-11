@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, Download } from "lucide-react";
+import { Check, Download, BookOpen } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import SpecTable from "@/components/ui/SpecTable";
 import RelatedProducts from "@/components/products/RelatedProducts";
@@ -155,17 +155,28 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
                 </span>
               ))}
             </div>
-            {sheet && (
-              <a
-                href={sheet}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-red"
-              >
-                <Download className="h-4 w-4" />
-                Open the shade card
-              </a>
-            )}
+            <div className="mt-6 flex flex-wrap gap-5">
+              {product.slug === "smart-ceiling-panel" && (
+                <Link
+                  href="/smart-ceiling-panel/shade-card/"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-red transition-colors hover:text-grey"
+                >
+                  <BookOpen className="h-4 w-4" />
+                  Browse the shade card
+                </Link>
+              )}
+              {sheet && (
+                <a
+                  href={sheet}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-grey transition-colors hover:text-red"
+                >
+                  <Download className="h-4 w-4" />
+                  Download the shade card (PDF)
+                </a>
+              )}
+            </div>
           </div>
         </section>
       )}

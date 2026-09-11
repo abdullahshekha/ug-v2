@@ -24,65 +24,64 @@ export default function Events() {
           </Link>
         </div>
 
-        <div className="mt-12 space-y-14">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {featured.map((event) => {
-            const images = eventImages(event.slug, event.imageCount).slice(0, 4);
+            const images = eventImages(event.slug, event.imageCount).slice(0, 3);
             return (
-              <article key={event.slug}>
-                <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-                  <div>
-                    <h3 className="text-2xl font-extrabold tracking-tight text-red">
-                      {event.name}
-                    </h3>
-                    <p className="mt-1 flex items-center gap-1.5 text-xs font-bold text-grey">
-                      <MapPin className="h-3.5 w-3.5" />
-                      {event.location} &middot; {event.date}
-                    </p>
-                    <p className="mt-4 text-sm leading-relaxed text-grey">
-                      {event.summary}
-                    </p>
-                    {event.highlights.length > 0 && (
-                      <ul className="mt-4 space-y-2">
-                        {event.highlights.map((h) => (
-                          <li
-                            key={h}
-                            className="flex items-start gap-2 text-sm leading-relaxed text-grey"
-                          >
-                            <span
-                              className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red"
-                              aria-hidden="true"
-                            />
-                            {h}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+              <article
+                key={event.slug}
+                className="flex flex-col overflow-hidden rounded-3xl border border-warm bg-mist shadow-plaster"
+              >
+                <div className="aspect-[16/9] overflow-hidden">
+                  <Image
+                    src={images[0].src}
+                    alt={images[0].alt}
+                    width={800}
+                    height={450}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-xl font-extrabold tracking-tight text-red">
+                    {event.name}
+                  </h3>
+                  <p className="mt-1 flex items-center gap-1.5 text-xs font-bold text-grey">
+                    <MapPin className="h-3.5 w-3.5" />
+                    {event.location} &middot; {event.date}
+                  </p>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-grey">
+                    {event.summary}
+                  </p>
+
+                  <div className="mt-4 flex items-center justify-between gap-4">
+                    <div className="flex -space-x-3">
+                      {images.slice(1).map((img) => (
+                        <span
+                          key={img.src}
+                          className="h-9 w-9 flex-shrink-0 overflow-hidden rounded-full border-2 border-white"
+                        >
+                          <Image
+                            src={img.src}
+                            alt={img.alt}
+                            width={72}
+                            height={72}
+                            className="h-full w-full object-cover"
+                          />
+                        </span>
+                      ))}
+                      <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border-2 border-white bg-red text-[10px] font-bold text-white">
+                        +{event.imageCount - images.length}
+                      </span>
+                    </div>
+
                     <Link
                       href={`/events/#${event.slug}`}
-                      className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-grey transition-colors hover:text-red"
+                      className="inline-flex items-center gap-1 text-sm font-bold text-grey transition-colors hover:text-red"
                     >
-                      View the gallery
+                      Gallery
                       <ArrowUpRight className="h-4 w-4" />
                     </Link>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    {images.map((img, i) => (
-                      <div
-                        key={img.src}
-                        className={`overflow-hidden rounded-2xl border border-warm ${
-                          i === 0 ? "col-span-2 aspect-[16/9]" : "aspect-square"
-                        }`}
-                      >
-                        <Image
-                          src={img.src}
-                          alt={img.alt}
-                          width={800}
-                          height={i === 0 ? 450 : 400}
-                          className="h-full w-full object-cover"
-                        />
-                      </div>
-                    ))}
                   </div>
                 </div>
               </article>

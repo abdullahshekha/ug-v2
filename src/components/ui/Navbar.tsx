@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Clock,
   Mail,
@@ -50,6 +51,8 @@ const socials = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -60,6 +63,11 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Only the homepage has a light-toned hero behind the navbar, so only
+  // there can the bar start transparent. Every other page opens straight
+  // into a dark PageHero band, so the bar must always be solid there.
+  const solid = scrolled || mobileOpen || !isHome;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -93,9 +101,7 @@ export default function Navbar() {
       {/* Main bar */}
       <div
         className={`transition-all duration-300 ${
-          scrolled || mobileOpen
-            ? "bg-mist shadow-plaster backdrop-blur"
-            : "bg-transparent"
+          solid ? "bg-mist shadow-plaster backdrop-blur" : "bg-transparent"
         }`}
       >
         <div className="flex items-center justify-between px-4 py-3 sm:px-8 lg:px-12">
