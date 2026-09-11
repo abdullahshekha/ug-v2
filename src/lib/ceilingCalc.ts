@@ -12,7 +12,7 @@
  * first-pass estimates, not UG-published figures.
  */
 
-export type CeilingSystem = "board" | "panel";
+export type CeilingSystem = "board" | "panel" | "drywall";
 export type LengthUnit = "feet" | "meters";
 
 /**
@@ -64,11 +64,11 @@ const ACCESS_IMAGE = "/images/accessory-access.png";
 
 export interface CalcInput {
   system: CeilingSystem;
-  /** Room length in feet. */
+  /** Room length in feet (ceiling), or wall length in feet (drywall). */
   lengthFt: number;
-  /** Room width in feet. */
+  /** Room width in feet (ceiling), or wall height in feet (drywall). */
   widthFt: number;
-  /** Board variant (board system only); ignored for the panel system. */
+  /** Board variant (board and drywall systems only); ignored for the panel system. */
   boardType?: BoardType;
   /** Access panels wanted (panel system only). */
   accessPanels?: number;
@@ -105,10 +105,12 @@ export function unitLabel(quantity: number, unit: Unit): string {
 }
 
 export interface BillOfMaterials {
-  /** Echoed back for display. */
+  /** Echoed back for display: room footprint (ceiling) or single-face wall area (drywall). */
   areaSqFt: number;
   perimeterFt: number;
   wastagePct: number;
+  /** Present for the drywall system: total board area once both faces are counted. */
+  coveredAreaSqFt?: number;
   /** "Gypsum boards" or "Ceiling panels": the main covering unit. */
   primaryLabel: string;
   primaryCount: number;
@@ -149,8 +151,14 @@ export const CALC_CONFIG = {
    */
   jointFtPerSqFtBoard: 0.9,
   jointFtPerSqFtPanel: 0.35,
-  /** Running feet of joint a single filler bucket covers. */
-  jointFtPerFillerBucket: 50,
+  /**
+   * Running feet of joint a single 26 kg filler bucket covers. Filler only
+   * fills the tapered recess along the joint (not the whole board face), so
+   * derived from Smart Filler's own published consumption rate (1.75 kg/m²
+   * per mm thickness) at roughly 2mm fill depth over a 150mm-wide joint
+   * strip: ~0.16 kg per running foot, so a 26 kg bucket covers ~160 ft.
+   */
+  jointFtPerFillerBucket: 150,
   /** Running feet of tape on one roll (~90 m). */
   jointFtPerTapeRoll: 295,
 
@@ -179,14 +187,19 @@ export function calculate(input: CalcInput): BillOfMaterials {
   const withWastage = (n: number) => Math.ceil(n * factor);
 
   const isPanel = input.system === "panel";
+  const isDrywall = input.system === "drywall";
+  const faces = isDrywall ? 2 : 1;
+  const boardAreaSqFt = areaSqFt * faces;
+
   const boardType = input.boardType ?? "standard";
   const coverage = isPanel ? c.panelCoverageSqFt : c.boardCoverageSqFt;
-  const primaryCount = withWastage(areaSqFt / coverage);
+  const primaryCount = withWastage(boardAreaSqFt / coverage);
   const screwsPerUnit = isPanel ? c.screwsPerPanel : c.screwsPerBoard;
   const screwBoxes = withWastage((primaryCount * screwsPerUnit) / c.screwsPerBox);
 
-  const jointFt =
-    areaSqFt * (isPanel ? c.jointFtPerSqFtPanel : c.jointFtPerSqFtBoard);
+  // Lay-in ceiling panels sit in the T-bar grid, not taped and filled like a
+  // fixed board ceiling, so filler and tape only apply to board/drywall.
+  const jointFt = isPanel ? 0 : boardAreaSqFt * c.jointFtPerSqFtBoard;
   const fillerBuckets = withWastage(jointFt / c.jointFtPerFillerBucket);
   const jointTapeRolls = withWastage(jointFt / c.jointFtPerTapeRoll);
 
@@ -200,16 +213,23 @@ export function calculate(input: CalcInput): BillOfMaterials {
       image: primaryImage,
       quantity: primaryCount,
       unit: isPanel ? UNITS.panel : UNITS.board,
+      note: isDrywall ? "Both faces of the partition" : undefined,
     },
     { label: "Drywall screws", image: SCREW_IMAGE, quantity: screwBoxes, unit: UNITS.box },
-    { label: "Smart Filler", image: FILLER_IMAGE, quantity: fillerBuckets, unit: UNITS.bucket },
-    { label: "Smart Tape", image: TAPE_IMAGE, quantity: jointTapeRolls, unit: UNITS.roll },
   ];
+
+  if (!isPanel) {
+    lines.push(
+      { label: "Smart Filler", image: FILLER_IMAGE, quantity: fillerBuckets, unit: UNITS.bucket },
+      { label: "Smart Tape", image: TAPE_IMAGE, quantity: jointTapeRolls, unit: UNITS.roll },
+    );
+  }
 
   const bom: BillOfMaterials = {
     areaSqFt: round(areaSqFt),
     perimeterFt: round(perimeterFt),
     wastagePct,
+    coveredAreaSqFt: isDrywall ? round(boardAreaSqFt) : undefined,
     primaryLabel,
     primaryCount,
     primarySize,

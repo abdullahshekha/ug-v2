@@ -101,6 +101,8 @@ export default function CeilingCalculator({
   const unitSuffix = unit === "feet" ? "ft" : "m";
   const boardType =
     ROOM_TYPES.find((r) => r.value === roomType)?.boardType ?? "standard";
+  const isDrywall = system === "drywall";
+  const usesBoardType = system === "board" || isDrywall;
 
   const result = useMemo(() => {
     const l = parseFloat(length);
@@ -130,7 +132,7 @@ export default function CeilingCalculator({
           <SectionHeading
             eyebrow="Plan your project"
             title="Ceiling material calculator"
-            lead="Enter your room dimensions for a quick bill of materials: boards or panels, screw boxes, filler, tape, and grid for suspended ceilings."
+            lead="Enter your room dimensions for a quick bill of materials: boards, panels or drywall partitions, screw boxes, filler, tape, and grid for suspended ceilings."
             tone="dark"
           />
         )}
@@ -144,12 +146,13 @@ export default function CeilingCalculator({
           <div className="rounded-3xl border border-warm bg-white p-6 sm:p-8">
             <div className="grid gap-5 sm:grid-cols-2">
               <Toggle
-                label="Ceiling system"
+                label="System"
                 value={system}
                 onChange={setSystem}
                 options={[
                   { value: "board", label: "Gypsum Board" },
                   { value: "panel", label: "Ceiling Panel" },
+                  { value: "drywall", label: "Drywall" },
                 ]}
               />
               <Toggle
@@ -162,7 +165,7 @@ export default function CeilingCalculator({
                 ]}
               />
 
-              {system === "board" && (
+              {usesBoardType && (
                 <label className="block sm:col-span-2">
                   <span className="mb-2 block text-xs font-bold text-grey">
                     Room type
@@ -190,13 +193,13 @@ export default function CeilingCalculator({
               )}
 
               <NumberField
-                label="Room length"
+                label={isDrywall ? "Wall length" : "Room length"}
                 value={length}
                 onChange={setLength}
                 suffix={unitSuffix}
               />
               <NumberField
-                label="Room width"
+                label={isDrywall ? "Wall height" : "Room width"}
                 value={width}
                 onChange={setWidth}
                 suffix={unitSuffix}
@@ -217,8 +220,17 @@ export default function CeilingCalculator({
             </div>
             {result && (
               <p className="mt-5 text-xs text-grey">
-                Ceiling area {result.areaSqFt} sq ft &middot; perimeter{" "}
-                {result.perimeterFt} ft
+                {isDrywall ? (
+                  <>
+                    Wall area {result.areaSqFt} sq ft &middot; {result.coveredAreaSqFt}{" "}
+                    sq ft of board (both faces)
+                  </>
+                ) : (
+                  <>
+                    Ceiling area {result.areaSqFt} sq ft &middot; perimeter{" "}
+                    {result.perimeterFt} ft
+                  </>
+                )}
               </p>
             )}
           </div>
