@@ -1,7 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
-import { Download } from "lucide-react";
+import Image from "next/image";
+import { Download, TrendingUp, Award } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
@@ -51,42 +52,56 @@ export default function CompanyProfilePage() {
         {/* Business model */}
         <section className="bg-mist">
           <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
-            <SectionHeading
-              eyebrow="Business model"
-              title="How United Gypsum works"
-            />
-            <div className="mt-6 max-w-prose space-y-4 text-base leading-relaxed text-grey">
-              <p>
-                United Gypsum has evolved on the basis of an ever-growing
-                portfolio of innovative gypsum products, backed by an unparalleled
-                focus on customer challenges.
-              </p>
-              <p>
-                Our business model is our platform for success. We design,
-                manufacture and distribute a wide range of construction materials,
-                and every product is manufactured in accordance with the
-                international ISO 9001-2015 quality management system and complies
-                with ASTM requirements.
-              </p>
-              <p>
-                As a principle, we employ a well-trained, committed and skilled
-                workforce to keep continuous monitoring and quality control. That
-                strict quality assurance is reflected in products that are safe,
-                durable, economical, aesthetically pleasing, and easy to install
-                or dismantle.
-              </p>
-            </div>
+            <div className="grid items-center gap-12 lg:grid-cols-2">
+              <div className="order-2 lg:order-1">
+                <SectionHeading
+                  eyebrow="Business model"
+                  title="How United Gypsum works"
+                />
+                <div className="mt-6 max-w-prose space-y-4 text-base leading-relaxed text-grey">
+                  <p>
+                    United Gypsum has evolved on the basis of an ever-growing
+                    portfolio of innovative gypsum products, backed by an
+                    unparalleled focus on customer challenges.
+                  </p>
+                  <p>
+                    Our business model is our platform for success. We design,
+                    manufacture and distribute a wide range of construction
+                    materials, and every product is manufactured in
+                    accordance with the international ISO 9001-2015 quality
+                    management system and complies with ASTM requirements.
+                  </p>
+                  <p>
+                    As a principle, we employ a well-trained, committed and
+                    skilled workforce to keep continuous monitoring and
+                    quality control. That strict quality assurance is
+                    reflected in products that are safe, durable, economical,
+                    aesthetically pleasing, and easy to install or dismantle.
+                  </p>
+                </div>
 
-            <ul className="mt-8 flex flex-wrap gap-3">
-              {categories.map((c) => (
-                <li
-                  key={c}
-                  className="rounded-full border border-warm bg-white px-4 py-2 text-sm font-semibold text-grey"
-                >
-                  {c}
-                </li>
-              ))}
-            </ul>
+                <ul className="mt-8 flex flex-wrap gap-3">
+                  {categories.map((c) => (
+                    <li
+                      key={c}
+                      className="rounded-full border border-warm bg-white px-4 py-2 text-sm font-semibold text-grey"
+                    >
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="order-1 overflow-hidden rounded-3xl border border-warm shadow-plaster lg:order-2">
+                <Image
+                  src="/images/ug-factory-poster.jpg"
+                  alt="United Gypsum manufacturing facility at Port Qasim, Karachi"
+                  width={1024}
+                  height={683}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -104,7 +119,10 @@ export default function CompanyProfilePage() {
             />
             <div className="mt-8 grid gap-5 md:grid-cols-2">
               <article className="rounded-3xl border border-warm bg-mist p-7 shadow-plaster">
-                <h3 className="text-lg font-extrabold text-red">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-red text-white">
+                  <TrendingUp className="h-5 w-5" />
+                </span>
+                <h3 className="mt-5 text-lg font-extrabold text-red">
                   Improvement
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-grey">
@@ -114,7 +132,10 @@ export default function CompanyProfilePage() {
                 </p>
               </article>
               <article className="rounded-3xl border border-warm bg-mist p-7 shadow-plaster">
-                <h3 className="text-lg font-extrabold text-red">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-red text-white">
+                  <Award className="h-5 w-5" />
+                </span>
+                <h3 className="mt-5 text-lg font-extrabold text-red">
                   Reliability
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-grey">

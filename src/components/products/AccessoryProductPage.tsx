@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   Layers,
@@ -34,34 +35,34 @@ export default function AccessoryProductPage({ product }: { product: Product }) 
 
       <section className="bg-mist">
         <div className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <span className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white text-red">
-                <Icon className="h-9 w-9" />
-              </span>
-              {product.sizes && (
-                <div className="mt-8">
-                  <p className="text-[11px] font-extrabold uppercase tracking-eyebrow text-grey">
-                    Sizes
-                  </p>
-                  <ul className="mt-3 space-y-2">
-                    {product.sizes.map((s) => (
-                      <li
-                        key={s}
-                        className="rounded-xl border border-warm bg-white px-4 py-2 text-sm font-semibold text-grey"
-                      >
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
+          <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="flex justify-center">
+              {product.image ? (
+                <div className="relative h-72 w-full max-w-xs sm:h-80">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    sizes="(min-width: 1024px) 20rem, 70vw"
+                    className="object-contain"
+                    priority
+                  />
                 </div>
+              ) : (
+                <span className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white text-red">
+                  <Icon className="h-9 w-9" />
+                </span>
               )}
             </div>
 
             <div>
-              <p className="text-lg leading-relaxed text-grey">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-red text-white">
+                <Icon className="h-5 w-5" />
+              </span>
+              <p className="mt-5 text-lg leading-relaxed text-grey">
                 {product.intro}
               </p>
+
               {product.application && (
                 <div className="mt-6 rounded-2xl border border-warm bg-white p-5">
                   <p className="text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
@@ -72,6 +73,25 @@ export default function AccessoryProductPage({ product }: { product: Product }) 
                   </p>
                 </div>
               )}
+
+              {product.sizes && (
+                <div className="mt-6">
+                  <p className="text-[11px] font-extrabold uppercase tracking-eyebrow text-grey">
+                    Sizes
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {product.sizes.map((s) => (
+                      <span
+                        key={s}
+                        className="rounded-full border border-warm bg-white px-4 py-2 text-sm font-semibold text-grey"
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <Link
                 href="/#dealer"
                 className="mt-8 inline-flex items-center rounded-full bg-red px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-grey"
@@ -82,7 +102,7 @@ export default function AccessoryProductPage({ product }: { product: Product }) 
           </div>
 
           {product.spec && (
-            <div className="mt-14">
+            <div className="mt-16 border-t border-warm pt-16">
               <h2 className="text-2xl font-extrabold tracking-tight text-grey">
                 Specifications
               </h2>

@@ -46,8 +46,8 @@ export default function AboutUsPage() {
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div className="overflow-hidden rounded-3xl border border-warm shadow-plaster">
                 <Image
-                  src="/images/hw12-1024x683-1.jpg"
-                  alt="United Gypsum manufacturing and installation work"
+                  src="/images/ug-factory-poster.jpg"
+                  alt="United Gypsum manufacturing facility at Port Qasim, Karachi"
                   width={1024}
                   height={683}
                   className="h-full w-full object-cover"

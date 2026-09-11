@@ -222,6 +222,7 @@ export const products: Record<string, Product> = {
       "A quality board deserves expert jointing and a smooth finish. Smart Filler ready mixture is a pre-mixed compound for plasterboards and ceilings with adhesive properties that dries to a hard, smooth, paintable surface.",
     metaDescription:
       "Smart Filler: ready-mixed joint compound for flush jointing and finishing plasterboard. Complies with ASTM C475 and C840. 5 kg and 26 kg buckets.",
+    image: "/images/accessory-filler.png",
     iconName: "Layers",
     application:
       "Can also be applied over the drywall surface for a glossy finish, and used directly with no mixing or added water. Recommended for commercial, residential and industrial use, and for patching and enhancing other interior surfaces.",
@@ -256,6 +257,7 @@ export const products: Record<string, Product> = {
       "This self-adhesive fiberglass tape reinforces corners and drywall joints. Made from a thin, light but very strong fiberglass mesh, Smart Tape resists shrinkage, shredding, stretching and deformation, and its high tensile strength forms a crack-resistant bond where ordinary mesh tape would fail.",
     metaDescription:
       "Smart Tape: self-adhesive fiberglass mesh drywall joint tape. High tensile strength, alkaline-resistant, for joints, holes and cracks in drywall and plaster.",
+    image: "/images/accessory-tape.png",
     iconName: "Ruler",
     application:
       "Suitable for covering joints between drywall panels, with quick application and no separate bedding coat needed. Primarily recommended for patching holes and cracks in drywall and plaster interiors.",
@@ -286,6 +288,7 @@ export const products: Record<string, Product> = {
       "Smart Screws are drywall screws with small, fine threads running the full length, used to attach drywall to metal studs. They give quick, firm fixing of plasterboard to the studs.",
     metaDescription:
       "Smart Screws: fine-thread carbon-steel drywall screws with bugle head, grey phosphate finish and self-drilling tips for fixing board to metal studs.",
+    image: "/images/accessory-screws.png",
     iconName: "Wrench",
     spec: {
       columns: ["Property", "Detail"],
@@ -309,6 +312,7 @@ export const products: Record<string, Product> = {
       "Smart Access panels are built-in accessories fitted into ceilings: a slim, economical and aesthetically appealing solution. They are installed wherever a suspended ceiling needs permanent access for checking, inspection and modification.",
     metaDescription:
       "Smart Access: slim, white powder-coated aluminium ceiling access panels with a spring-loaded latch, in 300, 400 and 600 mm sizes.",
+    image: "/images/accessory-access.png",
     iconName: "SquareStack",
     application:
       "Comes in sturdy aluminium profiles with a white powder coating. The spring-loaded latch unlocks easily by applying pressure to the flap on the latch side.",
@@ -325,6 +329,7 @@ export const products: Record<string, Product> = {
       "Drywall corner bead is made for finishing inside and outside drywall edges. Smart Bead paper-faced metal bead uses a high-quality paper tape laminated across two steel strips for a consistent, firm finish. It adheres easily to joint compounds, textures and paints, and the corrosion-resistant metal resists impact, cracking and chipping so corners stay in good condition through everyday wear.",
     metaDescription:
       "Smart Bead: paper-faced metal corner bead laminated across two steel strips. Corrosion-resistant, impact-resistant, ideal for archways and curves.",
+    image: "/images/accessory-bead.png",
     iconName: "CornerDownRight",
     application:
       "Primarily for reinforcing corners and creating smooth, strong edges. Highly suitable for archways and curves.",

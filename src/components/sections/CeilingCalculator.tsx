@@ -262,9 +262,10 @@ export default function CeilingCalculator({
             )}
 
             <p className="mt-6 text-xs leading-relaxed text-grey">
-              First-pass estimate using industry-standard coverage rates. Final
-              quantities are reconciled against the UG Application Booklet, so
-              confirm with our team before ordering.
+              First-pass estimate using industry-standard coverage rates.
+              Final quantities are reconciled against the United Gypsum
+              Application Booklet, so confirm with your applicator before
+              placing order with our registered Distributors.
             </p>
           </div>
         </div>
