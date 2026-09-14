@@ -39,17 +39,17 @@ export default function ShadeCardFlipbook({ pageCount }: ShadeCardFlipbookProps)
        * shade card page images (1100x1559), not a fixed pixel value, so the
        * book's full height is always visible instead of being clipped by a
        * mismatched parent height. */}
-      <div className="relative w-full max-w-[420px] py-4 sm:max-w-[640px]">
+      <div className="relative w-full max-w-[840px] py-4 sm:max-w-[1280px]">
         <div style={{ aspectRatio: "1100 / 1559" }}>
           {/* @ts-expect-error -- react-pageflip's types don't model the generic ref/children shape precisely */}
           <HTMLFlipBook
             ref={bookRef}
-            width={420}
-            height={594}
-            minWidth={240}
-            maxWidth={640}
-            minHeight={340}
-            maxHeight={905}
+            width={840}
+            height={1188}
+            minWidth={480}
+            maxWidth={1280}
+            minHeight={680}
+            maxHeight={1810}
             size="stretch"
             showCover
             usePortrait
