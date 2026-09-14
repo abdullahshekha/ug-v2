@@ -5,9 +5,17 @@ interface PageHeroProps {
   breadcrumb: string;
   title: string;
   subtitle?: string;
+  /** An extra breadcrumb level between Home and the current page, for
+   * nested routes (for example a product's variant pages). */
+  parent?: { label: string; href: string };
 }
 
-export default function PageHero({ breadcrumb, title, subtitle }: PageHeroProps) {
+export default function PageHero({
+  breadcrumb,
+  title,
+  subtitle,
+  parent,
+}: PageHeroProps) {
   return (
     <section className="relative overflow-hidden bg-grey pb-16 pt-32 sm:pb-20 sm:pt-40">
       <div
@@ -20,10 +28,21 @@ export default function PageHero({ breadcrumb, title, subtitle }: PageHeroProps)
         }}
       />
       <div className="relative mx-auto max-w-[1600px] px-4 sm:px-8 lg:px-12">
-        <nav className="flex items-center gap-2 text-sm text-white">
+        <nav className="flex flex-wrap items-center gap-2 text-sm text-white">
           <Link href="/" className="transition-colors hover:text-mist">
             Home
           </Link>
+          {parent && (
+            <>
+              <ChevronRight className="h-3.5 w-3.5" />
+              <Link
+                href={parent.href}
+                className="transition-colors hover:text-mist"
+              >
+                {parent.label}
+              </Link>
+            </>
+          )}
           <ChevronRight className="h-3.5 w-3.5" />
           <span className="font-bold">{breadcrumb}</span>
         </nav>

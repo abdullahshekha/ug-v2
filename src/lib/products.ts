@@ -23,6 +23,10 @@ export interface ProductVariant {
   badge?: string;
   body: string;
   image?: string;
+  /** Slug of a dedicated variant page under /smart-gypsum-board/<slug>/,
+   * see src/lib/boardVariants.ts. When set, the card links there instead
+   * of only showing this inline body copy. */
+  slug?: string;
 }
 
 export interface ProductNote {
@@ -65,40 +69,45 @@ export const products: Record<string, Product> = {
     intro:
       "Smart Gypsum Board, our flagship product, contains gypsum and an incombustible core covered with extra-tough paper on both sides that gives it strength and durability. It is manufactured in coherence with ASTM standards including ASTM C472, C473, C474 and D3763, and developed with superior raw materials and precision engineering for a comprehensive range of uses.",
     metaDescription:
-      "Smart Gypsum Board: incombustible core, extra-tough paper facing, made to ASTM C472/C473/C474/D3763. Standard, Fire, Moisture and Foil-backed boards in 9, 12 and 15 mm.",
+      "Smart Gypsum Board: incombustible core, extra-tough paper facing, made to ASTM C472/C473/C474/D3763. Standard, Fire Resistant, Moisture Resistant, Heat Resistant and Perforated boards in 7, 9, 12 and 15 mm.",
     image: "/images/flagship-gypsum-board.png",
     imageFit: "contain",
     highlights: [
       "ASTM C472 / C473 / C474 / D3763",
       "Incombustible gypsum core",
       "Extra-tough paper both sides",
-      "Standard, Fire, Moisture and Foil-backed",
+      "Standard, Fire, Moisture, Heat and Perforated",
     ],
     variants: [
       {
         name: "Standard",
         body: "Smart Standard Gypsum Board is ideal for interior walls, partitions and ceilings that require no special protection from fire or moisture.",
-        image: "/images/board-standard.png",
+        image: "/images/board-variant-standard.png",
+        slug: "standard",
       },
       {
-        name: "Fire Resistance",
+        name: "Fire Resistant",
         body: "An exceptional choice for walls, partitions and ceilings that need extra fire protection. An incombustible fibre is added to the gypsum and enclosed within tough pink compressed paper, tailored and tested to global fire-rating requirements. Recommended for fire escape stairs, computer rooms, elevators and interior building walls.",
-        image: "/images/board-fire.png",
+        image: "/images/board-variant-fire-resistant.png",
+        slug: "fire-resistant",
       },
       {
-        name: "Moisture Resistance",
+        name: "Moisture Resistant",
         body: "A superlative choice where walls, partitions and ceilings need extra protection from moisture. A blend of wax and silicone compound is enclosed by tough green paper so the board can endure damp surroundings.",
-        image: "/images/board-moisture.png",
+        image: "/images/board-variant-moisture-resistant.png",
+        slug: "moisture-resistant",
       },
       {
-        name: "Foil Backed",
+        name: "Heat Resistant",
         body: "Great for interior insulation of exterior walls. In cold climates it acts as an effective vapour retarder, preventing interior moisture from penetrating wall and ceiling spaces. The back liner carries an aluminium foil sheet that reflects 95% of thermal radiation.",
-        image: "/images/board-heat.png",
+        image: "/images/board-variant-heat-resistant.png",
+        slug: "heat-resistant",
       },
       {
         name: "Perforated (Smart Echo Shield)",
         body: "A perforated gypsum board that absorbs and diffuses sound, cutting reverberation in auditoriums, cinemas, conference rooms and open-plan offices while keeping the fire and durability performance of a standard board.",
-        image: "/images/board-perforated.png",
+        image: "/images/board-variant-perforated.png",
+        slug: "perforated",
       },
     ],
     spec: {

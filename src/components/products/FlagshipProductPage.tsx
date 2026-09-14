@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, Download, Package, Info } from "lucide-react";
+import { Check, Download, Package, Info, ArrowUpRight } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import SpecTable from "@/components/ui/SpecTable";
 import RelatedProducts from "@/components/products/RelatedProducts";
@@ -127,28 +127,29 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
               {product.slug === "smart-grid" ? "Two systems" : "The range"}
             </h2>
             <div className="mt-8 grid gap-5 md:grid-cols-2">
-              {product.variants.map((v) => (
-                <article
-                  key={v.name}
-                  className="overflow-hidden rounded-3xl border border-warm bg-mist shadow-plaster"
-                >
-                  {v.image ? (
-                    <div className="flex h-48 items-center justify-center bg-white p-6">
-                      <Image
-                        src={v.image}
-                        alt={v.name}
-                        width={700}
-                        height={523}
-                        className="h-full w-full object-contain"
-                      />
-                    </div>
-                  ) : (
-                    <div className="p-6 pb-0">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red text-white">
-                        <Package className="h-5 w-5" />
-                      </span>
-                    </div>
-                  )}
+              {product.variants.map((v) => {
+                const href =
+                  product.slug === "smart-gypsum-board" && v.slug
+                    ? `/smart-gypsum-board/${v.slug}/`
+                    : null;
+                const media = v.image ? (
+                  <div className="flex h-48 items-center justify-center bg-white p-6">
+                    <Image
+                      src={v.image}
+                      alt={v.name}
+                      width={700}
+                      height={523}
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div className="p-6 pb-0">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red text-white">
+                      <Package className="h-5 w-5" />
+                    </span>
+                  </div>
+                );
+                const body = (
                   <div className="p-6">
                     <div className="flex items-center gap-2">
                       <h3 className="text-lg font-extrabold text-red">
@@ -163,9 +164,36 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
                     <p className="mt-3 text-sm leading-relaxed text-grey">
                       {v.body}
                     </p>
+                    {href && (
+                      <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-grey group-hover:text-red">
+                        View details
+                        <ArrowUpRight className="h-4 w-4" />
+                      </span>
+                    )}
                   </div>
-                </article>
-              ))}
+                );
+                if (href) {
+                  return (
+                    <Link
+                      key={v.name}
+                      href={href}
+                      className="group block overflow-hidden rounded-3xl border border-warm bg-mist shadow-plaster transition-transform hover:-translate-y-1"
+                    >
+                      {media}
+                      {body}
+                    </Link>
+                  );
+                }
+                return (
+                  <article
+                    key={v.name}
+                    className="overflow-hidden rounded-3xl border border-warm bg-mist shadow-plaster"
+                  >
+                    {media}
+                    {body}
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>

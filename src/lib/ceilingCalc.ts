@@ -29,13 +29,16 @@ export const BOARD_TYPES: Record<
   BoardType,
   { label: string; image: string }
 > = {
-  standard: { label: "Standard Board", image: "/images/board-standard.png" },
-  moisture: { label: "Moisture Resistant Board", image: "/images/board-moisture.png" },
-  fire: { label: "Fire Resistant Board", image: "/images/board-fire.png" },
-  heat: { label: "Heat Resistant Board", image: "/images/board-heat.png" },
+  standard: { label: "Standard Board", image: "/images/board-variant-standard.png" },
+  moisture: {
+    label: "Moisture Resistant Board",
+    image: "/images/board-variant-moisture-resistant.png",
+  },
+  fire: { label: "Fire Resistant Board", image: "/images/board-variant-fire-resistant.png" },
+  heat: { label: "Heat Resistant Board", image: "/images/board-variant-heat-resistant.png" },
   perforated: {
     label: "Perforated Board (Smart Echo Shield)",
-    image: "/images/board-perforated.png",
+    image: "/images/board-variant-perforated.png",
   },
 };
 
