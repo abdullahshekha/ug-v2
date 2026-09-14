@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
-import DealerForm from "@/components/sections/DealerForm";
+import DistributorForm from "@/components/sections/DistributorForm";
 import BlogsList from "./BlogsList";
 import { blogs, blogCategories } from "./data";
 
@@ -29,7 +29,7 @@ export default function BlogsPage() {
           </div>
         </section>
 
-        <DealerForm />
+        <DistributorForm />
       </main>
       <Footer />
     </>

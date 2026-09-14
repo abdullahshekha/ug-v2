@@ -89,10 +89,10 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
-                  href="/#dealer"
+                  href="/#distributor"
                   className="inline-flex items-center rounded-full bg-red px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-grey"
                 >
-                  Become a dealer
+                  Become a Distributor
                 </Link>
                 {showCalculator && (
                   <Link
@@ -124,7 +124,7 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
         <section className="border-t border-warm bg-white">
           <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
             <h2 className="text-2xl font-extrabold tracking-tight text-grey sm:text-3xl">
-              {product.slug === "smart-grid" ? "Two systems" : "The range"}
+              {product.slug === "smart-grid" ? "Two systems" : "The Range"}
             </h2>
             <div className="mt-8 grid gap-5 md:grid-cols-2">
               {product.variants.map((v) => {
@@ -133,12 +133,12 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
                     ? `/smart-gypsum-board/${v.slug}/`
                     : null;
                 const media = v.image ? (
-                  <div className="flex h-48 items-center justify-center bg-white p-6">
+                  <div className="flex h-96 items-center justify-center bg-white p-6">
                     <Image
                       src={v.image}
                       alt={v.name}
-                      width={700}
-                      height={523}
+                      width={900}
+                      height={670}
                       className="h-full w-full object-contain"
                     />
                   </div>
@@ -199,32 +199,6 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
         </section>
       )}
 
-      {/* Finishes (Ceiling Panel) */}
-      {product.finishes && (
-        <section className="border-t border-warm bg-mist">
-          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
-            <h2 className="text-2xl font-extrabold tracking-tight text-grey">
-              Available finishes
-            </h2>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-grey">
-              Vinyl laminates come in a wide range of patterns and colours.
-              Browse the full shade card to choose an exact finish.
-            </p>
-            {sheet && (
-              <a
-                href={sheet}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-grey transition-colors hover:text-red"
-              >
-                <Download className="h-4 w-4" />
-                Download the shade card (PDF)
-              </a>
-            )}
-          </div>
-        </section>
-      )}
-
       {/* Shade card flipbook (Ceiling Panel) */}
       {shadeCardPages > 0 && (
         <section className="border-t border-warm bg-mist">
@@ -233,11 +207,25 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
               Browse the shade card
             </h2>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-grey">
-              Turn the page to see every finish, or use the arrows.
+              Turn the page to see every finish, or use the arrows. Vinyl
+              laminates come in a wide range of patterns and colours.
             </p>
             <div className="mt-8">
               <ShadeCardViewer pageCount={shadeCardPages} />
             </div>
+            {sheet && (
+              <div className="mt-8 flex justify-center">
+                <a
+                  href={sheet}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-warm bg-white px-6 py-3 text-sm font-bold text-grey transition-colors hover:text-red"
+                >
+                  <Download className="h-4 w-4" />
+                  Download the shade card (PDF)
+                </a>
+              </div>
+            )}
           </div>
         </section>
       )}

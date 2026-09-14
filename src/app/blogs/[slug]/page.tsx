@@ -7,7 +7,7 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import BlogArticle from "@/components/blog/BlogArticle";
 import ProductCta from "@/components/products/ProductCta";
-import DealerForm from "@/components/sections/DealerForm";
+import DistributorForm from "@/components/sections/DistributorForm";
 import { blogs, getBlogBySlug } from "../data";
 
 export function generateStaticParams() {
@@ -168,7 +168,7 @@ export default async function BlogPostPage({
           body="Talk to United Gypsum about products, specifications and becoming a stockist."
         />
 
-        <DealerForm />
+        <DistributorForm />
       </main>
       <Footer />
       <script

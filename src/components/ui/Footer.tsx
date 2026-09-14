@@ -8,6 +8,13 @@ const columns = {
     { label: "Smart Ceiling Panel", href: "/smart-ceiling-panel/" },
     { label: "Smart Grid", href: "/smart-grid/" },
   ],
+  "Gypsum Board Sheets": [
+    { label: "Standard", href: "/smart-gypsum-board/standard/" },
+    { label: "Moisture Resistant", href: "/smart-gypsum-board/moisture-resistant/" },
+    { label: "Fire Resistant", href: "/smart-gypsum-board/fire-resistant/" },
+    { label: "Heat Resistant", href: "/smart-gypsum-board/heat-resistant/" },
+    { label: "Perforated (Smart Echo Shield)", href: "/smart-gypsum-board/perforated/" },
+  ],
   Accessories: [
     { label: "Smart Filler", href: "/smart-filler/" },
     { label: "Smart Tape", href: "/smart-tape/" },
@@ -44,7 +51,7 @@ export default function Footer() {
     <footer className="bg-grey text-white">
       <div className="mx-auto max-w-[1600px] px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 gap-10 py-16 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <Image
               src="/images/united-gypsum-logo-white.png"
               alt="United Gypsum"
@@ -73,7 +80,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-8">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:col-span-9 lg:grid-cols-4">
             {Object.entries(columns).map(([heading, links]) => (
               <div key={heading}>
                 <h3 className="text-[11px] font-extrabold uppercase tracking-eyebrow text-white">

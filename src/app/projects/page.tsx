@@ -8,7 +8,7 @@ import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ProductCta from "@/components/products/ProductCta";
-import DealerForm from "@/components/sections/DealerForm";
+import DistributorForm from "@/components/sections/DistributorForm";
 import InTheirWords from "@/components/sections/InTheirWords";
 import {
   sectors,
@@ -195,7 +195,7 @@ export default function ProjectsPage() {
           body="Talk to our team about specifying United Gypsum systems on your project."
         />
 
-        <DealerForm />
+        <DistributorForm />
       </main>
       <Footer />
     </>

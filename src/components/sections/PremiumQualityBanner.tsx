@@ -26,10 +26,10 @@ export default function PremiumQualityBanner() {
               View company profile
             </Link>
             <Link
-              href="#dealer"
+              href="#distributor"
               className="inline-flex items-center rounded-full border border-white px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white hover:text-grey"
             >
-              Become a dealer
+              Become a Distributor
             </Link>
           </div>
         </div>

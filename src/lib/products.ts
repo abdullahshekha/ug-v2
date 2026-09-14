@@ -158,8 +158,9 @@ export const products: Record<string, Product> = {
     highlights: [
       "Non-combustible gypsum core",
       "Class 2 flame spread (BS 476 Part 7)",
-      "Vinyl-laminated or foil-backed",
+      "Vinyl-laminated, foil-backed or perforated acoustic",
       "595 x 595 mm and 595 x 1195 mm",
+      "ASTM E136 and C1396",
     ],
     variants: [
       {
@@ -170,20 +171,38 @@ export const products: Record<string, Product> = {
         name: "Foil backed",
         body: "Back liners are joined to a sheet of aluminium foil that impedes heat flow, acts as a vapour retarder and reflects thermal radiation. Ideal for top floors of commercial and residential buildings directly exposed to heat and sunlight during Pakistan's hot summers.",
       },
+      {
+        name: "Perforated (Smart EchoShield)",
+        body: "An acoustic vinyl-laminated tile with a perforated face that absorbs and diffuses sound, with a Noise Reduction Coefficient of 0.65 to 0.70 (up to 0.85 when installed with glass wool insulation). Ideal for music studios, home theatres, offices, seminar rooms, factories, lobbies, atriums and auditoriums. Available in 603 x 603 mm at 7, 9 and 12 mm thickness, in cross-hole (UGT-01) and parallel-hole (UGT-02, UGT-03) patterns.",
+      },
     ],
     finishes: [
       "Super White",
+      "Frost Premium",
       "Frost",
       "Teak",
       "Walnut",
       "Sea Sand",
+      "Ash White",
+      "Elefoil",
       "Fissured",
       "Pinhole",
       "Granular",
       "Almas",
+      "Almas Gold",
+      "Almas Silver",
+      "Almas Purple",
       "Axis",
+      "Axis Gold",
+      "Al-Islam",
+      "Bamboo",
+      "Flora",
+      "Palm Gold",
+      "Palm Silver",
       "Diamond",
       "Knit",
+      "Link",
+      "Link Gold",
     ],
     spec: {
       columns: [
@@ -203,6 +222,16 @@ export const products: Record<string, Product> = {
       ],
       note: "Some sizes are made to special order and taken in advance. Specifications are indicative; confirm current figures with United Gypsum before ordering.",
     },
+    notes: [
+      {
+        title: "Standards and test results",
+        body: "Made to ASTM E136 and C1396. Thermal conductivity 0.0798 W/mK. Passes non-combustibility (50% or less thermally decomposed at 750C for 1 hour).",
+      },
+      {
+        title: "Perforated finish (Smart EchoShield)",
+        body: "Fire resistance is Incombustibility Grade 1. Finish with Smart Filler, Smart Tape and Smart Bead, and do not paint inside the perforated holes.",
+      },
+    ],
     related: ["smart-grid", "smart-gypsum-board", "smart-access"],
     dataSheet: "ceiling-panel-shade-card.pdf",
   },

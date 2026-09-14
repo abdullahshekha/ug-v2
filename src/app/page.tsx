@@ -14,7 +14,7 @@ import ResourceDownloads from "@/components/sections/ResourceDownloads";
 import Events from "@/components/sections/Events";
 import LatestBlogs from "@/components/sections/LatestBlogs";
 import PremiumQualityBanner from "@/components/sections/PremiumQualityBanner";
-import DealerForm from "@/components/sections/DealerForm";
+import DistributorForm from "@/components/sections/DistributorForm";
 
 export default function Home() {
   return (
@@ -35,7 +35,7 @@ export default function Home() {
         <Events />
         <LatestBlogs />
         <PremiumQualityBanner />
-        <DealerForm />
+        <DistributorForm />
       </main>
       <Footer />
     </>

@@ -3,11 +3,12 @@
 import { useState, type FormEvent } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import DistributorMap from "@/components/sections/DistributorMap";
 
 const inputClass =
   "w-full rounded-xl border border-warm bg-white px-4 py-3 text-sm text-grey placeholder:text-grey focus:border-red focus:outline-none";
 
-export default function DealerForm() {
+export default function DistributorForm() {
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -18,12 +19,12 @@ export default function DealerForm() {
   }
 
   return (
-    <section id="dealer" className="scroll-mt-24 bg-mist">
+    <section id="distributor" className="scroll-mt-24 bg-mist">
       <div className="mx-auto max-w-[1600px] px-4 py-20 sm:px-8 sm:py-28 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading
-              eyebrow="Become a dealer"
+              eyebrow="Become a Distributor"
               title="Partner with United Gypsum"
               lead="Feel free to ask your query and one of our representatives will get back to you as soon as possible. Tell us about your market and the products you want to carry."
             />
@@ -153,6 +154,10 @@ export default function DealerForm() {
               </form>
             )}
           </div>
+        </div>
+
+        <div className="mt-16 border-t border-warm pt-16">
+          <DistributorMap />
         </div>
       </div>
     </section>

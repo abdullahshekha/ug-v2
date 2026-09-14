@@ -239,16 +239,38 @@ export const boardVariants: Record<string, BoardVariant> = {
     tagline:
       "A perforated board that absorbs and diffuses sound for auditoriums, cinemas and open-plan offices.",
     intro:
-      "Smart Echo Shield is a perforated gypsum board that absorbs and diffuses sound, cutting reverberation in auditoriums, cinemas, conference rooms and open-plan offices, while keeping the fire and durability performance of a Smart Standard Board. It is the recommended board for the Ceiling Calculator's Auditorium and Conference Room room types.",
+      "Smart Echo Shield is a perforated gypsum board that absorbs and diffuses sound, cutting reverberation in auditoriums, cinemas, conference rooms, open-plan offices, music studios, home theatres and other large or noisy spaces such as lobbies, atriums and factories. It keeps the fire and durability performance of a Smart Standard Board, and is the recommended board for the Ceiling Calculator's Auditorium and Conference Room room types.",
     metaDescription:
-      "Smart Echo Shield: perforated acoustic gypsum board that absorbs and diffuses sound for auditoriums, cinemas, conference rooms and open-plan offices.",
+      "Smart Echo Shield: perforated acoustic gypsum board with an NRC of 0.65 to 0.70, for auditoriums, cinemas, conference rooms, music studios and open-plan offices.",
     image: "/images/board-variant-perforated.png",
     features: [
       "Perforated face that absorbs and diffuses sound",
+      "Noise Reduction Coefficient (NRC) of 0.65 to 0.70",
+      "Up to 0.85 NRC when installed with glass wool insulation",
       "Cuts reverberation in large or hard-surfaced rooms",
       "Keeps the fire and durability performance of Smart Standard Board",
-      "Suited to auditoriums, cinemas, conference rooms and open-plan offices",
+      "Available in cross-hole (UGP-01) and parallel-hole (UGP-02, UGP-03) patterns",
     ],
+    sizeSpec: {
+      columns: ["Thickness", "Metric size (mm)"],
+      rows: [
+        ["9 mm", "1220 x 2440"],
+        ["12 mm", "1220 x 2440"],
+        ["15 mm", "1220 x 2440"],
+      ],
+      note: "Special sizes available on request. Confirm current figures with United Gypsum before ordering.",
+    },
+    testResults: {
+      columns: ["Parameter", "Result"],
+      rows: [
+        [
+          "Sound absorption (NRC)",
+          "0.65 to 0.70, up to 0.85 when installed with glass wool insulation",
+        ],
+        ["Fire resistance", "Incombustibility Grade 1"],
+      ],
+      note: "Published by United Gypsum. Finish with Smart Filler, Smart Tape and Smart Bead, and do not paint inside the perforated holes.",
+    },
   },
 };
 

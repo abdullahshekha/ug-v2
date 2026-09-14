@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
-import DealerForm from "@/components/sections/DealerForm";
+import DistributorForm from "@/components/sections/DistributorForm";
 import BoardVariantPage from "@/components/products/BoardVariantPage";
 import { getBoardVariant } from "@/lib/boardVariants";
 
@@ -19,7 +19,7 @@ export default function Page() {
       <Navbar />
       <main>
         <BoardVariantPage variant={variant} />
-        <DealerForm />
+        <DistributorForm />
       </main>
       <Footer />
     </>

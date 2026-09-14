@@ -30,18 +30,17 @@ export default function ShadeCardFlipbook({ pageCount }: ShadeCardFlipbookProps)
   const goNext = () => bookRef.current?.pageFlip().flipNext();
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
-      <div className="flex w-full flex-1 items-center justify-center gap-2 overflow-hidden sm:gap-6">
-        <button
-          type="button"
-          onClick={goPrev}
-          aria-label="Previous page"
-          className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-warm bg-white text-grey shadow-plaster transition-colors hover:text-red"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-
-        <div className="h-full max-h-full w-full max-w-4xl py-4">
+    <div className="flex w-full flex-col items-center justify-center">
+      {/* The book is centered by margin, with the arrows absolutely
+       * positioned over its sides, rather than flexed alongside it: react-
+       * pageflip's own "stretch" sizing does not play well as a flex item
+       * (it ends up off-center), so give it an unambiguous fixed-width box
+       * to measure instead. Height comes from an aspect-ratio matching the
+       * shade card page images (1100x1559), not a fixed pixel value, so the
+       * book's full height is always visible instead of being clipped by a
+       * mismatched parent height. */}
+      <div className="relative w-full max-w-[420px] py-4 sm:max-w-[640px]">
+        <div style={{ aspectRatio: "1100 / 1559" }}>
           {/* @ts-expect-error -- react-pageflip's types don't model the generic ref/children shape precisely */}
           <HTMLFlipBook
             ref={bookRef}
@@ -82,9 +81,18 @@ export default function ShadeCardFlipbook({ pageCount }: ShadeCardFlipbookProps)
 
         <button
           type="button"
+          onClick={goPrev}
+          aria-label="Previous page"
+          className="absolute left-0 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 flex-shrink-0 items-center justify-center rounded-full border border-warm bg-white text-grey shadow-plaster transition-colors hover:text-red"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+
+        <button
+          type="button"
           onClick={goNext}
           aria-label="Next page"
-          className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-warm bg-white text-grey shadow-plaster transition-colors hover:text-red"
+          className="absolute right-0 top-1/2 flex h-11 w-11 -translate-y-1/2 translate-x-1/2 flex-shrink-0 items-center justify-center rounded-full border border-warm bg-white text-grey shadow-plaster transition-colors hover:text-red"
         >
           <ChevronRight className="h-5 w-5" />
         </button>

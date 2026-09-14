@@ -10,7 +10,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import StandardsStrip from "@/components/ui/StandardsStrip";
 import RelatedProducts from "@/components/products/RelatedProducts";
 import ProductCta from "@/components/products/ProductCta";
-import DealerForm from "@/components/sections/DealerForm";
+import DistributorForm from "@/components/sections/DistributorForm";
 
 export const metadata: Metadata = {
   title: "Company Profile | United Gypsum",
@@ -197,7 +197,7 @@ export default function CompanyProfilePage() {
           body="Become a stockist, specify our systems on a project, or ask our team a question."
         />
 
-        <DealerForm />
+        <DistributorForm />
       </main>
       <Footer />
     </>

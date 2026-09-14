@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { CalendarDays, MapPin } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ProductCta from "@/components/products/ProductCta";
-import DealerForm from "@/components/sections/DealerForm";
+import DistributorForm from "@/components/sections/DistributorForm";
+import EventGallery from "@/components/events/EventGallery";
 import { events, eventImages } from "@/lib/events";
 
 export const metadata: Metadata = {
@@ -71,24 +71,7 @@ export default function EventsPage() {
                       </ul>
                     )}
 
-                    {images.length > 0 && (
-                      <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-                        {images.map((img) => (
-                          <div
-                            key={img.src}
-                            className="aspect-square overflow-hidden rounded-xl border border-warm"
-                          >
-                            <Image
-                              src={img.src}
-                              alt={img.alt}
-                              width={400}
-                              height={400}
-                              className="h-full w-full object-cover"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                    {images.length > 0 && <EventGallery images={images} />}
                   </article>
                 );
               })}
@@ -111,7 +94,7 @@ export default function EventsPage() {
           body="Contact us to arrange a visit, a product demonstration or a specification session."
         />
 
-        <DealerForm />
+        <DistributorForm />
       </main>
       <Footer />
     </>

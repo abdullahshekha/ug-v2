@@ -6,7 +6,7 @@ import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CeilingCalculator from "@/components/sections/CeilingCalculator";
-import DealerForm from "@/components/sections/DealerForm";
+import DistributorForm from "@/components/sections/DistributorForm";
 
 export const metadata: Metadata = {
   title: "Ceiling Material Calculator | United Gypsum",
@@ -83,16 +83,16 @@ export default function CeilingCalculatorPage() {
                 Explore the products
               </Link>
               <Link
-                href="/#dealer"
+                href="/#distributor"
                 className="inline-flex items-center rounded-full border border-warm bg-white px-6 py-3 text-sm font-bold text-grey transition-colors hover:border-red hover:text-red"
               >
-                Become a dealer
+                Become a Distributor
               </Link>
             </div>
           </div>
         </section>
 
-        <DealerForm />
+        <DistributorForm />
       </main>
       <Footer />
     </>

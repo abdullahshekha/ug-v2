@@ -2,7 +2,12 @@
  * Events and exhibitions United Gypsum has taken part in. Photos for IAPEX
  * 2025 and 2026 were sourced from the official United Gypsum Facebook page
  * (facebook.com/unitedgypsum) with the client's direction, and live in
- * public/images/events/<slug>/. Build Asia Expo 2017 has no photos available.
+ * public/images/events/<slug>/. Build Asia Expo 2017's 4 photos were pulled
+ * from the old WordPress site's "Our efforts for sustainable drywall
+ * construction" page (its Build Asia Expo 2017 banner grid): 2 were already
+ * saved locally in that page's _files/ folder, and 2 more (referenced only
+ * via inline CSS background-image, so the original page-save snapshot never
+ * fetched them) were still live at their original wp-content/uploads URLs.
  */
 
 export interface Event {
@@ -51,8 +56,12 @@ export const events: Event[] = [
     location: "Karachi Expo Centre",
     summary:
       "United Gypsum exhibited its full product range and shared the advantages of gypsum systems with architects, contractors and specifiers from across the country.",
-    highlights: [],
-    imageCount: 0,
+    highlights: [
+      "A full-scale branded stand showcasing Smart Gypsum Board and the wider product range",
+      "Live demonstrations of board installation for visiting architects and contractors",
+      "Branded giveaways and literature for attendees at the Karachi Expo Centre",
+    ],
+    imageCount: 4,
   },
 ];
 

@@ -152,7 +152,7 @@ export default function CeilingCalculator({
                 options={[
                   { value: "board", label: "Gypsum Board" },
                   { value: "panel", label: "Ceiling Panel" },
-                  { value: "drywall", label: "Drywall" },
+                  { value: "drywall", label: "Drywall Partition" },
                 ]}
               />
               <Toggle

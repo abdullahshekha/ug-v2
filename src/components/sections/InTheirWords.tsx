@@ -44,10 +44,13 @@ export default function InTheirWords() {
           {videos.map((v) => (
             <div
               key={v.title}
-              className="flex-shrink-0"
-              style={{ width: `calc(20rem * ${v.ratio})` }}
+              className="w-full"
+              style={{ maxWidth: `calc(20rem * ${v.ratio})` }}
             >
-              <div className="relative h-80 overflow-hidden rounded-xl">
+              <div
+                className="relative overflow-hidden rounded-xl"
+                style={{ aspectRatio: v.ratio }}
+              >
                 <iframe
                   src={v.src}
                   className="absolute inset-0 h-full w-full border-0"

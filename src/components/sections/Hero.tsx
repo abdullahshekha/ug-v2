@@ -62,10 +62,10 @@ export default function Hero() {
                 Check our products
               </Link>
               <Link
-                href="#dealer"
+                href="#distributor"
                 className="inline-flex items-center rounded-full border border-warm bg-white px-7 py-3.5 text-sm font-bold text-grey transition-colors hover:border-red hover:text-red"
               >
-                Become a dealer
+                Become a Distributor
               </Link>
             </div>
           </div>

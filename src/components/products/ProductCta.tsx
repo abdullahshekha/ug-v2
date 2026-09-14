@@ -22,10 +22,10 @@ export default function ProductCta({
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
-            href="/#dealer"
+            href="/#distributor"
             className="inline-flex items-center rounded-full bg-red px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-grey"
           >
-            Become a dealer
+            Become a Distributor
           </Link>
           {showCalculator && (
             <Link

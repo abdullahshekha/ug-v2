@@ -13,10 +13,15 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Safety net: no section should ever cause horizontal scroll (see the
+   * InTheirWords fixed-width-video fix), but this guards against the next
+   * one slipping through unnoticed on mobile. */
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-montserrat), "Montserrat", sans-serif;
+  overflow-x: hidden;
   @apply bg-mist text-grey;
 }
 

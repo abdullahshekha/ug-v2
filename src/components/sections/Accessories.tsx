@@ -55,7 +55,7 @@ export default function Accessories() {
             title="Everything the system needs"
           />
           <Link
-            href="/#dealer"
+            href="/#distributor"
             className="text-sm font-bold text-red transition-colors hover:text-grey"
           >
             Explore all accessories

@@ -559,7 +559,7 @@ export const blogs: Blog[] = [
       { type: "p", content: "Now, are you ready to get rid of those unsightly wall cracks and achieve an immaculate drywall finish? Our Smart Filler is the perfect solution for all your drywall repair projects." },
       { type: "p", content: "Here is what you can do:" },
       { type: "h3", content: "Visit the United Gypsum Website" },
-      { type: "p", content: "For direct purchase of Smart Filler, locate your nearest authorized dealer or visit our website to find one." },
+      { type: "p", content: "For direct purchase of Smart Filler, locate your nearest authorized distributor or visit our website to find one." },
       { type: "h3", content: "Contact a United Gypsum Representative" },
       { type: "p", content: "If you have any queries regarding Smart Filler, our trained representatives can help you choose the best option for the project you are working on." },
       { type: "h2", content: "Final Remarks:" },

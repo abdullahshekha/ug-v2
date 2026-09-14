@@ -5,7 +5,6 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
 import ContactForm from "@/components/contact/ContactForm";
-import DealerForm from "@/components/sections/DealerForm";
 
 export const metadata: Metadata = {
   title: "Contact Us | United Gypsum",
@@ -116,8 +115,8 @@ export default function ContactPage() {
 
                 <p className="mt-8 border-t border-warm pt-6 text-sm text-grey">
                   Looking to stock our products?{" "}
-                  <Link href="/#dealer" className="font-bold text-red">
-                    Become a dealer
+                  <Link href="/#distributor" className="font-bold text-red">
+                    Become a Distributor
                   </Link>
                   .
                 </p>
@@ -144,8 +143,6 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-
-        <DealerForm />
       </main>
       <Footer />
     </>

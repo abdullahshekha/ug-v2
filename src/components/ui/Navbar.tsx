@@ -22,6 +22,14 @@ const flagship = [
   { label: "Smart Grid", href: "/smart-grid/" },
 ];
 
+const boardSheets = [
+  { label: "Standard", href: "/smart-gypsum-board/standard/" },
+  { label: "Moisture Resistant", href: "/smart-gypsum-board/moisture-resistant/" },
+  { label: "Fire Resistant", href: "/smart-gypsum-board/fire-resistant/" },
+  { label: "Heat Resistant", href: "/smart-gypsum-board/heat-resistant/" },
+  { label: "Perforated (Smart Echo Shield)", href: "/smart-gypsum-board/perforated/" },
+];
+
 const accessories = [
   { label: "Smart Filler", href: "/smart-filler/" },
   { label: "Smart Tape", href: "/smart-tape/" },
@@ -129,9 +137,10 @@ export default function Navbar() {
                 <ChevronDown className="h-4 w-4" />
               </button>
               {openMenu === "products" && (
-                <div className="absolute left-0 top-full w-[30rem] rounded-2xl border border-warm bg-white p-5 shadow-plaster-lg">
-                  <div className="grid grid-cols-2 gap-5">
+                <div className="absolute left-0 top-full w-[44rem] rounded-2xl border border-warm bg-white p-5 shadow-plaster-lg">
+                  <div className="grid grid-cols-3 gap-5">
                     <MenuGroup title="Flagship products" items={flagship} />
+                    <MenuGroup title="Gypsum board sheets" items={boardSheets} />
                     <MenuGroup title="Drywall accessories" items={accessories} />
                   </div>
                 </div>
@@ -168,10 +177,10 @@ export default function Navbar() {
 
           <div className="hidden lg:block">
             <Link
-              href="/#dealer"
+              href="/#distributor"
               className="inline-flex items-center rounded-full bg-red px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-grey"
             >
-              Become a dealer
+              Become a Distributor
             </Link>
           </div>
 
@@ -197,6 +206,7 @@ export default function Navbar() {
             About
           </MobileLink>
           <MobileSection title="Flagship products" items={flagship} onNavigate={() => setMobileOpen(false)} />
+          <MobileSection title="Gypsum board sheets" items={boardSheets} onNavigate={() => setMobileOpen(false)} />
           <MobileSection title="Drywall accessories" items={accessories} onNavigate={() => setMobileOpen(false)} />
           <MobileSection title="Resources" items={resources} onNavigate={() => setMobileOpen(false)} />
           <MobileLink href="/events/" onClick={() => setMobileOpen(false)}>
@@ -207,11 +217,11 @@ export default function Navbar() {
           </MobileLink>
 
           <Link
-            href="/#dealer"
+            href="/#distributor"
             onClick={() => setMobileOpen(false)}
             className="mt-3 block rounded-full bg-red px-5 py-3 text-center text-sm font-bold text-white"
           >
-            Become a dealer
+            Become a Distributor
           </Link>
 
           <div className="flex items-center gap-3 pt-4">
