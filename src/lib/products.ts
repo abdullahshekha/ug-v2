@@ -139,6 +139,10 @@ export const products: Record<string, Product> = {
         title: "Limitations",
         body: "Not recommended for areas exposed to constant moisture or extreme dampness such as saunas, steam rooms and swimming pools. Additional sizes available on special order.",
       },
+      {
+        title: "Suspended ceiling installation",
+        body: "Screw the wall angle to the perimeter, suspend primary channels from the soffit at 1220 mm centres, then fix furring channels to those at 610 mm centres. Screw board to the furring channels with 25 mm Smart Screws at 230 mm centres, then tape and fill the joints with Smart Tape and Smart Filler.",
+      },
     ],
     related: ["smart-ceiling-panel", "smart-grid", "smart-filler"],
     dataSheet: "gypsum-board-data-sheet.pdf",
@@ -166,10 +170,12 @@ export const products: Record<string, Product> = {
       {
         name: "Vinyl laminated",
         body: "Comes in high-quality vinyl laminates in embossed, plain and printed patterns that can match or contrast with the surrounding layout. Easy to clean, gives abundant light reflection and needs no further embellishment.",
+        image: "/images/panel-vinyl-laminated.png",
       },
       {
         name: "Foil backed",
         body: "Back liners are joined to a sheet of aluminium foil that impedes heat flow, acts as a vapour retarder and reflects thermal radiation. Ideal for top floors of commercial and residential buildings directly exposed to heat and sunlight during Pakistan's hot summers.",
+        image: "/images/panel-foil-backed.png",
       },
       {
         name: "Perforated (Smart EchoShield)",
@@ -263,6 +269,22 @@ export const products: Record<string, Product> = {
         name: "Smart Grid 32",
         badge: "Standard",
         body: "A simple design of interlocked main and cross tees in light-weight galvanized metal, suitable for false ceilings of small areas such as retail shops and small offices.",
+      },
+    ],
+    spec: {
+      columns: ["Component", "Dimensions", "Thickness"],
+      rows: [
+        ["Main runner", "38 mm H x 24 mm W x 3660 mm L", "0.23 mm"],
+        ["Cross runner, long", "26 mm H x 24 mm W x 1220 mm L", "0.23 mm"],
+        ["Cross runner, short", "26 mm H x 24 mm W x 610 mm L", "0.23 mm"],
+        ["Wall angle", "22 mm H x 22 mm W x 3050 mm L", "0.23 mm"],
+      ],
+      note: "Published by United Gypsum for Smart Grid 38 Premium. Confirm current figures with United Gypsum before ordering.",
+    },
+    notes: [
+      {
+        title: "Installation",
+        body: "Suspend the main runner from the soffit with hanging wire, interlock the cross tees to form the grid, and screw the wall angle around the room perimeter. Smart Tile or Smart Gypsum Board then lays into or fixes onto the finished grid.",
       },
     ],
     related: ["smart-ceiling-panel", "smart-gypsum-board", "smart-access"],

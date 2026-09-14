@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Users, Leaf, Lightbulb, Handshake, Award, UserCheck } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import PageHero from "@/components/ui/PageHero";
@@ -8,6 +9,39 @@ import StandardsStrip from "@/components/ui/StandardsStrip";
 import Pillars from "@/components/sections/Pillars";
 import ProductCta from "@/components/products/ProductCta";
 import DistributorForm from "@/components/sections/DistributorForm";
+
+const coreValues = [
+  {
+    icon: Users,
+    title: "Employee Empowerment",
+    body: "Team members are equipped and trusted to make sound decisions in their daily work.",
+  },
+  {
+    icon: Leaf,
+    title: "Sustainability",
+    body: "Manufacturing processes and products designed with environmental responsibility in mind.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation",
+    body: "Continuous investment in technology and product research and development.",
+  },
+  {
+    icon: Handshake,
+    title: "Integrity",
+    body: "Acting ethically and putting clients first in every part of the business.",
+  },
+  {
+    icon: Award,
+    title: "Quality Excellence",
+    body: "Products designed and tested for long lasting endurance, using excellent raw materials.",
+  },
+  {
+    icon: UserCheck,
+    title: "Customer Centric",
+    body: "Meeting the varied requirements of customers globally, market by market.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "About Us | United Gypsum",
@@ -135,6 +169,66 @@ export default function AboutUsPage() {
                   client-centric solutions.
                 </p>
               </article>
+            </div>
+          </div>
+        </section>
+
+        {/* Core values & Quality Policy */}
+        <section className="border-t border-warm bg-white">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
+            <SectionHeading eyebrow="What we stand for" title="Core values" />
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {coreValues.map((v) => (
+                <div
+                  key={v.title}
+                  className="rounded-3xl border border-warm bg-mist p-6"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red text-white">
+                    <v.icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-4 text-base font-extrabold text-grey">
+                    {v.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-grey">
+                    {v.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-14 max-w-2xl border-t border-warm pt-10">
+              <h2 className="text-[11px] font-extrabold uppercase tracking-eyebrow text-red">
+                Quality Policy
+              </h2>
+              <p className="mt-3 text-lg leading-relaxed text-grey">
+                Our products have been designed and tested to give long
+                lasting endurance. We are committed to provide higher quality
+                products using excellent raw materials, state of the art
+                technology and international quality control systems. We take
+                pride in meeting the various requirements of customers
+                globally, and in reinvesting into our product research and
+                development.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Gypsum Rock of Pakistan */}
+        <section className="border-t border-warm bg-mist">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+            <SectionHeading
+              eyebrow="Our raw material"
+              title="Gypsum rock of Pakistan"
+              lead="Pakistan boasts abundant gypsum rock, a valuable mineral integral to various industries, particularly construction. Renowned for its purity and quality, Pakistani gypsum deposits contribute significantly to the production of gypsum-based products. Mined from rich reserves, these gypsum rocks serve as the foundation for United Gypsum's commitment to delivering innovative, cost-effective and sustainable solutions to meet the evolving needs of the construction industry."
+            />
+            <div className="mt-8 overflow-hidden rounded-3xl border border-warm shadow-plaster">
+              <Image
+                src="/images/gypsum-rock-of-pakistan.jpg"
+                alt="Gypsum rock quarry in Pakistan, the raw material for United Gypsum's products"
+                width={2627}
+                height={713}
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
         </section>
