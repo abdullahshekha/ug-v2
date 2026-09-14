@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Phone, Mail, MapPin } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import DistributorMap from "@/components/sections/DistributorMap";
 
@@ -26,34 +25,9 @@ export default function DistributorForm() {
             <SectionHeading
               eyebrow="Become a Distributor"
               title="Partner with United Gypsum"
-              lead="Feel free to ask your query and one of our representatives will get back to you as soon as possible. Tell us about your market and the products you want to carry."
             />
-            <div className="mt-8 space-y-3 text-sm text-grey">
-              <a
-                href="tel:+922134123301"
-                className="flex items-center gap-3 transition-colors hover:text-red"
-              >
-                <Phone className="h-4 w-4 flex-shrink-0 text-red" />
-                +92 21 34123301-2
-              </a>
-              <a
-                href="tel:+923000566858"
-                className="flex items-center gap-3 transition-colors hover:text-red"
-              >
-                <Phone className="h-4 w-4 flex-shrink-0 text-red" />
-                +92 300 0566858
-              </a>
-              <a
-                href="mailto:sales@unitedgypsum.com"
-                className="flex items-center gap-3 transition-colors hover:text-red"
-              >
-                <Mail className="h-4 w-4 flex-shrink-0 text-red" />
-                sales@unitedgypsum.com
-              </a>
-              <p className="flex items-center gap-3">
-                <MapPin className="h-4 w-4 flex-shrink-0 text-red" />
-                B-22, 23 &amp; 24 NWIZ, Port Qasim, Karachi, Sindh, Pakistan
-              </p>
+            <div className="mt-8">
+              <DistributorMap />
             </div>
           </div>
 
@@ -154,10 +128,6 @@ export default function DistributorForm() {
               </form>
             )}
           </div>
-        </div>
-
-        <div className="mt-16 border-t border-warm pt-16">
-          <DistributorMap />
         </div>
       </div>
     </section>

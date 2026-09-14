@@ -8,7 +8,7 @@ const columns = {
     { label: "Smart Ceiling Panel", href: "/smart-ceiling-panel/" },
     { label: "Smart Grid", href: "/smart-grid/" },
   ],
-  "Gypsum Board Sheets": [
+  "Gypsum Boards": [
     { label: "Standard", href: "/smart-gypsum-board/standard/" },
     { label: "Moisture Resistant", href: "/smart-gypsum-board/moisture-resistant/" },
     { label: "Fire Resistant", href: "/smart-gypsum-board/fire-resistant/" },

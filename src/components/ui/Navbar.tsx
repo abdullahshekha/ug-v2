@@ -140,7 +140,7 @@ export default function Navbar() {
                 <div className="absolute left-0 top-full w-[44rem] rounded-2xl border border-warm bg-white p-5 shadow-plaster-lg">
                   <div className="grid grid-cols-3 gap-5">
                     <MenuGroup title="Flagship products" items={flagship} />
-                    <MenuGroup title="Gypsum board sheets" items={boardSheets} />
+                    <MenuGroup title="Gypsum Boards" items={boardSheets} />
                     <MenuGroup title="Drywall accessories" items={accessories} />
                   </div>
                 </div>
@@ -206,7 +206,7 @@ export default function Navbar() {
             About
           </MobileLink>
           <MobileSection title="Flagship products" items={flagship} onNavigate={() => setMobileOpen(false)} />
-          <MobileSection title="Gypsum board sheets" items={boardSheets} onNavigate={() => setMobileOpen(false)} />
+          <MobileSection title="Gypsum Boards" items={boardSheets} onNavigate={() => setMobileOpen(false)} />
           <MobileSection title="Drywall accessories" items={accessories} onNavigate={() => setMobileOpen(false)} />
           <MobileSection title="Resources" items={resources} onNavigate={() => setMobileOpen(false)} />
           <MobileLink href="/events/" onClick={() => setMobileOpen(false)}>
