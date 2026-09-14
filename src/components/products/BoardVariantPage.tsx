@@ -160,6 +160,47 @@ export default function BoardVariantPage({ variant }: { variant: BoardVariant })
         </section>
       )}
 
+      {/* Application photo and, for Heat Resistant, the comparison diagram */}
+      {(variant.applicationImage || variant.diagramImage) && (
+        <section className="border-t border-warm bg-mist">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+            <h2 className="text-2xl font-extrabold tracking-tight text-grey">
+              In practice
+            </h2>
+            <div
+              className={`mt-6 grid gap-5 ${
+                variant.applicationImage && variant.diagramImage
+                  ? "sm:grid-cols-2"
+                  : "sm:grid-cols-1"
+              }`}
+            >
+              {variant.applicationImage && (
+                <div className="overflow-hidden rounded-3xl border border-warm shadow-plaster">
+                  <Image
+                    src={variant.applicationImage.src}
+                    alt={variant.applicationImage.alt}
+                    width={900}
+                    height={600}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              )}
+              {variant.diagramImage && (
+                <div className="overflow-hidden rounded-3xl border border-warm bg-white p-6 shadow-plaster">
+                  <Image
+                    src={variant.diagramImage.src}
+                    alt={variant.diagramImage.alt}
+                    width={1400}
+                    height={730}
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Other board types */}
       <section className="border-t border-warm bg-mist">
         <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">

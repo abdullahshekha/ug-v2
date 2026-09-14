@@ -108,6 +108,41 @@ export default function AccessoryProductPage({ product }: { product: Product }) 
               </div>
             </div>
           )}
+
+          {product.installationImages && (
+            <div className="mt-16 border-t border-warm pt-16">
+              <h2 className="text-2xl font-extrabold tracking-tight text-grey">
+                In practice
+              </h2>
+              <div
+                className={`mt-6 grid gap-5 ${
+                  product.installationImages.length > 1
+                    ? "sm:grid-cols-2"
+                    : "sm:grid-cols-1"
+                }`}
+              >
+                {product.installationImages.map((img) => (
+                  <figure
+                    key={img.src}
+                    className="overflow-hidden rounded-3xl border border-warm bg-white shadow-plaster"
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      width={900}
+                      height={600}
+                      className="h-full w-full object-contain"
+                    />
+                    {img.caption && (
+                      <figcaption className="border-t border-warm p-4 text-xs text-grey">
+                        {img.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

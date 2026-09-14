@@ -32,6 +32,12 @@ export interface BoardVariant {
   /** Used only by Heat Resistant, which is a foil back liner layered onto
    * another board type rather than a distinct core product. */
   layeredNote?: string;
+  /** A real application photo (from the client's brochure) showing the kind
+   * of space this variant is used in. */
+  applicationImage?: { src: string; alt: string };
+  /** Used only by Heat Resistant: the "conventional vs Smart Heat Resistant
+   * ceiling" comparison diagram from the guide book. */
+  diagramImage?: { src: string; alt: string };
 }
 
 export const boardVariants: Record<string, BoardVariant> = {
@@ -97,6 +103,10 @@ export const boardVariants: Record<string, BoardVariant> = {
       ],
       note: "Published by United Gypsum for 12 mm board. Figures are indicative; confirm current test data with United Gypsum.",
     },
+    applicationImage: {
+      src: "/images/board-standard-application.jpg",
+      alt: "Curved gypsum board ceiling in a hotel lobby, an application of Smart Standard Gypsum Board",
+    },
   },
 
   "moisture-resistant": {
@@ -158,6 +168,10 @@ export const boardVariants: Record<string, BoardVariant> = {
       ],
       note: "Published by United Gypsum for 12 mm board. Figures are indicative; confirm current test data with United Gypsum.",
     },
+    applicationImage: {
+      src: "/images/board-moisture-application.jpg",
+      alt: "Bathroom with a Smart Moisture Resistant Gypsum Board ceiling and walls",
+    },
   },
 
   "fire-resistant": {
@@ -211,6 +225,10 @@ export const boardVariants: Record<string, BoardVariant> = {
       ],
       note: "Published by United Gypsum. Figures are indicative; confirm current test data with United Gypsum.",
     },
+    applicationImage: {
+      src: "/images/board-fire-application.jpg",
+      alt: "Data centre server room, an application of Smart Fire Resistant Gypsum Board",
+    },
   },
 
   "heat-resistant": {
@@ -231,6 +249,14 @@ export const boardVariants: Record<string, BoardVariant> = {
     ],
     layeredNote:
       "Heat Resistant is a foil back liner rather than a separate core product: it is preferred for areas that need additional heat control and can be incorporated into all Smart Gypsum Boards, including Standard, Fire Resistant and Moisture Resistant, at the same thicknesses and sizes shown on those pages.",
+    applicationImage: {
+      src: "/images/board-heat-application.jpg",
+      alt: "Attic loft room with a skylight, an application of Smart Heat Resistant Gypsum Board",
+    },
+    diagramImage: {
+      src: "/images/board-heat-diagram.png",
+      alt: "Diagram comparing a conventional ceiling to a Smart Heat Resistant ceiling reflecting sunlight",
+    },
   },
 
   perforated: {

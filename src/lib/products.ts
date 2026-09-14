@@ -54,6 +54,10 @@ export interface Product {
   application?: string;
   spec?: ProductSpec;
   notes?: ProductNote[];
+  /** Real application or installation photos and diagrams from the client's
+   * brochures and profile, shown as a supporting gallery below the main
+   * content. */
+  installationImages?: { src: string; alt: string; caption?: string }[];
   related: string[];
   /** Filename in public/resources/. The CTA renders only if the file exists. */
   dataSheet?: string;
@@ -142,6 +146,12 @@ export const products: Record<string, Product> = {
       {
         title: "Suspended ceiling installation",
         body: "Screw the wall angle to the perimeter, suspend primary channels from the soffit at 1220 mm centres, then fix furring channels to those at 610 mm centres. Screw board to the furring channels with 25 mm Smart Screws at 230 mm centres, then tape and fill the joints with Smart Tape and Smart Filler.",
+      },
+    ],
+    installationImages: [
+      {
+        src: "/images/board-installation.jpg",
+        alt: "Installing Smart Gypsum Board onto metal furring channels over insulation",
       },
     ],
     related: ["smart-ceiling-panel", "smart-grid", "smart-filler"],
@@ -287,6 +297,20 @@ export const products: Record<string, Product> = {
         body: "Suspend the main runner from the soffit with hanging wire, interlock the cross tees to form the grid, and screw the wall angle around the room perimeter. Smart Tile or Smart Gypsum Board then lays into or fixes onto the finished grid.",
       },
     ],
+    installationImages: [
+      {
+        src: "/images/grid-installed.jpg",
+        alt: "Smart Grid T-bar suspended ceiling system installed, ready for tiles",
+      },
+      {
+        src: "/images/grid-diagram.png",
+        alt: "Labeled diagram of the Smart Grid system: wall angle, main tee, hanging wire, short and long cross tee, and Smart Tile",
+      },
+      {
+        src: "/images/grid-closeup.jpg",
+        alt: "Close-up of interlocked Smart Grid main and cross tees",
+      },
+    ],
     related: ["smart-ceiling-panel", "smart-gypsum-board", "smart-access"],
   },
 
@@ -321,6 +345,12 @@ export const products: Record<string, Product> = {
         ["Standards", "Complies with ASTM C475 and ASTM C840"],
       ],
     },
+    installationImages: [
+      {
+        src: "/images/filler-application.jpg",
+        alt: "Applying Smart Filler joint compound to a drywall joint with a putty knife",
+      },
+    ],
     related: ["smart-tape", "smart-bead", "smart-screws"],
   },
 
@@ -394,6 +424,12 @@ export const products: Record<string, Product> = {
     application:
       "Comes in sturdy aluminium profiles with a white powder coating. The spring-loaded latch unlocks easily by applying pressure to the flap on the latch side.",
     sizes: ["300 x 300 mm", "400 x 400 mm", "600 x 600 mm"],
+    installationImages: [
+      {
+        src: "/images/access-installation.jpg",
+        alt: "Smart Access panel open in a suspended ceiling for inspection",
+      },
+    ],
     related: ["smart-ceiling-panel", "smart-grid", "smart-bead"],
   },
 

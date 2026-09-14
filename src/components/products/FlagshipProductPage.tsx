@@ -265,6 +265,44 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
         </section>
       )}
 
+      {/* Installation and application photos */}
+      {product.installationImages && (
+        <section className="border-t border-warm bg-white">
+          <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
+            <h2 className="text-2xl font-extrabold tracking-tight text-grey">
+              In practice
+            </h2>
+            <div
+              className={`mt-6 grid gap-5 ${
+                product.installationImages.length > 1
+                  ? "sm:grid-cols-2 lg:grid-cols-3"
+                  : "sm:grid-cols-1"
+              }`}
+            >
+              {product.installationImages.map((img) => (
+                <figure
+                  key={img.src}
+                  className="overflow-hidden rounded-3xl border border-warm bg-mist shadow-plaster"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={900}
+                    height={600}
+                    className="h-full w-full object-contain bg-white"
+                  />
+                  {img.caption && (
+                    <figcaption className="border-t border-warm p-4 text-xs text-grey">
+                      {img.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <RelatedProducts slugs={product.related} />
       <ProductCta showCalculator={showCalculator} />
     </>

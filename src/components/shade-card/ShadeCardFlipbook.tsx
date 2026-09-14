@@ -35,49 +35,49 @@ export default function ShadeCardFlipbook({ pageCount }: ShadeCardFlipbookProps)
        * positioned over its sides, rather than flexed alongside it: react-
        * pageflip's own "stretch" sizing does not play well as a flex item
        * (it ends up off-center), so give it an unambiguous fixed-width box
-       * to measure instead. Height comes from an aspect-ratio matching the
-       * shade card page images (1100x1559), not a fixed pixel value, so the
-       * book's full height is always visible instead of being clipped by a
-       * mismatched parent height. */}
-      <div className="relative w-full max-w-[840px] py-4 sm:max-w-[1280px]">
-        <div style={{ aspectRatio: "1100 / 1559" }}>
-          {/* @ts-expect-error -- react-pageflip's types don't model the generic ref/children shape precisely */}
-          <HTMLFlipBook
-            ref={bookRef}
-            width={840}
-            height={1188}
-            minWidth={480}
-            maxWidth={1280}
-            minHeight={680}
-            maxHeight={1810}
-            size="stretch"
-            showCover
-            usePortrait
-            drawShadow
-            flippingTime={700}
-            maxShadowOpacity={0.5}
-            mobileScrollSupport={false}
-            className="shade-card-book"
-            style={{}}
-            onFlip={handleFlip}
-          >
-            {Array.from({ length: pageCount }, (_, i) => (
-              <div
-                key={i}
-                className="flex h-full w-full items-center justify-center overflow-hidden bg-white"
-              >
-                <Image
-                  src={`/images/shade-card/${i + 1}.jpg`}
-                  alt={`Smart Ceiling Panel shade card, page ${i + 1} of ${pageCount}`}
-                  width={1100}
-                  height={1559}
-                  className="h-full w-full object-contain"
-                  priority={i < 2}
-                />
-              </div>
-            ))}
-          </HTMLFlipBook>
-        </div>
+       * to measure instead. No height is reserved here with CSS (an
+       * aspect-ratio box was tried and could disagree with what react-
+       * pageflip actually renders at these larger sizes, leaving a visible
+       * gap below the book): HTMLFlipBook sets its own container height via
+       * inline style once mounted, so this wrapper is left to shrink-wrap
+       * to that instead. */}
+      <div className="relative mx-auto w-full max-w-[840px] py-4 sm:max-w-[1280px]">
+        {/* @ts-expect-error -- react-pageflip's types don't model the generic ref/children shape precisely */}
+        <HTMLFlipBook
+          ref={bookRef}
+          width={840}
+          height={1188}
+          minWidth={480}
+          maxWidth={1280}
+          minHeight={680}
+          maxHeight={1810}
+          size="stretch"
+          showCover
+          usePortrait
+          drawShadow
+          flippingTime={700}
+          maxShadowOpacity={0.5}
+          mobileScrollSupport={false}
+          className="shade-card-book"
+          style={{}}
+          onFlip={handleFlip}
+        >
+          {Array.from({ length: pageCount }, (_, i) => (
+            <div
+              key={i}
+              className="flex h-full w-full items-center justify-center overflow-hidden bg-white"
+            >
+              <Image
+                src={`/images/shade-card/${i + 1}.jpg`}
+                alt={`Smart Ceiling Panel shade card, page ${i + 1} of ${pageCount}`}
+                width={1100}
+                height={1559}
+                className="h-full w-full object-contain"
+                priority={i < 2}
+              />
+            </div>
+          ))}
+        </HTMLFlipBook>
 
         <button
           type="button"

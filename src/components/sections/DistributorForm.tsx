@@ -31,7 +31,7 @@ export default function DistributorForm() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-warm bg-white p-6 shadow-plaster sm:p-8">
+          <div className="rounded-3xl border border-warm bg-white p-6 shadow-plaster sm:p-8 lg:sticky lg:top-28 lg:self-start">
             {submitted ? (
               <div className="flex h-full flex-col items-start justify-center">
                 <h3 className="text-lg font-extrabold text-grey">

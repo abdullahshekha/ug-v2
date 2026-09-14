@@ -28,6 +28,11 @@ const certificates = [
     title: "ASTM Conformance",
     caption: "C472 / C473 / C474 / D3763",
   },
+  {
+    file: "export-brand-of-the-year-2024.jpg",
+    title: "Export Brand of the Year 2024",
+    caption: "Brands Foundation, Manufacturer of Gypsum Range of Products",
+  },
 ];
 
 const IMAGE_EXT = /\.(png|jpe?g|webp|gif|avif)$/i;
