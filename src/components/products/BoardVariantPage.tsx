@@ -10,6 +10,11 @@ import ProductCta from "@/components/products/ProductCta";
 import { boardVariants, type BoardVariant } from "@/lib/boardVariants";
 import { getProduct } from "@/lib/products";
 
+// The "In practice" application photo / diagram section needs a layout and
+// curation rework before it's ready to show; keep the data and markup in
+// place, just don't render it for now.
+const SHOW_INSTALLATION_IMAGES = false;
+
 function dataSheetHref(file?: string) {
   if (!file) return null;
   try {
@@ -161,7 +166,7 @@ export default function BoardVariantPage({ variant }: { variant: BoardVariant })
       )}
 
       {/* Application photo and, for Heat Resistant, the comparison diagram */}
-      {(variant.applicationImage || variant.diagramImage) && (
+      {SHOW_INSTALLATION_IMAGES && (variant.applicationImage || variant.diagramImage) && (
         <section className="border-t border-warm bg-mist">
           <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <h2 className="text-2xl font-extrabold tracking-tight text-grey">

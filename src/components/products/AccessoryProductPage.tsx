@@ -14,6 +14,11 @@ import RelatedProducts from "@/components/products/RelatedProducts";
 import ProductCta from "@/components/products/ProductCta";
 import type { AccessoryIconName, Product } from "@/lib/products";
 
+// The "In practice" installation/application photo section needs a layout
+// and curation rework before it's ready to show; keep the data and markup
+// in place, just don't render it for now.
+const SHOW_INSTALLATION_IMAGES = false;
+
 const icons: Record<AccessoryIconName, LucideIcon> = {
   Layers,
   Ruler,
@@ -109,7 +114,7 @@ export default function AccessoryProductPage({ product }: { product: Product }) 
             </div>
           )}
 
-          {product.installationImages && (
+          {SHOW_INSTALLATION_IMAGES && product.installationImages && (
             <div className="mt-16 border-t border-warm pt-16">
               <h2 className="text-2xl font-extrabold tracking-tight text-grey">
                 In practice

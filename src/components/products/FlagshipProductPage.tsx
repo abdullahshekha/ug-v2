@@ -10,6 +10,11 @@ import ProductCta from "@/components/products/ProductCta";
 import ShadeCardViewer from "@/components/shade-card/ShadeCardViewer";
 import type { Product } from "@/lib/products";
 
+// The "In practice" installation/application photo section needs a layout
+// and curation rework before it's ready to show; keep the data and markup
+// in place, just don't render it for now.
+const SHOW_INSTALLATION_IMAGES = false;
+
 function dataSheetHref(file?: string) {
   if (!file) return null;
   try {
@@ -266,7 +271,8 @@ export default function FlagshipProductPage({ product }: { product: Product }) {
       )}
 
       {/* Installation and application photos */}
-      {product.installationImages && (
+      {/* TODO: needs a rework (layout/curation), hidden for now per feedback */}
+      {SHOW_INSTALLATION_IMAGES && product.installationImages && (
         <section className="border-t border-warm bg-white">
           <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <h2 className="text-2xl font-extrabold tracking-tight text-grey">

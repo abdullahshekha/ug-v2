@@ -21,7 +21,11 @@ html {
 
 body {
   font-family: var(--font-montserrat), "Montserrat", sans-serif;
-  overflow-x: hidden;
+  /* overflow-x here (in addition to html above) breaks position:sticky for
+   * every descendant: setting only one overflow axis makes the browser
+   * treat body as a scroll container, which sticky elements then anchor to
+   * instead of the viewport, and since body itself never actually scrolls
+   * they never stick. html's overflow-x:hidden is enough of a guard. */
   @apply bg-mist text-grey;
 }
 
