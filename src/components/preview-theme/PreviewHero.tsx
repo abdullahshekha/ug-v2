@@ -3,15 +3,17 @@ import Link from "next/link";
 
 const stats = [
   { value: "2014", label: "Manufacturing since" },
-  { value: "8", label: "Flagship products" },
+  { value: "8", label: "Products" },
   { value: "114+", label: "Clients served" },
 ];
 
 export default function PreviewHero() {
   return (
     <section className="relative overflow-hidden bg-white">
+      {/* Hidden below xl: at lg the clip-path's left edge reaches into the
+          text column and grey text disappears against it (grey on grey). */}
       <div
-        className="absolute inset-y-0 right-0 w-[60%] bg-grey [clip-path:polygon(28%_0,100%_0,100%_100%,0_100%)]"
+        className="absolute inset-y-0 right-0 hidden w-[42%] bg-grey [clip-path:polygon(38%_0,100%_0,100%_100%,0_100%)] xl:block"
         aria-hidden="true"
       />
 
@@ -61,7 +63,7 @@ export default function PreviewHero() {
           </div>
         </div>
 
-        <dl className="relative z-10 mt-16 grid grid-cols-3 gap-6 border-t border-warm pt-10 lg:max-w-2xl">
+        <dl className="relative z-10 mt-16 grid max-w-2xl grid-cols-3 gap-6 rounded-2xl bg-white p-6 shadow-plaster">
           {stats.map((s) => (
             <div key={s.label}>
               <dt className="text-4xl font-extrabold tracking-tight text-red sm:text-5xl">

@@ -46,7 +46,7 @@ const accessories = [
     imageWidth: 700,
     imageHeight: 689,
     note: "Paper-faced metal corner bead for strong, chip-resistant drywall edges.",
-    span: "sm:col-span-2",
+    span: "",
   },
 ] as const;
 

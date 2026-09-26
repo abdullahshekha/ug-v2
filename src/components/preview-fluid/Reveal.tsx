@@ -14,6 +14,7 @@ export default function Reveal({ children }: RevealProps) {
   if (reducedMotion) {
     return (
       <motion.div
+        key="reduced"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -26,6 +27,7 @@ export default function Reveal({ children }: RevealProps) {
 
   return (
     <motion.div
+      key="full"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
