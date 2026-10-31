@@ -96,7 +96,6 @@ export default function CeilingCalculator({
   const [width, setWidth] = useState("");
   const [roomType, setRoomType] = useState(ROOM_TYPES[0].value);
   const [accessPanels, setAccessPanels] = useState("");
-  const [wastage, setWastage] = useState("10");
 
   const unitSuffix = unit === "feet" ? "ft" : "m";
   const boardType =
@@ -114,9 +113,8 @@ export default function CeilingCalculator({
       widthFt: toFeet(w, unit),
       boardType,
       accessPanels: parseInt(accessPanels, 10) || 0,
-      wastagePct: parseFloat(wastage) || 0,
     });
-  }, [system, unit, length, width, boardType, accessPanels, wastage]);
+  }, [system, unit, length, width, boardType, accessPanels]);
 
   return (
     <section
@@ -131,7 +129,7 @@ export default function CeilingCalculator({
         {variant === "compact" && (
           <SectionHeading
             eyebrow="Plan your project"
-            title="Ceiling material calculator"
+            title="Ceiling/Partitions Material Calculator"
             lead="Enter your room dimensions for a quick bill of materials: boards, panels or drywall partitions, screw boxes, filler, tape, and grid for suspended ceilings."
             tone="dark"
           />
@@ -204,13 +202,7 @@ export default function CeilingCalculator({
                 onChange={setWidth}
                 suffix={unitSuffix}
               />
-              <NumberField
-                label="Wastage allowance"
-                value={wastage}
-                onChange={setWastage}
-                suffix="%"
-              />
-              {system === "panel" && (
+              {system === "board" && (
                 <NumberField
                   label="Access panels wanted"
                   value={accessPanels}

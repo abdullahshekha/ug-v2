@@ -9,7 +9,7 @@ import CeilingCalculator from "@/components/sections/CeilingCalculator";
 import DistributorForm from "@/components/sections/DistributorForm";
 
 export const metadata: Metadata = {
-  title: "Ceiling Material Calculator | United Gypsum",
+  title: "Ceiling/Partitions Material Calculator | United Gypsum",
   description:
     "Estimate boards or ceiling panels, screws, filler, tape and suspended-grid components for a room from its dimensions.",
   alternates: { canonical: "/ceiling-calculator/" },
@@ -22,7 +22,7 @@ export default function CeilingCalculatorPage() {
       <main>
         <PageHero
           breadcrumb="Ceiling Calculator"
-          title="Ceiling material calculator"
+          title="Ceiling/Partitions Material Calculator"
           subtitle="Enter a room's dimensions to get a first-pass bill of materials for a gypsum board ceiling or a suspended ceiling-panel grid."
         />
 
@@ -32,8 +32,8 @@ export default function CeilingCalculatorPage() {
           <div className="mx-auto max-w-[1600px] px-4 py-16 sm:px-8 sm:py-20 lg:px-12">
             <SectionHeading
               eyebrow="How it works"
-              title="Two systems, two sets of quantities"
-              lead="The calculator derives ceiling area and perimeter from your room length and width, applies standard coverage rates, and adds your wastage allowance before every quantity is rounded up."
+              title="Three systems, three sets of quantities"
+              lead="The calculator derives ceiling area and perimeter from your room length and width and applies United Gypsum coverage and packing figures, rounding every quantity up to whole boards, panels, pieces and boxes."
             />
 
             <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -46,8 +46,9 @@ export default function CeilingCalculatorPage() {
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-grey">
                   A <strong>4 ft &times; 8 ft</strong> board covers 32 sq ft.
-                  Screws, filler bags and tape rolls are estimated from the
-                  board count and the taped joint length. Pick a room type in
+                  Each board takes 32 screws (500 per box) and 24 ft of tape
+                  (90 m per roll); filler comes in 5 kg and 25 kg buckets, a
+                  5 kg bucket covering 100 sq ft. Pick a room type in
                   the calculator to get the right board variant: Standard,
                   Moisture, Fire or Heat Resistant.
                 </p>
@@ -60,10 +61,10 @@ export default function CeilingCalculatorPage() {
                   Ceiling Panel
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-grey">
-                  A <strong>595 &times; 595 mm</strong> panel covers about 4
-                  sq ft. The suspended grid is estimated separately: main
-                  runners and cross tees on a 2 ft &times; 2 ft module, plus
-                  perimeter wall angle and any access panels you ask for.
+                  A <strong>603 &times; 603 mm</strong> panel sits in a suspended
+                  grid, estimated piece by piece: short tees, cross tees and
+                  main runners on a 2 ft &times; 2 ft module, plus perimeter
+                  wall angle.
                 </p>
               </article>
             </div>

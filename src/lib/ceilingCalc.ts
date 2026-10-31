@@ -7,9 +7,9 @@
  * and lets us swap the constants once the Application Booklet is parsed.
  *
  * TODO: reconcile every value in CALC_CONFIG against the UG Application Booklet
- * (UG_Application_Booklet_Form_2020.pdf): coverage rates, fastener spacing, grid
- * module, and filler / tape consumption. Current numbers are industry-standard
- * first-pass estimates, not UG-published figures.
+ * (UG_Application_Booklet_Form_2020.pdf). Screws, tape, filler, panel size and
+ * grid carton sizes now come from client-supplied figures; board coverage and
+ * the grid layout rules are still first-pass.
  */
 
 export type CeilingSystem = "board" | "panel" | "drywall";
@@ -73,10 +73,8 @@ export interface CalcInput {
   widthFt: number;
   /** Board variant (board and drywall systems only); ignored for the panel system. */
   boardType?: BoardType;
-  /** Access panels wanted (panel system only). */
+  /** Access panels wanted (gypsum board system only). */
   accessPanels?: number;
-  /** Wastage allowance as a percentage, e.g. 10 for 10%. */
-  wastagePct?: number;
 }
 
 export interface Unit {
@@ -90,7 +88,7 @@ export const UNITS = {
   box: { singular: "box", plural: "boxes" },
   bucket: { singular: "bucket", plural: "buckets" },
   roll: { singular: "roll", plural: "rolls" },
-  carton: { singular: "carton", plural: "cartons" },
+  piece: { singular: "pc", plural: "pcs" },
 } as const satisfies Record<string, Unit>;
 
 export interface BomLine {
@@ -111,7 +109,6 @@ export interface BillOfMaterials {
   /** Echoed back for display: room footprint (ceiling) or single-face wall area (drywall). */
   areaSqFt: number;
   perimeterFt: number;
-  wastagePct: number;
   /** Present for the drywall system: total board area once both faces are counted. */
   coveredAreaSqFt?: number;
   /** "Gypsum boards" or "Ceiling panels": the main covering unit. */
@@ -120,16 +117,6 @@ export interface BillOfMaterials {
   /** Nominal size text for the primary unit, e.g. `4 ft x 8 ft`. */
   primarySize: string;
   primaryImage: string;
-  screwBoxes: number;
-  fillerBuckets: number;
-  jointTapeRolls: number;
-  /** Present only for the suspended Ceiling Panel (grid) system. */
-  grid?: {
-    mainRunnerFt: number;
-    crossTeeFt: number;
-    wallAngleFt: number;
-    accessPanels: number;
-  };
   /** Every line of the bill, image-led, for display. */
   lines: BomLine[];
 }
@@ -138,56 +125,49 @@ export const CALC_CONFIG = {
   /** Coverage of one gypsum board, in square feet (4 ft x 8 ft sheet). */
   boardCoverageSqFt: 32,
   boardSizeLabel: "4 ft x 8 ft",
-  /** Coverage of one ceiling panel, in square feet (595 x 595 mm ~= 2 ft x 2 ft). */
-  panelCoverageSqFt: 4,
-  panelSizeLabel: "595 x 595 mm",
+  /** Smart Ceiling Panel is 603 x 603 mm, sitting in a 2 ft x 2 ft grid opening. */
+  panelSizeLabel: "603 x 603 mm",
 
-  /** Drywall screws consumed per board (perimeter + field fixing). */
+  /** Drywall screws consumed per board (client figure). */
   screwsPerBoard: 32,
-  /** Fixing screws per panel (grid clips / hold-down). */
-  screwsPerPanel: 4,
-  screwsPerBox: 1000,
+  /** Drywall screws per box. */
+  screwsPerBox: 500,
+
+  /** Tape: one standard board needs 24 ft; one roll is 90 m. */
+  tapeFtPerBoard: 24,
+  tapeFtPerRoll: 90 * 3.280839895,
+
+  /** Filler: a 5 kg bucket covers 100 sq ft (a 25 kg bucket covers 500). */
+  fillerSqFtPerSmallBucket: 100,
+  fillerSmallBucketKg: 5,
+  fillerLargeBucketKg: 25,
 
   /**
-   * Running feet of finished joint per square foot of ceiling. Board ceilings have
-   * far more taped joint than a lay-in panel grid.
+   * Smart Grid on a 2 ft x 2 ft module: main runners every 4 ft (running the
+   * room length), 4 ft cross tees every 2 ft between them, 2 ft short tees
+   * between the cross tees, wall angle round the perimeter.
    */
-  jointFtPerSqFtBoard: 0.9,
-  jointFtPerSqFtPanel: 0.35,
-  /**
-   * Running feet of joint a single 26 kg filler bucket covers. Filler only
-   * fills the tapered recess along the joint (not the whole board face), so
-   * derived from Smart Filler's own published consumption rate (1.75 kg/m²
-   * per mm thickness) at roughly 2mm fill depth over a 150mm-wide joint
-   * strip: ~0.16 kg per running foot, so a 26 kg bucket covers ~160 ft.
-   */
-  jointFtPerFillerBucket: 150,
-  /** Running feet of tape on one roll (~90 m). */
-  jointFtPerTapeRoll: 295,
-
-  /** Suspended grid built on a 2 ft x 2 ft module. */
   gridMainRunnerSpacingFt: 4,
-  gridCrossTeeSpacingFt: 2,
-  /** Smart Grid members: 1220 x 26 x 24 mm, 50 pcs per carton. */
-  gridPieceLengthMm: 1220,
-  gridPiecesPerCarton: 50,
+  gridModuleFt: 2,
+  shortTee: { sizeFt: 2, perCarton: 75 },
+  crossTee: { sizeFt: 4, perCarton: 50 },
+  mainRunner: { sizeFt: 12, perCarton: 25 },
+  wallAngle: { sizeFt: 10, perBundle: 40 },
 } as const;
 
-const MM_PER_FT = 304.8;
-
 const round = (n: number) => Math.round(n * 100) / 100;
+
+/** Ceiling that tolerates float noise (12.0000001 ft counts as 12 ft). */
+const ceil = (n: number) => Math.ceil(n - 1e-6);
 
 /** Estimate a bill of materials for a rectangular ceiling. All lengths in feet. */
 export function calculate(input: CalcInput): BillOfMaterials {
   const c = CALC_CONFIG;
   const length = Math.max(0, input.lengthFt || 0);
   const width = Math.max(0, input.widthFt || 0);
-  const wastagePct = input.wastagePct ?? 10;
-  const factor = 1 + Math.max(0, wastagePct) / 100;
 
   const areaSqFt = length * width;
   const perimeterFt = 2 * (length + width);
-  const withWastage = (n: number) => Math.ceil(n * factor);
 
   const isPanel = input.system === "panel";
   const isDrywall = input.system === "drywall";
@@ -195,16 +175,10 @@ export function calculate(input: CalcInput): BillOfMaterials {
   const boardAreaSqFt = areaSqFt * faces;
 
   const boardType = input.boardType ?? "standard";
-  const coverage = isPanel ? c.panelCoverageSqFt : c.boardCoverageSqFt;
-  const primaryCount = withWastage(boardAreaSqFt / coverage);
-  const screwsPerUnit = isPanel ? c.screwsPerPanel : c.screwsPerBoard;
-  const screwBoxes = withWastage((primaryCount * screwsPerUnit) / c.screwsPerBox);
-
-  // Lay-in ceiling panels sit in the T-bar grid, not taped and filled like a
-  // fixed board ceiling, so filler and tape only apply to board/drywall.
-  const jointFt = isPanel ? 0 : boardAreaSqFt * c.jointFtPerSqFtBoard;
-  const fillerBuckets = withWastage(jointFt / c.jointFtPerFillerBucket);
-  const jointTapeRolls = withWastage(jointFt / c.jointFtPerTapeRoll);
+  // Panels drop into the 2 ft x 2 ft grid openings, one panel per opening.
+  const primaryCount = isPanel
+    ? ceil(length / c.gridModuleFt) * ceil(width / c.gridModuleFt)
+    : ceil(boardAreaSqFt / c.boardCoverageSqFt);
 
   const primaryLabel = isPanel ? "Smart Ceiling Panel" : BOARD_TYPES[boardType].label;
   const primaryImage = isPanel ? PANEL_IMAGE : BOARD_TYPES[boardType].image;
@@ -218,52 +192,53 @@ export function calculate(input: CalcInput): BillOfMaterials {
       unit: isPanel ? UNITS.panel : UNITS.board,
       note: isDrywall ? "Both faces of the partition" : undefined,
     },
-    { label: "Drywall screws", image: SCREW_IMAGE, quantity: screwBoxes, unit: UNITS.box },
   ];
 
   if (!isPanel) {
-    lines.push(
-      { label: "Smart Filler", image: FILLER_IMAGE, quantity: fillerBuckets, unit: UNITS.bucket },
-      { label: "Smart Tape", image: TAPE_IMAGE, quantity: jointTapeRolls, unit: UNITS.roll },
-    );
+    // Lay-in ceiling panels need no screws, tape or filler; those apply to
+    // board and drywall only.
+    const screwBoxes = ceil((primaryCount * c.screwsPerBoard) / c.screwsPerBox);
+    lines.push({
+      label: "Drywall screws (500 pcs per box)",
+      image: SCREW_IMAGE,
+      quantity: screwBoxes,
+      unit: UNITS.box,
+    });
+    const tapeRolls = ceil((primaryCount * c.tapeFtPerBoard) / c.tapeFtPerRoll);
+    lines.push({
+      label: "Smart Tape (90 m per roll)",
+      image: TAPE_IMAGE,
+      quantity: tapeRolls,
+      unit: UNITS.roll,
+    });
+
+    // Filler is sold in 5 kg and 25 kg buckets: size the total in 5 kg units,
+    // then swap every five of them for one 25 kg bucket.
+    const smallUnits = ceil(boardAreaSqFt / c.fillerSqFtPerSmallBucket);
+    const bigBuckets = Math.floor(smallUnits / 5);
+    const smallBuckets = smallUnits % 5;
+    if (bigBuckets > 0) {
+      lines.push({
+        label: `Smart Filler (${c.fillerLargeBucketKg} kg)`,
+        image: FILLER_IMAGE,
+        quantity: bigBuckets,
+        unit: UNITS.bucket,
+      });
+    }
+    if (smallBuckets > 0) {
+      lines.push({
+        label: `Smart Filler (${c.fillerSmallBucketKg} kg)`,
+        image: FILLER_IMAGE,
+        quantity: smallBuckets,
+        unit: UNITS.bucket,
+      });
+    }
   }
 
-  const bom: BillOfMaterials = {
-    areaSqFt: round(areaSqFt),
-    perimeterFt: round(perimeterFt),
-    wastagePct,
-    coveredAreaSqFt: isDrywall ? round(boardAreaSqFt) : undefined,
-    primaryLabel,
-    primaryCount,
-    primarySize,
-    primaryImage,
-    screwBoxes,
-    fillerBuckets,
-    jointTapeRolls,
-    lines,
-  };
-
-  if (isPanel) {
+  if (input.system === "board") {
     const accessPanels = Math.max(0, Math.floor(input.accessPanels ?? 0));
-    const mainRunnerFt = withWastage(areaSqFt / c.gridMainRunnerSpacingFt);
-    const crossTeeFt = withWastage(areaSqFt / c.gridCrossTeeSpacingFt);
-    const wallAngleFt = withWastage(perimeterFt);
-    bom.grid = { mainRunnerFt, crossTeeFt, wallAngleFt, accessPanels };
-
-    const totalGridFt = mainRunnerFt + crossTeeFt + wallAngleFt;
-    const pieceLengthFt = c.gridPieceLengthMm / MM_PER_FT;
-    const gridPieces = Math.ceil(totalGridFt / pieceLengthFt);
-    const gridCartons = Math.ceil(gridPieces / c.gridPiecesPerCarton);
-
-    bom.lines.push({
-      label: "Smart Grid (main runner + cross tee + wall angle)",
-      image: GRID_IMAGE,
-      quantity: gridCartons,
-      unit: UNITS.carton,
-      note: `${round(totalGridFt)} ft total`,
-    });
     if (accessPanels > 0) {
-      bom.lines.push({
+      lines.push({
         label: "Smart Access panels",
         image: ACCESS_IMAGE,
         quantity: accessPanels,
@@ -272,7 +247,55 @@ export function calculate(input: CalcInput): BillOfMaterials {
     }
   }
 
-  return bom;
+  if (isPanel) {
+    const bays = ceil(width / c.gridMainRunnerSpacingFt);
+    const rowsPerBay = ceil(length / c.gridModuleFt);
+
+    const mainRunnerFt = Math.max(0, bays - 1) * length;
+    const crossTeeFt = bays * Math.max(0, rowsPerBay - 1) * c.crossTee.sizeFt;
+    const shortTeeFt = bays * rowsPerBay * c.shortTee.sizeFt;
+
+    const gridLine = (
+      label: string,
+      neededFt: number,
+      sizeFt: number,
+      perPack: number,
+      packName: string,
+    ): BomLine | null => {
+      const pcs = ceil(neededFt / sizeFt);
+      if (pcs === 0) return null;
+      const packs = ceil(pcs / perPack);
+      const wasted = round(pcs * sizeFt - neededFt);
+      const needed = `${round(neededFt)} ft needed${wasted > 0 ? ` (${wasted} ft wasted)` : ""}`;
+      return {
+        label: `${label} (${sizeFt} ft)`,
+        image: GRID_IMAGE,
+        quantity: pcs,
+        unit: UNITS.piece,
+        note: `${needed}, ${packs} ${packName}${packs === 1 ? "" : "s"} of ${perPack} pcs`,
+      };
+    };
+
+    for (const line of [
+      gridLine("Smart Grid Short Tee", shortTeeFt, c.shortTee.sizeFt, c.shortTee.perCarton, "carton"),
+      gridLine("Smart Grid Cross Tee", crossTeeFt, c.crossTee.sizeFt, c.crossTee.perCarton, "carton"),
+      gridLine("Smart Grid Main Runner", mainRunnerFt, c.mainRunner.sizeFt, c.mainRunner.perCarton, "carton"),
+      gridLine("Smart Grid Wall Angle", perimeterFt, c.wallAngle.sizeFt, c.wallAngle.perBundle, "bundle"),
+    ]) {
+      if (line) lines.push(line);
+    }
+  }
+
+  return {
+    areaSqFt: round(areaSqFt),
+    perimeterFt: round(perimeterFt),
+    coveredAreaSqFt: isDrywall ? round(boardAreaSqFt) : undefined,
+    primaryLabel,
+    primaryCount,
+    primarySize,
+    primaryImage,
+    lines,
+  };
 }
 
 const FT_PER_M = 3.280839895;
